@@ -1,0 +1,46 @@
+{
+  "name": "react-markdown-editor",
+  "version": "1.0.0",
+  "description": "Markdown editor.",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "esnext": "esnext/index.js",
+  "files": [
+    "lib/",
+    "esm/",
+    "esnext/"
+  ],
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run compile:esm -- --watch && npm run compile:cjs -- --watch && npm run compile:esnext -- --watch",
+    "compile": "npm run compile:esm && npm run compile:cjs && npm run compile:esnext",
+    "compile:esm": "tsc -p ./src",
+    "compile:cjs": "tsc -p ./src -m commonjs --outDir cjs",
+    "compile:esnext": "tsc -p ./src -t esnext --outDir esnext"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uiwjs/react-markdown-editor"
+  },
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.7.0",
+    "react-dom": ">=16.7.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/prop-types": "^15.7.0",
+    "@types/react": "^16.8.10",
+    "@types/react-dom": "^16.8.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.4.1"
+  },
+  "dependencies": {}
+}

@@ -26,8 +26,54 @@
   A markdown editor with preview, implemented with React.js and TypeScript.
 </p>
 
-## Quick Start
+## Install
 
 ```bash
 npm i @uiwjs/react-markdown-editor
 ```
+
+## Basic Usage
+
+```jsx
+import MarkdownEditor from '@uiwjs/react-markdown-editor';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      markdown: '# This is a H1  \n## This is a H2  \n###### This is a H6',
+    };
+    this.updateMarkdown = this.updateMarkdown.bind(this);
+  }
+
+  updateMarkdown(value) {
+    this.setState({ markdown: value });
+  }
+
+  render() {
+    return (
+      <MarkdownEditor
+        value={this.state.markdown}
+        onChange={this.updateMarkdown}
+      />
+    );
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('app')
+);
+```
+
+## Props
+
+- value (*string*) - the raw markdown that will be converted to html (**required**)
+- onChange (*function*) - called when a change is made (**required**)
+
+## License
+
+[MIT © Kenny Wong](./LICENSE)

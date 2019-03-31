@@ -1,6 +1,8 @@
-react-markdown-editor
-===
-
+<p align="center">
+  <a href="https://github.com/uiwjs/react-markdown-editor">
+    <img src="./website/logo.svg?sanitize=true">
+  </a>
+</p>
 
 <p align="center">
   <a href="https://github.com/uiwjs/react-markdown-editor/issues">
@@ -20,8 +22,11 @@ react-markdown-editor
   </a>
 </p>
 
+<p align="center">
+  Markdown Editor Component for React.js
+</p>
 
-Markdown Editor Component for React.js
+## Quick Start
 
 ```bash
 npm i @uiwjs/react-markdown-editor

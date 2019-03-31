@@ -2,7 +2,7 @@
   "name": "@uiwjs/react-markdown-editor",
   "version": "1.0.0",
   "description": "A markdown editor with preview, implemented with React.js and TypeScript.",
-  "main": "lib/index.js",
+  "main": "cjs/index.js",
   "module": "esm/index.js",
   "esnext": "esnext/index.js",
   "files": [
@@ -10,8 +10,8 @@
     "esm/",
     "esnext/"
   ],
-  "types": "lib/index.d.ts",
-  "typings": "lib/index.d.ts",
+  "types": "cjs/index.d.ts",
+  "typings": "cjs/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npm run compile:esm -- --watch && npm run compile:cjs -- --watch && npm run compile:esnext -- --watch",

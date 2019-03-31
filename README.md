@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  Markdown Editor Component for React.js
+  A markdown editor with preview, implemented with React.js and TypeScript.
 </p>
 
 ## Quick Start

@@ -4,22 +4,24 @@
   "description": "A markdown editor with preview, implemented with React.js and TypeScript.",
   "main": "cjs/index.js",
   "module": "esm/index.js",
-  "esnext": "esnext/index.js",
   "files": [
     "lib/",
     "esm/",
     "esnext/"
   ],
-  "types": "cjs/index.d.ts",
-  "typings": "cjs/index.d.ts",
+  "typings": "typing/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm run compile:esm -- --watch && npm run compile:cjs -- --watch && npm run compile:esnext -- --watch",
-    "compile": "npm run compile:esm && npm run compile:cjs && npm run compile:esnext",
-    "compile:esm": "tsc -p ./src",
-    "compile:cjs": "tsc -p ./src -m commonjs --outDir cjs",
+    "type-check": "tsc -p ./src --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:types",
+    "build:types": "tsc -p ./src --emitDeclarationOnly --outDir typing",
+    "build:cjs": "BABEL_ENV=cjs babel ./src --out-dir cjs --extensions \".ts,.tsx\" --source-maps inline --delete-dir-on-start --verbose",
+    "build:esm": "BABEL_ENV=esm babel ./src --out-dir esm --extensions \"*.ts,.tsx\" --source-maps true --delete-dir-on-start --verbose",
+    "build:umd": "BABEL_ENV=umd babel ./src --out-dir umd --extensions \"*.ts,.tsx\" --source-maps true --delete-dir-on-start --verbose",
+    "dev": "npm run build:cjs -- --watch & npm run build:esm -- --watch & npm run build:umd -- --watch",
     "compile:esnext": "tsc -p ./src -t esnext --outDir esnext",
-    "doc": "npm run doc:dev",
+    "compile:css": "compile-less -d src --combine dist/markdown-editor.css",
+    "doc": "BABEL_ENV=cjs npm run doc:dev",
     "doc:dev": "NODE_ENV=development parcel website/index.html --out-dir doc --no-cache",
     "doc:build": "rimraf doc && NODE_ENV=production parcel build website/index.html --out-dir doc --public-url ./ --no-cache --no-source-maps"
   },
@@ -34,14 +36,23 @@
     "react-dom": ">=16.7.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-transform-modules-umd": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
     "@types/jest": "^24.0.11",
     "@types/prop-types": "^15.7.0",
     "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.3",
     "@uiw/reset.css": "^1.0.1",
     "autoprefixer": "^9.5.0",
+    "babel-plugin-transform-remove-imports": "^1.0.8",
+    "babel-plugin-transform-rename-import": "^2.3.0",
+    "compile-less-cli": "^1.1.3",
     "less": "^3.9.0",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-markdown-string": "^1.3.4",
@@ -55,6 +66,9 @@
     "typescript": "^3.4.1"
   },
   "dependencies": {
+    "@babel/runtime": "^7.4.3",
+    "classnames": "^2.2.6",
+    "codemirror": "^5.45.0",
     "react-markdown": "^4.0.6"
   }
 }

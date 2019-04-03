@@ -1,6 +1,9 @@
 cjs
 esm
 esnext
+umd
+typing
+dist
 node_modules
 doc
 build

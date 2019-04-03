@@ -1,5 +1,90 @@
 {
   "presets": [
-    "@babel/preset-react"
-  ]
+    "@babel/env",
+    "@babel/preset-react",
+    "@babel/typescript"
+  ],
+  "plugins": [
+    "@babel/proposal-class-properties",
+  ],
+  "env": {
+    "umd": {
+      "presets": [
+        [ "@babel/preset-env", { "modules": "umd" } ]
+      ],
+      "plugins": [
+        "@babel/plugin-transform-modules-umd",
+        "@babel/plugin-transform-runtime",
+        [
+          "babel-plugin-transform-rename-import",
+          {
+            "original": "^(.+?)\\.less$",
+            "replacement": "$1.css"
+          }
+        ]
+      ]
+    },
+    "esm": {
+      "presets": [
+        [ "@babel/preset-env", { "modules": false } ]
+      ],
+      "plugins": [
+        [ "@babel/plugin-transform-runtime", { "useESModules": true } ],
+        [ "babel-plugin-transform-rename-import", { "original": "^(.+?)\\.less$", "replacement": "$1.css" } ]
+      ]
+    },
+    "cjs": {
+      "presets": [
+        [ "@babel/preset-env", { "modules": false } ]
+      ],
+      "plugins": [
+        [ "@babel/plugin-transform-runtime", { "useESModules": true } ],
+        [ "babel-plugin-transform-remove-imports", { "test": "(less|css)$" } ]
+      ]
+    }
+  }
 }
+
+// {
+//   "presets": [
+//     "@babel/preset-react",
+//     ["@babel/preset-typescript", {
+//       "isTSX": true,
+//       "allExtensions": true
+//     }]
+//   ],
+//   "env": {
+//     "esm": {
+//       "presets": [
+//         "@babel/preset-react",
+//         [
+//           "@babel/preset-typescript",
+//           {
+//             "isTSX": true,
+//             "allExtensions": true
+//           }
+//         ]
+//       ],
+//       "plugins": [
+//         // [
+//         //   "@babel/plugin-transform-runtime",
+//         //   {
+//         //     "useESModules": true
+//         //   }
+//         // ],
+//         // [
+//         //   "babel-plugin-transform-rename-import",
+//         //   {
+//         //     "original": "^(.+?)\\.less$",
+//         //     "replacement": "$1.css"
+//         //   }
+//         // ]
+//       ]
+//     },
+//     "cjs": {
+//       "presets": [
+//         // "@babel/preset-env",
+//       ],
+//     }
+//   }
+// }

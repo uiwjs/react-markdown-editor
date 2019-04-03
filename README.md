@@ -74,6 +74,15 @@ ReactDOM.render(
 - value (*string*) - the raw markdown that will be converted to html (**required**)
 - onChange (*function*) - called when a change is made (**required**)
 
+
+### Development
+
+```bash
+npm run dev
+npm run type-check:watch
+npm run doc
+```
+
 ## License
 
 [MIT © Kenny Wong](./LICENSE)

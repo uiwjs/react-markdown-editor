@@ -1,12 +1,14 @@
 import classnames from 'classnames';
 import * as React from "react";
 import { HTMLDivProps, IProps } from './common/props';
+import CodeMirror from './components/CodeMirror';
 import ToolBar from './components/ToolBar';
 import './index.less';
 
 export interface IMarkdownEditorProps extends IProps, HTMLDivProps {
   prefixCls: string,
   value?: string,
+  height?: number,
 }
 
 export default class MarkdownEditor extends React.PureComponent<IMarkdownEditorProps, {}> {
@@ -16,11 +18,11 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditorP
     value: '',
   };
   public render() {
-    const { prefixCls, className } = this.props;
+    const { prefixCls, className, ...codemirrorProps } = this.props;
     return (
       <div className={classnames(prefixCls, className)}>
         <ToolBar />
-        tests
+        <CodeMirror {...codemirrorProps} />
       </div>
     );
   }

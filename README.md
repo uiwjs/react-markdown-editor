@@ -22,6 +22,8 @@
   </a>
 </p>
 
+<!--dividing-->
+
 <p align="center">
   A markdown editor with preview, implemented with React.js and TypeScript.
 </p>

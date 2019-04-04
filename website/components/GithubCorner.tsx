@@ -1,11 +1,11 @@
 import * as React from 'react';
 import styles from './GithubCorner.less';
 
-export interface IProps {
+export interface IGithubCornerProps {
   url?: string;
 }
 
-export default function GithubCorner(props: IProps) {
+export default function GithubCorner(props: IGithubCornerProps) {
   if (!props.url) {
     return null;
   }

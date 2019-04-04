@@ -1,0 +1,47 @@
+@editor-prefix:~"md-editor";
+
+:global {
+  .@{editor-prefix} {
+    &-toolbar {
+      border-bottom: 1px solid #CCC;
+      background-color: #fbfbfb;
+      padding: 2px;
+      border-radius: 3px 3px 0 0;
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        outline: 0;
+        display: inline-block;
+        height: 24px;
+        padding: 3px 5px;
+        width: 28px;
+        &:hover {
+          color: #06c;
+          .mde-stroke {
+            stroke: #06c;
+          }
+          .mde-fill {
+            fill: #06c;
+          }
+        }
+      }
+      .mde-stroke {
+        fill: none;
+        stroke: #444;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2;
+      }
+      .mde-fill {
+        fill: #444;
+      }
+      .mde-even {
+        fill-rule: evenodd;
+      }
+      .mde-thin {
+        stroke-width: 1;
+      }
+    }
+  }
+}

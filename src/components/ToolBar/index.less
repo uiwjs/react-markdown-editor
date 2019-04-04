@@ -5,7 +5,7 @@
     &-toolbar {
       border-bottom: 1px solid #dfdfe0;
       background-color: #fbfbfb;
-      padding: 2px;
+      padding: 4px 2px 4px 5px;
       border-radius: 3px 3px 0 0;
       button {
         background: none;
@@ -14,33 +14,21 @@
         outline: 0;
         display: inline-block;
         height: 24px;
-        padding: 3px 5px;
-        width: 28px;
+        width: 24px;
+        padding: 3px 2px;
+        border-radius: 2px;
+        transition: all .3s;
         &:hover {
           color: #06c;
-          .mde-stroke {
-            stroke: #06c;
-          }
-          .mde-fill {
-            fill: #06c;
-          }
+          background-color: #e8e8e8;
         }
-      }
-      .mde-stroke {
-        fill: none;
-        stroke: #444;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 2;
-      }
-      .mde-fill {
-        fill: #444;
-      }
-      .mde-even {
-        fill-rule: evenodd;
-      }
-      .mde-thin {
-        stroke-width: 1;
+        &:active {
+          color: #6a57ff;
+          background-color: #dadada;
+        }
+        svg {
+          vertical-align: middle;
+        }
       }
     }
   }

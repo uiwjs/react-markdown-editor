@@ -16,7 +16,14 @@ export default class App extends React.Component {
           <Logo />
         </div>
         <div className={styles.editor}>
-          <MarkdownEditor height={300} value={DocumentStrSource} />
+          <MarkdownEditor
+            options={{
+              autofocus: true,
+              showCursorWhenSelecting: true,
+            }}
+            height={500}
+            value={DocumentStrSource}
+          />
         </div>
         <Footer name="Kenny Wong" href="" year={2019}/>
       </div>

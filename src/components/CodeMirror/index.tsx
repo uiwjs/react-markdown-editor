@@ -1,5 +1,4 @@
-import CodeMirror from 'codemirror';
-// import 'codemirror/lib/codemirror.css';
+import CodeMirror, { Doc, DocConstructor, Editor, EditorConfiguration, EditorFromTextArea } from 'codemirror';
 import 'codemirror/mode/markdown/markdown';
 import React, { Component } from 'react';
 import { IReactCodeMirrorState } from '../../common/codemirror';
@@ -9,7 +8,7 @@ import './index.less';
 
 export interface IReactCodeMirrorProps extends IProps, HTMLDivProps {
   value?: string,
-  options: CodeMirror.EditorConfiguration,
+  options: EditorConfiguration,
   width?: number | string,
   height?: number | string,
 }
@@ -18,6 +17,7 @@ export default class ReactCodeMirror extends Component<IReactCodeMirrorProps, IR
   public static defaultProps: IReactCodeMirrorProps = {
     height: '100%',
     options: {
+      lineNumbers: true,
       mode: 'markdown',
       tabSize: 2,
     },
@@ -25,7 +25,13 @@ export default class ReactCodeMirror extends Component<IReactCodeMirrorProps, IR
     width: '100%',
   }
   public textarea!: HTMLTextAreaElement;
-  public editor!: CodeMirror.EditorFromTextArea;
+  // public editor!: CodeMirror.Editor<Doc>;
+  // public editor!: Doc | Editor | EditorFromTextArea;
+  public editor!: any;
+  // public editor!: CodeMirror.Editor | EditorFromTextArea;
+  // public editor!: Doc | EditorFromTextArea;
+  // public editor!: Doc | EditorFromTextArea;
+  // public editor!: Doc | Editor | EditorFromTextArea | Editor;
   public constructor(props: Readonly<IReactCodeMirrorProps>) {
     super(props);
   }
@@ -35,37 +41,30 @@ export default class ReactCodeMirror extends Component<IReactCodeMirrorProps, IR
     )
   }
 
-  public async componentDidMount() {
+  public componentDidMount() {
     this.renderCodeMirror(this.props);
   }
 
   public async componentWillReceiveProps(nextPros: IReactCodeMirrorProps) {
     this.renderCodeMirror(nextPros);
-    // await this.setState({
-    //   codeMirrorOptions: { ...this.state.codeMirrorOptions, ...nextPros.options },
-    // });
   }
 
   private async renderCodeMirror(props: IReactCodeMirrorProps) {
     const { value, width, height, options } = props;
-    // await import(`codemirror/mode/${options.mode}/${options.mode}.js`);
-    // console.log('options:', options);
+    const editorOption = { tabSize: 2, lineNumbers: true, ...options, mode: 'markdown' }
     // 生成codemirror实例
-    this.editor = CodeMirror.fromTextArea(this.textarea, options);
+    this.editor = CodeMirror.fromTextArea(this.textarea, editorOption);
     // 获取CodeMirror用于获取其中的一些常量
     // this.codemirror = CodeMirror;
     // 事件处理映射
     // const eventDict = this.getEventHandleFromProps();
-
     // Object.keys(eventDict).forEach((event: string) => {
     //   this.editor.on(eventDict[event], this.props[event]);
     // });
 
     // 初始化值
     this.editor.setValue(value || '');
-    // markdown codemirror/mode/markdown/markdown.js
-
-    this.editor.setOption(name, options.mode);
+    this.editor.setOption(name, editorOption.mode);
 
     if (width || height) {
       // 设置尺寸

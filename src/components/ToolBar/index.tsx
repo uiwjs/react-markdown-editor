@@ -4,30 +4,31 @@ import { HTMLDivProps, IProps } from '../../common/props';
 import icon from '../Icon/bar';
 import './index.less';
 
-interface IconType {
+export interface IIconProps {
   [key: string]: HTMLElement
 }
 
-
-const barIcons: string[] = ['bold', 'italic', 'strike', 'olist', 'ulist', 'link', 'image', 'quote'];
-
-export interface IToolBarProps extends IProps, HTMLDivProps {
+export interface IToolBarProps extends IProps {
   prefixCls: string,
+  toolbars: string[],
+  onClick: (type: string) => void,
 }
 
 export default class ToolBar extends React.PureComponent<IToolBarProps, {}> {
   public static displayName = 'ToolBar';
   public static defaultProps: IToolBarProps = {
+    onClick: () => null,
     prefixCls: 'md-editor',
+    toolbars: ['bold', 'italic', 'header', 'strike', 'underline', 'olist', 'ulist', 'todo', 'link', 'image', 'quote', 'preview'],
   };
   public render() {
-    const { prefixCls, className, ...htmlProps } = this.props;
+    const { prefixCls, className, onClick, toolbars, ...htmlProps } = this.props;
     return (
       <div className={classnames(`${prefixCls}-toolbar`, className)} {...htmlProps}>
-        {barIcons.map((name: string, key) => {
-          const Icon = (icon as unknown as IconType)[name];
+        {toolbars.map((name: string, key) => {
+          const Icon = (icon as unknown as IIconProps)[name];
           return (
-            <button key={key}> {Icon} </button>
+            <button key={key} onClick={onClick.bind(this, name)}> {Icon} </button>
           );
         })}
       </div>

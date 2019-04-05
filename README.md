@@ -4,6 +4,8 @@
   </a>
 </p>
 
+<!--dividing-->
+
 <p align="center">
   <a href="https://github.com/uiwjs/react-markdown-editor/issues">
     <img src="https://img.shields.io/github/issues/uiwjs/react-markdown-editor.svg">
@@ -21,8 +23,6 @@
     <img src="https://img.shields.io/npm/v/@uiwjs/react-markdown-editor.svg">
   </a>
 </p>
-
-<!--dividing-->
 
 <p align="center">
   A markdown editor with preview, implemented with React.js and TypeScript.

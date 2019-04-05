@@ -1,20 +1,69 @@
-import CodeMirror, { Doc, DocConstructor, Editor, EditorConfiguration, EditorFromTextArea } from 'codemirror';
+import CodeMirror from 'codemirror';
 import 'codemirror/mode/markdown/markdown';
 import React, { Component } from 'react';
-import { IReactCodeMirrorState } from '../../common/codemirror';
-import { HTMLDivProps, IProps } from '../../common/props';
+import { DomEvent, IDefineModeOptions, IEventDict, IGetSelectionOptions, IInstance, ISetScrollOptions, ISetSelectionOptions } from '../../common/codemirror';
+import { IProps } from '../../common/props';
 import './codemirror.less';
 import './index.less';
 
-export interface IReactCodeMirrorProps extends IProps, HTMLDivProps {
-  value?: string,
-  options: EditorConfiguration,
-  width?: number | string,
-  height?: number | string,
+declare let global: any;
+declare let require: any;
+
+const SERVER_RENDERED = (typeof navigator === 'undefined' || global.PREVENT_CODEMIRROR_RENDER === true);
+
+let cm: any;
+if (!SERVER_RENDERED) {
+  // tslint:disable-next-line: no-var-requires
+  cm = require('codemirror');
 }
 
-export default class ReactCodeMirror extends Component<IReactCodeMirrorProps, IReactCodeMirrorState> {
-  public static defaultProps: IReactCodeMirrorProps = {
+export interface ICodeMirror extends IProps {
+  value?: string,
+  width?: number | string,
+  height?: number | string,
+  className?: string;
+  cursor?: CodeMirror.Position;
+  defineMode?: IDefineModeOptions;
+  editorDidConfigure?: (editor: IInstance) => void;
+  editorDidMount?: (editor: IInstance, value: string, cb: () => void) => void;
+  editorWillMount?: () => void;
+  editorWillUnmount?: (lib: any) => void;
+  onClear?: (from: CodeMirror.Position, to: CodeMirror.Position) => void;
+  onBlur?: DomEvent;
+  onChange?: (editor: IInstance, data: CodeMirror.EditorChange, value: string) => void;
+  onContextMenu?: DomEvent;
+  onCopy?: DomEvent;
+  onCursor?: (editor: IInstance, data: CodeMirror.Position) => void;
+  onCut?: DomEvent;
+  onCursorActivity?: (editor: IInstance) => void;
+  onDblClick?: DomEvent;
+  onDragEnter?: DomEvent;
+  onDragLeave?: DomEvent;
+  onDragOver?: DomEvent
+  onDragStart?: DomEvent;
+  onDrop?: DomEvent;
+  onFocus?: DomEvent
+  onGutterClick?: (editor: IInstance, lineNumber: number, gutter: string, event: Event) => void;
+  onKeyDown?: DomEvent;
+  onKeyPress?: DomEvent;
+  onKeyUp?: DomEvent;
+  onMouseDown?: DomEvent;
+  onPaste?: DomEvent;
+  onRenderLine?: (editor: IInstance, line: CodeMirror.LineHandle, element: HTMLElement) => void;
+  onScroll?: (editor: IInstance, data: CodeMirror.ScrollInfo) => void;
+  onSelection?: (editor: IInstance, data: IGetSelectionOptions) => void;
+  onTouchStart?: DomEvent;
+  onUpdate?: (editor: IInstance) => void;
+  onViewportChange?: (editor: IInstance, start: number, end: number) => void;
+  options?: CodeMirror.EditorConfiguration
+  selection?: { ranges: ISetSelectionOptions[], focus?: boolean };
+  scroll?: ISetScrollOptions;
+  [key: string]: any,
+}
+
+
+export default class ReactCodeMirror extends Component<ICodeMirror> {
+  public static defaultProps: ICodeMirror = {
     height: '100%',
     options: {
       lineNumbers: true,
@@ -25,49 +74,79 @@ export default class ReactCodeMirror extends Component<IReactCodeMirrorProps, IR
     width: '100%',
   }
   public textarea!: HTMLTextAreaElement;
-  // public editor!: CodeMirror.Editor<Doc>;
-  // public editor!: Doc | Editor | EditorFromTextArea;
   public editor!: any;
-  // public editor!: CodeMirror.Editor | EditorFromTextArea;
-  // public editor!: Doc | EditorFromTextArea;
-  // public editor!: Doc | EditorFromTextArea;
   // public editor!: Doc | Editor | EditorFromTextArea | Editor;
-  public constructor(props: Readonly<IReactCodeMirrorProps>) {
+  public constructor(props: Readonly<ICodeMirror>) {
     super(props);
   }
   public render() {
     return (
-      <textarea ref={(instance: HTMLTextAreaElement) => { this.textarea = instance; }} />
-    )
+      <textarea ref={(instance: HTMLTextAreaElement) => this.textarea = instance} />
+    );
+  }
+
+  public componentWillMount() {
+    if (SERVER_RENDERED) {
+      return;
+    }
+
+    if (this.props.editorWillMount) {
+      this.props.editorWillMount();
+    }
   }
 
   public componentDidMount() {
+    if (SERVER_RENDERED) {
+      return;
+    }
     this.renderCodeMirror(this.props);
   }
 
-  public async componentWillReceiveProps(nextPros: IReactCodeMirrorProps) {
+  public async componentWillReceiveProps(nextPros: ICodeMirror) {
     this.renderCodeMirror(nextPros);
   }
 
-  private async renderCodeMirror(props: IReactCodeMirrorProps) {
+  // 将props中所有的事件处理函数映射并保存
+  public getEventHandleFromProps(): IEventDict {
+    const propNames = Object.keys(this.props);
+    const eventHandle = propNames.filter((prop) => {
+      return /^on+/.test(prop);
+    });
+
+    const eventDict: IEventDict = {};
+    eventHandle.forEach((ele) => {
+      eventDict[ele] = ele.replace(/^on[A-Z]/g, s => s.slice(2).toLowerCase()) as string;
+    });
+
+    return eventDict;
+  }
+
+  private renderCodeMirror(props: ICodeMirror) {
     const { value, width, height, options } = props;
+
+    if (this.props.defineMode) {
+      if (this.props.defineMode.name && this.props.defineMode.fn) {
+        cm.defineMode(this.props.defineMode.name, this.props.defineMode.fn);
+      }
+    }
+    
     const editorOption = { tabSize: 2, lineNumbers: true, ...options, mode: 'markdown' }
     // 生成codemirror实例
-    this.editor = CodeMirror.fromTextArea(this.textarea, editorOption);
+    this.editor = cm.fromTextArea(this.textarea, editorOption) as CodeMirror.EditorFromTextArea;
     // 获取CodeMirror用于获取其中的一些常量
-    // this.codemirror = CodeMirror;
     // 事件处理映射
-    // const eventDict = this.getEventHandleFromProps();
-    // Object.keys(eventDict).forEach((event: string) => {
-    //   this.editor.on(eventDict[event], this.props[event]);
-    // });
+    const eventDict = this.getEventHandleFromProps();
+    Object.keys(eventDict).forEach((event: string) => {
+      const handle = this.props[event];
+      this.editor.on(eventDict[event], handle);
+    });
 
-    // 初始化值
+    // Init value
     this.editor.setValue(value || '');
     this.editor.setOption(name, editorOption.mode);
 
     if (width || height) {
-      // 设置尺寸
+      // Setting size
       this.editor.setSize(width, height);
     }
   }

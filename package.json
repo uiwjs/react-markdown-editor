@@ -70,8 +70,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.4.3",
+    "@types/highlight.js": "^9.12.3",
     "classnames": "^2.2.6",
     "codemirror": "^5.45.0",
+    "highlight.js": "^9.15.6",
     "react-markdown": "^4.0.6"
   }
 }

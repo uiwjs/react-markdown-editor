@@ -4,6 +4,7 @@ import MarkdownEditor from '../src';
 import styles from './App.less';
 import Footer from './components/Footer';
 import GithubCorner from './components/GithubCorner';
+import ReactMarkdown from './components/Markdown';
 import Logo from './Logo';
 
 export default class App extends React.Component {
@@ -25,6 +26,7 @@ export default class App extends React.Component {
             value={DocumentStrSource}
           />
         </div>
+        <ReactMarkdown source={DocumentStrSource} className={styles.doc} />
         <Footer name="Kenny Wong" href="" year={2019}/>
       </div>
     );

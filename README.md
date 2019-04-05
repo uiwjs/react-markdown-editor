@@ -49,7 +49,7 @@ const Dome = () => (
 );
 ```
 
-uncontrolled usage
+controlled usage
 
 ```jsx
 import MarkdownEditor from '@uiwjs/react-markdown-editor';
@@ -66,7 +66,7 @@ class App extends React.Component {
     this.updateMarkdown = this.updateMarkdown.bind(this);
   }
 
-  updateMarkdown(value) {
+  updateMarkdown(editor, data, value) {
     this.setState({ markdown: value });
   }
 
@@ -89,7 +89,7 @@ ReactDOM.render(
 ## Props
 
 - value (*string*) - the raw markdown that will be converted to html (**required**)
-- onChange (*function*) - called when a change is made (**required**)
+- onChange (*function(editor: IInstance, data: CodeMirror.EditorChange, value: string)*) - called when a change is made (**required**)
 
 
 ### Development

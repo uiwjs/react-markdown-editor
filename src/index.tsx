@@ -1,11 +1,12 @@
 import classnames from 'classnames';
 import * as React from "react";
+import { IInstance } from './common/codemirror';
 import { IProps } from './common/props';
 import CodeMirror, { ICodeMirror } from './components/CodeMirror';
 import ToolBar from './components/ToolBar';
 import './index.less';
 
-export interface IMarkdownEditorProps extends IProps, ICodeMirror {
+export interface IMarkdownEditor extends IProps, ICodeMirror {
   prefixCls?: string,
   value?: string,
   height?: number,
@@ -17,9 +18,10 @@ interface IMarkdownEditorState {
   editor?: CodeMirror;
 }
 
-export default class MarkdownEditor extends React.PureComponent<IMarkdownEditorProps, IMarkdownEditorState, {}> {
+export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor, IMarkdownEditorState, {}> {
   public static displayName = 'MarkdownEditor';
-  public static defaultProps: IMarkdownEditorProps = {
+  public static defaultProps: IMarkdownEditor = {
+    onChange: () => null,
     prefixCls: 'md-editor',
     value: '',
   };
@@ -45,9 +47,11 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditorP
       this.CodeMirror = editor;
     }
   }
-  private onChange = () => {
-    // private onChange = (editor: CodeMirror, editorChange: CodeMirror.EditorChange) => {
-    // console.log('test', editor, editorChange);
+  private onChange = (editor: IInstance, data: CodeMirror.EditorChange, value: string) => {
+    const { onChange } = this.props as IMarkdownEditor;
+    if (onChange) {
+      onChange(editor, data, value);
+    }
   }
   private onClick = (type: string) => {
     const selection = this.CodeMirror.editor.getSelection();

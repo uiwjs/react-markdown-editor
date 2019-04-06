@@ -3,6 +3,7 @@ import * as React from "react";
 import { IInstance } from './common/codemirror';
 import { IProps } from './common/props';
 import CodeMirror, { ICodeMirror } from './components/CodeMirror';
+import PreviewMarkdown from './components/PreviewMarkdown';
 import ToolBar from './components/ToolBar';
 import './index.less';
 
@@ -15,7 +16,7 @@ export interface IMarkdownEditor extends IProps, ICodeMirror {
 }
 
 interface IMarkdownEditorState {
-  editor?: CodeMirror;
+  preview: boolean;
 }
 
 export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor, IMarkdownEditorState, {}> {
@@ -25,20 +26,33 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
     prefixCls: 'md-editor',
     value: '',
   };
-  // public state: IMarkdownEditorState = {
-  //   editor: undefined,
-  // };
+  public preview!: PreviewMarkdown;
   public CodeMirror!: CodeMirror;
+  constructor(props: IMarkdownEditor) {
+    super(props);
+    this.state = {
+      preview: true,
+    }
+  }
   public render() {
     const { prefixCls, className, toolbars, onChange, ...codemirrorProps } = this.props;
     return (
       <div className={classnames(prefixCls, className)}>
         <ToolBar toolbars={toolbars} onClick={this.onClick} />
-        <CodeMirror
-          ref={this.getInstance}
-          {...codemirrorProps}
-          onChange={this.onChange}
-        />
+        <div className={classnames(`${prefixCls}-content`)}>
+          <CodeMirror
+            style={{ width: this.state.preview ? '50%' : '100%' }}
+            width={this.state.preview ? '50%' : '100%'}
+            ref={this.getInstance}
+            {...codemirrorProps}
+            onChange={this.onChange}
+          />
+          <PreviewMarkdown
+            ref={(pmd: PreviewMarkdown) => this.preview = pmd}
+            value={this.props.value}
+            visble={this.state.preview}
+          />
+        </div>
       </div>
     );
   }
@@ -50,10 +64,20 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
   private onChange = (editor: IInstance, data: CodeMirror.EditorChange, value: string) => {
     const { onChange } = this.props as IMarkdownEditor;
     if (onChange) {
+      if (this.preview) {
+        this.preview.updateSource(editor.getValue());
+      }
       onChange(editor, data, value);
     }
   }
+  private previewMarkdown() {
+    this.setState({ preview: !this.state.preview });
+  }
   private onClick = (type: string) => {
+    if (type === 'preview') {
+      this.previewMarkdown();
+      return;
+    }
     const selection = this.CodeMirror.editor.getSelection();
     const pos = this.CodeMirror.editor.getCursor();
     let value = '';

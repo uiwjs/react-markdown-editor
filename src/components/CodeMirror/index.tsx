@@ -99,6 +99,18 @@ export default class ReactCodeMirror extends Component<ICodeMirror> {
     if (SERVER_RENDERED) {
       return;
     }
+
+    const { options } = this.props;
+    if (this.props.defineMode) {
+      if (this.props.defineMode.name && this.props.defineMode.fn) {
+        cm.defineMode(this.props.defineMode.name, this.props.defineMode.fn);
+      }
+    }
+
+    const editorOption = { tabSize: 2, lineNumbers: true, ...options, mode: 'markdown' };
+    // 生成codemirror实例
+    this.editor = cm.fromTextArea(this.textarea, editorOption) as CodeMirror.EditorFromTextArea;
+
     this.renderCodeMirror(this.props);
   }
 
@@ -122,17 +134,7 @@ export default class ReactCodeMirror extends Component<ICodeMirror> {
   }
 
   private renderCodeMirror(props: ICodeMirror) {
-    const { value, width, height, options } = props;
-
-    if (this.props.defineMode) {
-      if (this.props.defineMode.name && this.props.defineMode.fn) {
-        cm.defineMode(this.props.defineMode.name, this.props.defineMode.fn);
-      }
-    }
-    
-    const editorOption = { tabSize: 2, lineNumbers: true, ...options, mode: 'markdown' }
-    // 生成codemirror实例
-    this.editor = cm.fromTextArea(this.textarea, editorOption) as CodeMirror.EditorFromTextArea;
+    const { value, width, height } = props;
     // 获取CodeMirror用于获取其中的一些常量
     // 事件处理映射
     const eventDict = this.getEventHandleFromProps();
@@ -140,10 +142,9 @@ export default class ReactCodeMirror extends Component<ICodeMirror> {
       const handle = this.props[event];
       this.editor.on(eventDict[event], handle);
     });
-
     // Init value
     this.editor.setValue(value || '');
-    this.editor.setOption(name, editorOption.mode);
+    // this.editor.setOption(name, editorOption.mode);
 
     if (width || height) {
       // Setting size

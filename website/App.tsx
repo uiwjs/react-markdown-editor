@@ -27,7 +27,7 @@ export default class App extends React.Component {
           />
         </div>
         <ReactMarkdown source={DocumentStrSource} className={styles.doc} />
-        <Footer name="Kenny Wong" href="" year={2019}/>
+        <Footer name="Kenny Wong" href="https://github.com/uiwjs/react-markdown-editor" github="https://github.com/uiwjs/react-markdown-editor" year={2019}/>
       </div>
     );
   }

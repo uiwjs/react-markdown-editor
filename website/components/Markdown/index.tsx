@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import hljs from 'highlight.js';
 import React, { Component, HTMLAttributes } from 'react';
 import ReactMarkdown, { MarkdownAbstractSyntaxTree } from 'react-markdown';
-import styles from './styles/index.module.less';
+import styles from './styles/index.less';
 
 hljs.configure({
   classPrefix: '', // don't append class prefix
@@ -18,9 +18,9 @@ export default class Markdown extends Component<IMarkdown, any> {
   public render() {
     const { source, ...otherProps } = this.props;
     return (
-      <div ref={(node: HTMLDivElement) => { this.node = node; }} {...otherProps}>
+      <div className={classNames(styles.container)} ref={(node: HTMLDivElement) => { this.node = node; }} {...otherProps}>
         <ReactMarkdown
-          className={classNames(styles.markdown, 'markdown')}
+          className={classNames(styles.markdown)}
           source={source}
           escapeHtml={false}
           allowNode={this.allowNode}

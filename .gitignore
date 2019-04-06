@@ -2,7 +2,7 @@ cjs
 esm
 esnext
 umd
-typing
+typings
 dist
 node_modules
 doc

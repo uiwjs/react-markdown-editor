@@ -5,7 +5,7 @@
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "files": [
-    "lib/",
+    "cjs/",
     "esm/",
     "esnext/"
   ],
@@ -21,7 +21,8 @@
     "build:umd": "BABEL_ENV=umd babel ./src --out-dir umd --extensions \"*.ts,.tsx\" --source-maps true --delete-dir-on-start --verbose",
     "dev": "npm run build:cjs -- --watch & npm run build:watch:esm -- --watch & npm run build:umd -- --watch",
     "compile:esnext": "tsc -p ./src -t esnext --outDir esnext",
-    "compile:css": "compile-less -d src --combine dist/markdown-editor.css",
+    "compile:dist:css": "compile-less -d src --combine dist/markdown-editor.css",
+    "compile:css": "compile-less -d src -o esm",
     "doc": "BABEL_ENV=cjs npm run doc:dev",
     "doc:dev": "NODE_ENV=development parcel website/index.html --out-dir doc --no-cache",
     "doc:build": "rimraf doc && NODE_ENV=production parcel build website/index.html --out-dir doc --public-url ./ --no-cache --no-source-maps"

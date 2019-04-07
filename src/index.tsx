@@ -11,6 +11,7 @@ export interface IMarkdownEditor extends IProps, ICodeMirror {
   prefixCls?: string,
   value?: string,
   height?: number,
+  visble?: boolean,
   toolbars?: string[],
   options?: CodeMirror.EditorConfiguration,
 }
@@ -25,36 +26,45 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
     onChange: () => null,
     prefixCls: 'md-editor',
     value: '',
+    visble: true,
   };
   public preview!: PreviewMarkdown;
   public CodeMirror!: CodeMirror;
-  constructor(props: IMarkdownEditor) {
-    super(props);
-    this.state = {
-      preview: true,
-    }
-  }
   public render() {
-    const { prefixCls, className, toolbars, onChange, ...codemirrorProps } = this.props;
+    const { prefixCls, className, toolbars, onChange, visble, ...codemirrorProps } = this.props;
     return (
       <div className={classnames(prefixCls, className)}>
         <ToolBar toolbars={toolbars} onClick={this.onClick} />
         <div className={classnames(`${prefixCls}-content`)}>
           <CodeMirror
-            width={this.state.preview ? '50%' : '100%'}
             ref={this.getInstance}
             {...codemirrorProps}
             onChange={this.onChange}
           />
           <PreviewMarkdown
+            visble={visble}
             ref={(pmd: PreviewMarkdown) => this.preview = pmd}
             value={this.props.value}
-            visble={this.state.preview}
           />
         </div>
       </div>
     );
   }
+
+  public componentDidMount() {
+    if (this.preview) {
+      this.props.visble ? this.preview.show() : this.preview.hide();
+      this.CodeMirror.editor.setSize(this.props.visble ? '50%' : '100%');
+    }
+  }
+
+  public componentWillReceiveProps(nextProps: IMarkdownEditor) {
+    if (nextProps.visble !== this.props.visble) {
+      nextProps.visble ? this.preview.show() : this.preview.hide();
+      this.CodeMirror.editor.setSize(nextProps.visble ? '50%' : '100%');
+    }
+  }
+
   public getInstance = (editor: CodeMirror) => {
     if (editor) {
       this.CodeMirror = editor;
@@ -70,7 +80,10 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
     }
   }
   private previewMarkdown() {
-    this.setState({ preview: !this.state.preview });
+    if (this.preview) {
+      this.preview.state.visble ? this.preview.hide() : this.preview.show();
+      this.CodeMirror.editor.setSize(this.preview.state.visble ? '100%' : '50%');
+    }
   }
   private onClick = (type: string) => {
     if (type === 'preview') {

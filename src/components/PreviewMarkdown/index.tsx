@@ -21,6 +21,7 @@ export interface IPreviewMarkdown extends IProps {
 
 export interface IPreviewMarkdownState {
   value?: string;
+  visble?: boolean;
 }
 
 export default class PreviewMarkdown extends React.Component<IPreviewMarkdown, IPreviewMarkdownState> {
@@ -33,11 +34,26 @@ export default class PreviewMarkdown extends React.Component<IPreviewMarkdown, I
     super(props);
     this.state = {
       value: props.value,
+      visble: props.visble,
     }
   }
 
   public componentDidMount() {
     this.highlight();
+  }
+
+  public show() {
+    this.setState({ visble: true });
+  }
+
+  public hide() {
+    this.setState({ visble: false });
+  }
+
+  public componentWillReceiveProps(nextProps: IPreviewMarkdown) {
+    if (nextProps.visble !== this.props.visble) {
+      this.setState({ visble: nextProps.visble });
+    }
   }
 
   public highlight() {
@@ -62,7 +78,7 @@ export default class PreviewMarkdown extends React.Component<IPreviewMarkdown, I
       <div
         ref={(node: HTMLDivElement) => this.node = node}
         className={classnames(`${prefixCls}-preview`, {
-          [`${prefixCls}-visble`]: visble
+          [`${prefixCls}-visble`]: this.state.visble,
         })}
         {...elementProps}
       >

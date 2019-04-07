@@ -3,7 +3,9 @@ import hljs from 'highlight.js';
 import React from 'react';
 import ReactMarkdown, { MarkdownAbstractSyntaxTree } from 'react-markdown';
 import { IProps } from '../../common/props';
+import './hljs.less';
 import './index.less';
+import './markdown.less';
 
 hljs.configure({
   classPrefix: '', // don't append class prefix

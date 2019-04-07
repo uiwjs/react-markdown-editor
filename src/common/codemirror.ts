@@ -1,3 +1,4 @@
+import * as CodeMirror from 'codemirror';
 
 export interface IReactCodeMirrorState {
   codeMirrorOptions: object,

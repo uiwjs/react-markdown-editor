@@ -41,7 +41,6 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
         <ToolBar toolbars={toolbars} onClick={this.onClick} />
         <div className={classnames(`${prefixCls}-content`)}>
           <CodeMirror
-            style={{ width: this.state.preview ? '50%' : '100%' }}
             width={this.state.preview ? '50%' : '100%'}
             ref={this.getInstance}
             {...codemirrorProps}

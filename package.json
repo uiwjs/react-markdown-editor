@@ -1,5 +1,5 @@
 {
-  "name": "@uiwjs/react-markdown-editor",
+  "name": "@uiw/react-markdown-editor",
   "version": "1.0.0",
   "description": "A markdown editor with preview, implemented with React.js and TypeScript.",
   "main": "cjs/index.js",
@@ -13,7 +13,7 @@
   "scripts": {
     "type-check": "tsc -p ./src --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "build": "npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:types",
+    "build": "npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:types && npm run compile:css",
     "build:types": "tsc -p ./src --emitDeclarationOnly --outDir typings",
     "build:cjs": "BABEL_ENV=cjs babel ./src --out-dir cjs --extensions \".ts,.tsx\" --source-maps inline --delete-dir-on-start --verbose",
     "build:watch:esm": "BABEL_ENV=esmdev babel ./src --out-dir esm --extensions \"*.ts,.tsx\" --source-maps true --copy-files --delete-dir-on-start --verbose",

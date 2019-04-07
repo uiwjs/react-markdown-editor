@@ -89,6 +89,8 @@ ReactDOM.render(
 ## Props
 
 - value (*string*) - the raw markdown that will be converted to html (**required**)
+- visble (*boolean*) - Shows a preview that will be converted to html.
+- toolbars (*array*) - Tool display settings.
 - onChange (*function(editor: IInstance, data: CodeMirror.EditorChange, value: string)*) - called when a change is made (**required**)
 
 

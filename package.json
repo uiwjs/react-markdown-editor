@@ -1,21 +1,16 @@
 {
   "name": "@uiw/react-markdown-editor",
-  "version": "1.0.0",
+  "version": "1.1.0-beta.9",
   "description": "A markdown editor with preview, implemented with React.js and TypeScript.",
   "main": "cjs/index.js",
   "module": "esm/index.js",
-  "files": [
-    "cjs/",
-    "esm/",
-    "esnext/"
-  ],
   "typings": "typings/index.d.ts",
   "scripts": {
     "type-check": "tsc -p ./src --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "build": "npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:types && npm run compile:css",
-    "build:types": "tsc -p ./src --emitDeclarationOnly --outDir typings",
-    "build:cjs": "BABEL_ENV=cjs babel ./src --out-dir cjs --extensions \".ts,.tsx\" --source-maps inline --delete-dir-on-start --verbose",
+    "build:types": "tsc -p ./src -t es2015 --types --emitDeclarationOnly --outDir typings",
+    "build:cjs": "BABEL_ENV=cjs babel ./src --out-dir cjs --extensions \".ts,.tsx\" --source-maps true --delete-dir-on-start --verbose",
     "build:watch:esm": "BABEL_ENV=esmdev babel ./src --out-dir esm --extensions \"*.ts,.tsx\" --source-maps true --copy-files --delete-dir-on-start --verbose",
     "build:esm": "BABEL_ENV=esm babel ./src --out-dir esm --extensions \"*.ts,.tsx\" --source-maps true --delete-dir-on-start --verbose",
     "build:umd": "BABEL_ENV=umd babel ./src --out-dir umd --extensions \"*.ts,.tsx\" --source-maps true --delete-dir-on-start --verbose",
@@ -47,7 +42,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@types/classnames": "^2.2.7",
-    "@types/codemirror": "0.0.72",
+    "@types/highlight.js": "^9.12.3",
     "@types/jest": "^24.0.11",
     "@types/prop-types": "^15.7.0",
     "@types/react": "^16.8.10",
@@ -71,7 +66,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.4.3",
-    "@types/highlight.js": "^9.12.3",
+    "@types/codemirror": "0.0.72",
     "classnames": "^2.2.6",
     "codemirror": "^5.45.0",
     "highlight.js": "^9.15.6",

@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 import hljs from 'highlight.js';
-import React from 'react';
+import * as React from 'react';
 import ReactMarkdown, { MarkdownAbstractSyntaxTree } from 'react-markdown';
 import { IProps } from '../../common/props';
 import './hljs.less';

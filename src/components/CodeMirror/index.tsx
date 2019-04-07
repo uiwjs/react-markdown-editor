@@ -1,4 +1,4 @@
-import CodeMirror from 'codemirror';
+import * as CodeMirror from 'codemirror';
 import 'codemirror/mode/markdown/markdown';
 import React, { Component } from 'react';
 import { DomEvent, IDefineModeOptions, IEventDict, IGetSelectionOptions, IInstance, ISetScrollOptions, ISetSelectionOptions } from '../../common/codemirror';

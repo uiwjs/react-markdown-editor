@@ -19,8 +19,8 @@
   <a href="https://github.com/uiwjs/react-markdown-editor/releases">
     <img src="https://img.shields.io/github/release/uiwjs/react-markdown-editor.svg">
   </a>
-  <a href="https://www.npmjs.com/package/@uiwjs/react-markdown-editor">
-    <img src="https://img.shields.io/npm/v/@uiwjs/react-markdown-editor.svg">
+  <a href="https://www.npmjs.com/package/@uiw/react-markdown-editor">
+    <img src="https://img.shields.io/npm/v/@uiw/react-markdown-editor.svg">
   </a>
 </p>
 

@@ -1,6 +1,6 @@
+import MarkdownEditor from '@uiw/react-markdown-editor';
 import * as React from 'react';
 import DocumentStr from '../README.md';
-import MarkdownEditor from '../src';
 import styles from './App.less';
 import Footer from './components/Footer';
 import GithubCorner from './components/GithubCorner';

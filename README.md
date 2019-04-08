@@ -41,7 +41,7 @@ Official document [demo preview](http://uiw.gitee.io/react-markdown-editor/) ([ð
 ## Basic Usage
 
 ```jsx
-import MarkdownEditor from '@uiwjs/react-markdown-editor';
+import MarkdownEditor from '@uiw/react-markdown-editor';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -56,7 +56,7 @@ const Dome = () => (
 controlled usage
 
 ```jsx
-import MarkdownEditor from '@uiwjs/react-markdown-editor';
+import MarkdownEditor from '@uiw/react-markdown-editor';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

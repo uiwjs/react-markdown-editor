@@ -31,7 +31,7 @@
 ## Install
 
 ```bash
-npm i @uiwjs/react-markdown-editor
+npm i @uiw/react-markdown-editor
 ```
 
 ## Document

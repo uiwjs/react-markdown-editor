@@ -34,6 +34,10 @@
 npm i @uiwjs/react-markdown-editor
 ```
 
+## Document
+
+Official document [demo preview](http://uiw.gitee.io/react-markdown-editor/) ([🇨🇳中国镜像网站](http://uiw.gitee.io/react-markdown-editor/))
+
 ## Basic Usage
 
 ```jsx
@@ -92,6 +96,8 @@ ReactDOM.render(
 - visble (*boolean*) - Shows a preview that will be converted to html.
 - toolbars (*array*) - Tool display settings.
 - onChange (*function(editor: IInstance, data: CodeMirror.EditorChange, value: string)*) - called when a change is made (**required**)
+
+> [Other Props Options](https://github.com/uiwjs/react-markdown-editor/blob/8de6abbf628b6d272d7da1c28e985fbbcba71b93/src/components/CodeMirror/index.tsx#L21-L60)
 
 
 ### Development

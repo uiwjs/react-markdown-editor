@@ -36,7 +36,7 @@ npm i @uiw/react-markdown-editor
 
 ## Document
 
-Official document [demo preview](http://uiw.gitee.io/react-markdown-editor/) ([🇨🇳中国镜像网站](http://uiw.gitee.io/react-markdown-editor/))
+Official document [demo preview](https://uiwjs.github.io/react-markdown-editor/) ([🇨🇳中国镜像网站](http://uiw.gitee.io/react-markdown-editor/))
 
 ## Basic Usage
 

@@ -11,17 +11,17 @@
     "build": "npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:types && npm run compile:css",
     "build:types": "tsc -p ./src -t es2015 --types --emitDeclarationOnly --outDir typings",
     "build:cjs": "BABEL_ENV=cjs babel ./src --out-dir cjs --extensions \".ts,.tsx\" --source-maps true --delete-dir-on-start --verbose",
-    "build:watch:esm": "BABEL_ENV=esmdev babel ./src --out-dir esm --extensions \"*.ts,.tsx\" --source-maps true --copy-files --delete-dir-on-start --verbose",
+    "build:module:esm": "BABEL_ENV=esmdev babel ./src --out-dir esm --extensions \"*.ts,.tsx\" --source-maps true --copy-files --delete-dir-on-start --verbose",
     "build:esm": "BABEL_ENV=esm babel ./src --out-dir esm --extensions \"*.ts,.tsx\" --source-maps true --delete-dir-on-start --verbose",
     "build:umd": "BABEL_ENV=umd babel ./src --out-dir umd --extensions \"*.ts,.tsx\" --source-maps true --delete-dir-on-start --verbose",
-    "dev": "npm run build:cjs -- --watch & npm run build:watch:esm -- --watch & npm run build:umd -- --watch",
+    "dev": "npm run build:cjs -- --watch & npm run build:module:esm -- --watch & npm run build:umd -- --watch",
     "compile:esnext": "tsc -p ./src -t esnext --outDir esnext",
     "compile:dist:css": "compile-less -d src --combine dist/markdown-editor.css --rm-global",
     "compile:css": "compile-less -d src -o esm --rm-global",
     "deploy": "gh-pages -d doc",
     "doc": "BABEL_ENV=cjs npm run doc:dev",
     "doc:dev": "NODE_ENV=development BABEL_ENV=doc parcel website/index.html --out-dir doc --no-cache",
-    "doc:build": "rimraf doc && NODE_ENV=production parcel build website/index.html --out-dir doc --public-url ./ --no-cache --no-source-maps"
+    "doc:build": "rimraf doc && rimraf esm && npm run build:module:esm && NODE_ENV=production parcel build website/index.html --out-dir doc --public-url ./ --no-cache --no-source-maps"
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@types/classnames": "^2.2.7",
+    "@types/codemirror": "0.0.72",
     "@types/highlight.js": "^9.12.3",
     "@types/jest": "^24.0.11",
     "@types/prop-types": "^15.7.0",
@@ -69,7 +70,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.4.3",
-    "@types/codemirror": "0.0.72",
     "classnames": "^2.2.6",
     "codemirror": "^5.45.0",
     "highlight.js": "^9.15.6",

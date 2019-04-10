@@ -5,6 +5,7 @@ import { IProps } from './common/props';
 import CodeMirror, { ICodeMirror } from './components/CodeMirror';
 import PreviewMarkdown from './components/PreviewMarkdown';
 import ToolBar from './components/ToolBar';
+import ToolBarMode from './components/ToolBarMode';
 import './index.less';
 
 export interface IMarkdownEditor extends IProps, ICodeMirror {
@@ -13,11 +14,12 @@ export interface IMarkdownEditor extends IProps, ICodeMirror {
   height?: number,
   visble?: boolean,
   toolbars?: string[],
+  toolbarsMode?: string[],
   options?: CodeMirror.EditorConfiguration,
 }
 
 interface IMarkdownEditorState {
-  preview: boolean;
+  fullscreen: boolean;
 }
 
 export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor, IMarkdownEditorState, {}> {
@@ -29,11 +31,13 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
     visble: true,
   };
   public preview!: PreviewMarkdown;
+  public toolbarsMode!: ToolBarMode;
   public CodeMirror!: CodeMirror;
   public render() {
-    const { prefixCls, className, toolbars, onChange, visble, ...codemirrorProps } = this.props;
+    const { prefixCls, className, toolbars, toolbarsMode, onChange, visble, ...codemirrorProps } = this.props;
     return (
       <div className={classnames(prefixCls, className)}>
+        <ToolBarMode ref={(mode: ToolBarMode) => this.toolbarsMode = mode} toolbarsMode={toolbarsMode} onClick={this.onClickMode} />
         <ToolBar toolbars={toolbars} onClick={this.onClick} />
         <div className={classnames(`${prefixCls}-content`)}>
           <CodeMirror
@@ -79,17 +83,33 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
       onChange(editor, data, value);
     }
   }
+
   private previewMarkdown() {
     if (this.preview) {
       this.preview.state.visble ? this.preview.hide() : this.preview.show();
+      this.toolbarsMode.updateMode('preview', !this.preview.state.visble);
       this.CodeMirror.editor.setSize(this.preview.state.visble ? '100%' : '50%');
     }
   }
-  private onClick = (type: string) => {
+
+  private fullScreen() {
+    if (this.toolbarsMode) {
+      this.toolbarsMode.updateMode('fullscreen', !this.toolbarsMode.state.fullscreen);
+    }
+  }
+
+  private onClickMode = (type: string) => {
     if (type === 'preview') {
       this.previewMarkdown();
       return;
     }
+    if (type === 'fullscreen') {
+      this.fullScreen();
+      return;
+    }
+  }
+
+  private onClick = (type: string) => {
     const selection = this.CodeMirror.editor.getSelection();
     const pos = this.CodeMirror.editor.getCursor();
     let value = '';

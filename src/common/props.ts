@@ -7,3 +7,7 @@ export type HTMLDivProps = React.HTMLAttributes<HTMLDivElement>;
 export interface IProps {
   className?: string;
 }
+
+export interface IIconProps {
+  [key: string]: HTMLElement
+}

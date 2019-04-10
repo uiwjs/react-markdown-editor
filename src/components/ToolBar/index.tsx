@@ -1,12 +1,8 @@
 import classnames from 'classnames';
 import * as React from "react";
-import { HTMLDivProps, IProps } from '../../common/props';
+import { IIconProps, IProps } from '../../common/props';
 import icon from '../Icon/bar';
 import './index.less';
-
-export interface IIconProps {
-  [key: string]: HTMLElement
-}
 
 export interface IToolBarProps extends IProps {
   prefixCls: string,
@@ -19,7 +15,7 @@ export default class ToolBar extends React.PureComponent<IToolBarProps, {}> {
   public static defaultProps: IToolBarProps = {
     onClick: () => null,
     prefixCls: 'md-editor',
-    toolbars: ['bold', 'italic', 'header', 'strike', 'underline', 'olist', 'ulist', 'todo', 'link', 'image', 'quote', 'preview'],
+    toolbars: ['bold', 'italic', 'header', 'strike', 'underline', 'olist', 'ulist', 'todo', 'link', 'image', 'quote'],
   };
   public render() {
     const { prefixCls, className, onClick, toolbars, ...htmlProps } = this.props;

@@ -8,7 +8,7 @@
   "scripts": {
     "type-check": "tsc -p ./src --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "build": "npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:types && npm run compile:css",
+    "build": "npm run doc:build && npm run build:esm && npm run build:cjs && npm run build:umd && npm run build:types && npm run compile:css",
     "build:types": "tsc -p ./src -t es2015 --types --emitDeclarationOnly --outDir typings",
     "build:cjs": "BABEL_ENV=cjs babel ./src --out-dir cjs --extensions \".ts,.tsx\" --source-maps true --delete-dir-on-start --verbose",
     "build:module:esm": "BABEL_ENV=esmdev babel ./src --out-dir esm --extensions \"*.ts,.tsx\" --source-maps true --copy-files --delete-dir-on-start --verbose",

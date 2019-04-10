@@ -24,7 +24,7 @@ export default class ToolBar extends React.PureComponent<IToolBarProps, {}> {
         {toolbars.map((name: string, key) => {
           const Icon = (icon as unknown as IIconProps)[name];
           return (
-            <button key={key} onClick={onClick.bind(this, name)}> {Icon} </button>
+            <button type="button" key={key} onClick={onClick.bind(this, name)}> {Icon} </button>
           );
         })}
       </div>

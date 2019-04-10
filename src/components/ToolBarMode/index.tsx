@@ -46,6 +46,7 @@ export default class ToolBarMode extends React.PureComponent<IToolBarModeProps, 
           return (
             <button
               key={key}
+              type="button"
               className={classnames({
                 active: (preview && name === 'preview') || fullscreen && name === 'fullscreen',
               })}

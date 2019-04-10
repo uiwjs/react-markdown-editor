@@ -11,5 +11,19 @@
     &-content {
       position: relative;
     }
+    &-fullscreen & {
+      border-radius: 0;
+    }
+    &-fullscreen {
+      z-index: 999;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    &-fullscreen &-toolbar {
+      border-radius: 0;
+    }
   }
 }

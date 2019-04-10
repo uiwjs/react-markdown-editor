@@ -30,26 +30,30 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
     value: '',
     visble: true,
   };
+  public container!: HTMLDivElement;
+  public editorClientHeight!: number;
   public preview!: PreviewMarkdown;
   public toolbarsMode!: ToolBarMode;
   public CodeMirror!: CodeMirror;
   public render() {
     const { prefixCls, className, toolbars, toolbarsMode, onChange, visble, ...codemirrorProps } = this.props;
     return (
-      <div className={classnames(prefixCls, className)}>
-        <ToolBarMode ref={(mode: ToolBarMode) => this.toolbarsMode = mode} toolbarsMode={toolbarsMode} onClick={this.onClickMode} />
-        <ToolBar toolbars={toolbars} onClick={this.onClick} />
-        <div className={classnames(`${prefixCls}-content`)}>
-          <CodeMirror
-            ref={this.getInstance}
-            {...codemirrorProps}
-            onChange={this.onChange}
-          />
-          <PreviewMarkdown
-            visble={visble}
-            ref={(pmd: PreviewMarkdown) => this.preview = pmd}
-            value={this.props.value}
-          />
+      <div ref={(node: HTMLDivElement) => this.container = node}>
+        <div className={classnames(prefixCls, className)}>
+          <ToolBarMode ref={(mode: ToolBarMode) => this.toolbarsMode = mode} toolbarsMode={toolbarsMode} onClick={this.onClickMode} />
+          <ToolBar toolbars={toolbars} onClick={this.onClick} />
+          <div className={classnames(`${prefixCls}-content`)}>
+            <CodeMirror
+              ref={this.getInstance}
+              {...codemirrorProps}
+              onChange={this.onChange}
+            />
+            <PreviewMarkdown
+              visble={visble}
+              ref={(pmd: PreviewMarkdown) => this.preview = pmd}
+              value={this.props.value}
+            />
+          </div>
         </div>
       </div>
     );
@@ -59,6 +63,20 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
     if (this.preview) {
       this.props.visble ? this.preview.show() : this.preview.hide();
       this.CodeMirror.editor.setSize(this.props.visble ? '50%' : '100%');
+      const { clientHeight } = this.CodeMirror.editor.getScrollInfo();
+      this.editorClientHeight = clientHeight;
+      window.addEventListener('resize', this.handleResize, true);
+    }
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize, true);
+  }
+
+  public handleResize = () => {
+    const isfullscreen = this.toolbarsMode.state.fullscreen
+    if (isfullscreen) {
+      this.setEditorSize(isfullscreen);
     }
   }
 
@@ -93,9 +111,19 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
   }
 
   private fullScreen() {
-    if (this.toolbarsMode) {
-      this.toolbarsMode.updateMode('fullscreen', !this.toolbarsMode.state.fullscreen);
+    const { prefixCls } = this.props;
+    if (this.toolbarsMode && this.container) {
+      const isfullscreen = !this.toolbarsMode.state.fullscreen
+      this.toolbarsMode.updateMode('fullscreen', isfullscreen);
+      this.container.className = isfullscreen ? classnames(`${prefixCls}-fullscreen`) : '';
+      document.body.style.overflow = isfullscreen ? 'hidden' : 'initial';
+      this.setEditorSize(isfullscreen);
     }
+  }
+
+  private setEditorSize(isfullscreen: boolean) {
+    const clientHeight = document.body.clientHeight;
+    this.CodeMirror.editor.setSize(this.preview.state.visble ? '50%' : '100%', isfullscreen ? clientHeight - 33 : this.editorClientHeight);
   }
 
   private onClickMode = (type: string) => {

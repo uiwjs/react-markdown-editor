@@ -21,8 +21,7 @@ export default class ToolBarMode extends React.PureComponent<IToolBarModeProps, 
   public static defaultProps: IToolBarModeProps = {
     onClick: () => null,
     prefixCls: 'md-editor',
-    // toolbarsMode: ['preview', 'fullscreen'],
-    toolbarsMode: ['preview'],
+    toolbarsMode: ['preview', 'fullscreen'],
   };
   constructor(props: IToolBarModeProps) {
     super(props);

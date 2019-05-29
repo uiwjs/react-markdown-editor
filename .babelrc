@@ -43,11 +43,7 @@
       ]
     },
     "cjs": {
-      "presets": [
-        "@babel/preset-env"
-      ],
       "plugins": [
-        [ "@babel/plugin-transform-runtime", { "useESModules": true } ],
         [ "babel-plugin-transform-remove-imports", { "test": "(less|css)$" } ]
       ]
     }

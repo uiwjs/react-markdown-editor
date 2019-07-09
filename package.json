@@ -8,12 +8,14 @@
   "scripts": {
     "prepare": "npm run build",
     "watch": "npm run watch:types & npm run watch:ts",
-    "build": "npm run build:ts & npm run build:types",
+    "build": "npm run build:ts & npm run build:types & npm run compile:esm:css",
     "watch:types": "npm run build:types -- --watch",
     "build:types": "tsbb types --outDir typings --target ESNEXT",
     "watch:ts": "tsbb watch --target react",
     "build:ts": "tsbb build --target react",
     "build:umd": "tsbb build --target react --env-name umd",
+    "compile:dist:css": "compile-less -d src --combine dist/markdown-editor.css --rm-global",
+    "compile:esm:css": "compile-less -d src -o lib/esm --rm-global",
     "deploy": "gh-pages -d doc",
     "doc": "npm run doc:build",
     "doc:dev": "NODE_ENV=development parcel website/index.html --out-dir doc --no-cache",
@@ -28,30 +30,6 @@
   "peerDependencies": {
     "react": ">=16.7.0",
     "react-dom": ">=16.7.0"
-  },
-  "babel": {
-    "env": {
-      "umd": {
-        "presets": [
-          "@tsbb/babel-preset-tsbb",
-          "@babel/preset-react"
-        ],
-        "plugins": [
-          [
-            "babel-plugin-transform-remove-imports",
-            {
-              "test": "(less|css)$"
-            }
-          ],
-          [
-            "@babel/plugin-transform-modules-umd",
-            {
-              "exactGlobals": true
-            }
-          ]
-        ]
-      }
-    }
   },
   "files": [
     "lib",
@@ -76,6 +54,8 @@
     "@uiw/reset.css": "^1.0.3",
     "autoprefixer": "^9.6.1",
     "babel-plugin-transform-remove-imports": "^1.0.8",
+    "babel-plugin-transform-rename-import": "^2.3.0",
+    "compile-less-cli": "^1.1.5",
     "less": "^3.9.0",
     "marked": "^0.7.0",
     "parcel-bundler": "^1.12.3",

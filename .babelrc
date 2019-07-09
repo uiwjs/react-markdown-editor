@@ -1,0 +1,46 @@
+{
+  "env": {
+    "cjs": {
+      "plugins": [
+        [
+          "babel-plugin-transform-remove-imports",
+          {
+            "test": "(less|css)$"
+          }
+        ]
+      ]
+    },
+    "esm": {
+      "plugins": [
+        [
+          "babel-plugin-transform-rename-import",
+          {
+            "original": "^(.+?)\\.less$",
+            "replacement": "$1.css"
+          }
+        ]
+      ]
+    },
+    "umd": {
+      "presets": [
+        "@tsbb/babel-preset-tsbb",
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        [
+          "@babel/plugin-transform-modules-umd",
+          {
+            "exactGlobals": true
+          }
+        ],
+        [
+          "babel-plugin-transform-rename-import",
+          {
+            "original": "^(.+?)\\.less$",
+            "replacement": "$1.css"
+          }
+        ]
+      ]
+    }
+  }
+}

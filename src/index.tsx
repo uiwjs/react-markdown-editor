@@ -3,7 +3,7 @@ import * as React from "react";
 import { IInstance } from './common/codemirror';
 import { IProps } from './common/props';
 import CodeMirror, { ICodeMirror } from './components/CodeMirror';
-import PreviewMarkdown from './components/PreviewMarkdown';
+import PreviewMarkdown, { IPreviewMarkdown } from './components/PreviewMarkdown';
 import ToolBar from './components/ToolBar';
 import ToolBarMode from './components/ToolBarMode';
 import './index.less';
@@ -15,6 +15,7 @@ export interface IMarkdownEditor extends IProps, ICodeMirror {
   visble?: boolean,
   toolbars?: string[],
   toolbarsMode?: string[],
+  previewProps?: IPreviewMarkdown['previewProps'];
   options?: CodeMirror.EditorConfiguration,
 }
 
@@ -36,7 +37,7 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
   public toolbarsMode!: ToolBarMode;
   public CodeMirror!: CodeMirror;
   public render() {
-    const { prefixCls, className, toolbars, toolbarsMode, onChange, visble, ...codemirrorProps } = this.props;
+    const { prefixCls, className, toolbars, toolbarsMode, onChange, visble, previewProps, ...codemirrorProps } = this.props;
     return (
       <div ref={(node: HTMLDivElement) => this.container = node}>
         <div className={classnames(prefixCls, className)}>
@@ -52,6 +53,7 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
               visble={visble}
               ref={(pmd: PreviewMarkdown) => this.preview = pmd}
               value={this.props.value}
+              previewProps={previewProps}
             />
           </div>
         </div>

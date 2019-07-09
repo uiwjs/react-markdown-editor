@@ -4,6 +4,7 @@ esnext
 umd
 typings
 dist
+lib
 node_modules
 doc
 build

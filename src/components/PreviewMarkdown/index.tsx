@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import hljs from 'highlight.js';
 import * as React from 'react';
-import ReactMarkdown, { MarkdownAbstractSyntaxTree } from 'react-markdown';
+import ReactMarkdown, { MarkdownAbstractSyntaxTree, ReactMarkdownProps } from 'react-markdown';
 import { IProps } from '../../common/props';
 import './hljs.less';
 import './index.less';
@@ -14,6 +14,7 @@ hljs.configure({
 
 export interface IPreviewMarkdown extends IProps {
   visble: boolean;
+  previewProps?: ReactMarkdownProps;
   value?: string;
   prefixCls?: string;
   style?: React.CSSProperties;
@@ -73,7 +74,7 @@ export default class PreviewMarkdown extends React.Component<IPreviewMarkdown, I
   }
 
   public render() {
-    const { prefixCls, visble, value, ...elementProps } = this.props;
+    const { prefixCls, visble, value, previewProps, ...elementProps } = this.props;
     return (
       <div
         ref={(node: HTMLDivElement) => this.node = node}
@@ -87,6 +88,7 @@ export default class PreviewMarkdown extends React.Component<IPreviewMarkdown, I
           source={this.state.value}
           escapeHtml={false}
           allowNode={this.allowNode}
+          {...previewProps}
         />
       </div>
     );

@@ -97,6 +97,7 @@ ReactDOM.render(
 - `toolbars?:array` - Tool display settings.
 - `toolbarsMode?:array` - Tool display settings.
 - onChange (*function(editor: IInstance, data: CodeMirror.EditorChange, value: string)*) - called when a change is made (**required**)
+- `previewProps` - [react-markdown options](https://github.com/rexxars/react-markdown#options)
 
 > [Other Props Options](https://github.com/uiwjs/react-markdown-editor/blob/8de6abbf628b6d272d7da1c28e985fbbcba71b93/src/components/CodeMirror/index.tsx#L21-L60)
 

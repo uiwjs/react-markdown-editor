@@ -113,9 +113,10 @@ export default class ReactCodeMirror extends Component<ICodeMirror> {
 
     this.renderCodeMirror(this.props);
   }
-
-  public async componentWillReceiveProps(nextPros: ICodeMirror) {
-    this.renderCodeMirror(nextPros);
+  public UNSAFE_componentWillReceiveProps(nextPros: ICodeMirror) {
+    if (nextPros.value !== this.props.value || nextPros.width !== this.props.width || nextPros.height !== this.props.height) {
+      this.renderCodeMirror(nextPros);
+    }
   }
 
   // 将props中所有的事件处理函数映射并保存

@@ -19,11 +19,9 @@ export interface IMarkdownEditor extends IProps, ICodeMirror {
   options?: CodeMirror.EditorConfiguration,
 }
 
-interface IMarkdownEditorState {
-  fullscreen: boolean;
-}
+interface IMarkdownEditorState { }
 
-export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor, IMarkdownEditorState, {}> {
+export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor, IMarkdownEditorState> {
   public static displayName = 'MarkdownEditor';
   public static defaultProps: IMarkdownEditor = {
     onChange: () => null,

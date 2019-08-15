@@ -8,9 +8,20 @@ import GithubCorner from './components/GithubCorner';
 import ReactMarkdown from './components/Markdown';
 import Logo from './Logo';
 
-export default class App extends React.Component {
+const DocumentStrSource = DocumentStr.replace(/([\s\S]*)<!--dividing-->/, '').replace(/^\n*/g, '');
+
+interface IAppState {
+  mdstr: string;
+}
+
+export default class App extends React.Component<any, IAppState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      mdstr: DocumentStrSource,
+    }
+  }
   public render() {
-    const DocumentStrSource = DocumentStr.replace(/([\s\S]*)<!--dividing-->/, '').replace(/^\n*/g, '');
     return (
       <div className={styles.warpper}>
         <GithubCorner url="https://github.com/uiwjs/react-markdown-editor" />
@@ -24,7 +35,7 @@ export default class App extends React.Component {
               showCursorWhenSelecting: true,
             }}
             height={500}
-            value={DocumentStrSource}
+            value={this.state.mdstr}
           />
         </div>
         <ReactMarkdown source={DocumentStrSource} className={styles.doc} />

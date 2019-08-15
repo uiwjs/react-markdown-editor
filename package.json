@@ -1,10 +1,10 @@
 {
   "name": "@uiw/react-markdown-editor",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A markdown editor with preview, implemented with React.js and TypeScript.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
-  "typings": "typings/index.d.ts",
+  "typings": "lib/cjs/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "watch": "npm run watch:types & npm run watch:ts -- --env-name esm:dev --env-name cjs",

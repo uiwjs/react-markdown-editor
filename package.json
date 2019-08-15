@@ -7,13 +7,12 @@
   "typings": "typings/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
-    "watch": "npm run watch:types & npm run watch:ts",
-    "build": "npm run build:ts & npm run build:types & npm run compile:esm:css",
+    "watch": "npm run watch:types & npm run watch:ts -- --env-name esm:dev --env-name cjs",
     "watch:types": "npm run build:types -- --watch",
-    "build:types": "tsbb types --outDir typings --target ESNEXT",
+    "build:types": "tsbb types --outDir lib/esm --target ESNEXT",
     "watch:ts": "tsbb watch --target react",
     "build:ts": "tsbb build --target react",
-    "build:umd": "tsbb build --target react --env-name umd",
+    "build": "npm run build:ts && npm run build:types && npm run build:types -- --outDir lib/cjs && npm run compile:esm:css",
     "compile:dist:css": "compile-less -d src --combine dist/markdown-editor.css --rm-global",
     "compile:esm:css": "compile-less -d src -o lib/esm --rm-global",
     "deploy": "gh-pages -d doc",
@@ -63,6 +62,6 @@
     "postcss-modules": "^1.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "tsbb": "^1.0.8"
+    "tsbb": "^1.1.2"
   }
 }

@@ -25748,247 +25748,418 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../node_modules/@babel/runtime/helpers/esm/extends.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = _extends;
+exports.__extends = __extends;
+exports.__rest = __rest;
+exports.__decorate = __decorate;
+exports.__param = __param;
+exports.__metadata = __metadata;
+exports.__awaiter = __awaiter;
+exports.__generator = __generator;
+exports.__exportStar = __exportStar;
+exports.__values = __values;
+exports.__read = __read;
+exports.__spread = __spread;
+exports.__await = __await;
+exports.__asyncGenerator = __asyncGenerator;
+exports.__asyncDelegator = __asyncDelegator;
+exports.__asyncValues = __asyncValues;
+exports.__makeTemplateObject = __makeTemplateObject;
+exports.__importStar = __importStar;
+exports.__importDefault = __importDefault;
+exports.__assign = void 0;
 
-function _extends() {
-  exports.default = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+
+/* global Reflect, Promise */
+var extendStatics = function (d, b) {
+  extendStatics = Object.setPrototypeOf || {
+    __proto__: []
+  } instanceof Array && function (d, b) {
+    d.__proto__ = b;
+  } || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+  };
+
+  return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+  extendStatics(d, b);
+
+  function __() {
+    this.constructor = d;
+  }
+
+  d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function () {
+  exports.__assign = __assign = Object.assign || function __assign(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+
+    return t;
+  };
+
+  return __assign.apply(this, arguments);
+};
+
+exports.__assign = __assign;
+
+function __rest(s, e) {
+  var t = {};
+
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0) t[p[i]] = s[p[i]];
+  return t;
+}
+
+function __decorate(decorators, target, key, desc) {
+  var c = arguments.length,
+      r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+      d;
+  if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __param(paramIndex, decorator) {
+  return function (target, key) {
+    decorator(target, key, paramIndex);
+  };
+}
+
+function __metadata(metadataKey, metadataValue) {
+  if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
       }
     }
 
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-},{}],"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _objectWithoutPropertiesLoose;
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-},{}],"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _objectWithoutProperties;
-
-var _objectWithoutPropertiesLoose = _interopRequireDefault(require("./objectWithoutPropertiesLoose"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = (0, _objectWithoutPropertiesLoose.default)(source, excluded);
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
     }
-  }
 
-  return target;
-}
-},{"./objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js"}],"../node_modules/@babel/runtime/helpers/esm/classCallCheck.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _classCallCheck;
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-},{}],"../node_modules/@babel/runtime/helpers/esm/createClass.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _createClass;
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-},{}],"../node_modules/@babel/runtime/helpers/esm/typeof.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _typeof;
-
-function _typeof2(obj) {
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof2 = function _typeof2(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof2 = function _typeof2(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof2(obj);
-}
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
-    exports.default = _typeof = function _typeof(obj) {
-      return _typeof2(obj);
-    };
-  } else {
-    exports.default = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
-    };
-  }
-
-  return _typeof(obj);
-}
-},{}],"../node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _assertThisInitialized;
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-},{}],"../node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _possibleConstructorReturn;
-
-var _typeof2 = _interopRequireDefault(require("../../helpers/esm/typeof"));
-
-var _assertThisInitialized = _interopRequireDefault(require("./assertThisInitialized"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _possibleConstructorReturn(self, call) {
-  if (call && ((0, _typeof2.default)(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return (0, _assertThisInitialized.default)(self);
-}
-},{"../../helpers/esm/typeof":"../node_modules/@babel/runtime/helpers/esm/typeof.js","./assertThisInitialized":"../node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js"}],"../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _getPrototypeOf;
-
-function _getPrototypeOf(o) {
-  exports.default = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-},{}],"../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _setPrototypeOf;
-
-function _setPrototypeOf(o, p) {
-  exports.default = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-},{}],"../node_modules/@babel/runtime/helpers/esm/inherits.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _inherits;
-
-var _setPrototypeOf = _interopRequireDefault(require("./setPrototypeOf"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
+    function step(result) {
+      result.done ? resolve(result.value) : new P(function (resolve) {
+        resolve(result.value);
+      }).then(fulfilled, rejected);
     }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
-  if (superClass) (0, _setPrototypeOf.default)(subClass, superClass);
 }
-},{"./setPrototypeOf":"../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js"}],"../node_modules/classnames/index.js":[function(require,module,exports) {
+
+function __generator(thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function () {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) try {
+      if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+      if (y = 0, t) op = [op[0] & 2, t.value];
+
+      switch (op[0]) {
+        case 0:
+        case 1:
+          t = op;
+          break;
+
+        case 4:
+          _.label++;
+          return {
+            value: op[1],
+            done: false
+          };
+
+        case 5:
+          _.label++;
+          y = op[1];
+          op = [0];
+          continue;
+
+        case 7:
+          op = _.ops.pop();
+
+          _.trys.pop();
+
+          continue;
+
+        default:
+          if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+            _ = 0;
+            continue;
+          }
+
+          if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+            _.label = op[1];
+            break;
+          }
+
+          if (op[0] === 6 && _.label < t[1]) {
+            _.label = t[1];
+            t = op;
+            break;
+          }
+
+          if (t && _.label < t[2]) {
+            _.label = t[2];
+
+            _.ops.push(op);
+
+            break;
+          }
+
+          if (t[2]) _.ops.pop();
+
+          _.trys.pop();
+
+          continue;
+      }
+
+      op = body.call(thisArg, _);
+    } catch (e) {
+      op = [6, e];
+      y = 0;
+    } finally {
+      f = t = 0;
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+}
+
+function __exportStar(m, exports) {
+  for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+
+function __values(o) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator],
+      i = 0;
+  if (m) return m.call(o);
+  return {
+    next: function () {
+      if (o && i >= o.length) o = void 0;
+      return {
+        value: o && o[i++],
+        done: !o
+      };
+    }
+  };
+}
+
+function __read(o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m) return o;
+  var i = m.call(o),
+      r,
+      ar = [],
+      e;
+
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+  } catch (error) {
+    e = {
+      error: error
+    };
+  } finally {
+    try {
+      if (r && !r.done && (m = i["return"])) m.call(i);
+    } finally {
+      if (e) throw e.error;
+    }
+  }
+
+  return ar;
+}
+
+function __spread() {
+  for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+
+  return ar;
+}
+
+function __await(v) {
+  return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+  if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+  var g = generator.apply(thisArg, _arguments || []),
+      i,
+      q = [];
+  return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () {
+    return this;
+  }, i;
+
+  function verb(n) {
+    if (g[n]) i[n] = function (v) {
+      return new Promise(function (a, b) {
+        q.push([n, v, a, b]) > 1 || resume(n, v);
+      });
+    };
+  }
+
+  function resume(n, v) {
+    try {
+      step(g[n](v));
+    } catch (e) {
+      settle(q[0][3], e);
+    }
+  }
+
+  function step(r) {
+    r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);
+  }
+
+  function fulfill(value) {
+    resume("next", value);
+  }
+
+  function reject(value) {
+    resume("throw", value);
+  }
+
+  function settle(f, v) {
+    if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]);
+  }
+}
+
+function __asyncDelegator(o) {
+  var i, p;
+  return i = {}, verb("next"), verb("throw", function (e) {
+    throw e;
+  }), verb("return"), i[Symbol.iterator] = function () {
+    return this;
+  }, i;
+
+  function verb(n, f) {
+    i[n] = o[n] ? function (v) {
+      return (p = !p) ? {
+        value: __await(o[n](v)),
+        done: n === "return"
+      } : f ? f(v) : v;
+    } : f;
+  }
+}
+
+function __asyncValues(o) {
+  if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+  var m = o[Symbol.asyncIterator],
+      i;
+  return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () {
+    return this;
+  }, i);
+
+  function verb(n) {
+    i[n] = o[n] && function (v) {
+      return new Promise(function (resolve, reject) {
+        v = o[n](v), settle(resolve, reject, v.done, v.value);
+      });
+    };
+  }
+
+  function settle(resolve, reject, d, v) {
+    Promise.resolve(v).then(function (v) {
+      resolve({
+        value: v,
+        done: d
+      });
+    }, reject);
+  }
+}
+
+function __makeTemplateObject(cooked, raw) {
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, "raw", {
+      value: raw
+    });
+  } else {
+    cooked.raw = raw;
+  }
+
+  return cooked;
+}
+
+;
+
+function __importStar(mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  result.default = mod;
+  return result;
+}
+
+function __importDefault(mod) {
+  return mod && mod.__esModule ? mod : {
+    default: mod
+  };
+}
+},{}],"../node_modules/classnames/index.js":[function(require,module,exports) {
 var define;
 /*!
   Copyright (c) 2017 Jed Watson.
@@ -26043,59 +26214,7 @@ var define;
 	}
 }());
 
-},{}],"../node_modules/@babel/runtime/helpers/esm/defineProperty.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _defineProperty;
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-},{}],"../node_modules/@babel/runtime/helpers/esm/objectSpread.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _objectSpread;
-
-var _defineProperty = _interopRequireDefault(require("./defineProperty"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      (0, _defineProperty.default)(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-},{"./defineProperty":"../node_modules/@babel/runtime/helpers/esm/defineProperty.js"}],"../node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
+},{}],"../node_modules/codemirror/lib/codemirror.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -37441,52 +37560,61 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../lib/esm/components/CodeMirror/codemirror.less":[function(require,module,exports) {
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../src/components/CodeMirror/codemirror.less":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {
-  "blink": "_blink_50887"
+  "blink": "_blink_7139b"
 };
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../lib/esm/components/CodeMirror/index.less":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/CodeMirror/index.less":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {};
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../lib/esm/components/CodeMirror/index.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/CodeMirror/index.tsx":[function(require,module,exports) {
 var global = arguments[3];
 "use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { if (i % 2) { var source = arguments[i] != null ? arguments[i] : {}; ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(arguments[i])); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(arguments[i], key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
 
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
-
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/classCallCheck"));
-
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/createClass"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/possibleConstructorReturn"));
-
-var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/getPrototypeOf"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inherits"));
+var tslib_1 = require("tslib");
 
 require("codemirror/mode/markdown/markdown");
 
-var _react = _interopRequireWildcard(require("react"));
+var react_1 = tslib_1.__importStar(require("react"));
 
 require("./codemirror.less");
 
 require("./index.less");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SERVER_RENDERED = typeof navigator === 'undefined' || global.PREVENT_CODEMIRROR_RENDER === true;
 var cm;
@@ -37498,27 +37626,24 @@ if (!SERVER_RENDERED) {
 
 var ReactCodeMirror =
 /*#__PURE__*/
-function (_Component) {
-  (0, _inherits2.default)(ReactCodeMirror, _Component); // public editor!: Doc | Editor | EditorFromTextArea | Editor;
+function (_react_1$Component) {
+  _inherits(ReactCodeMirror, _react_1$Component);
 
+  // public editor!: Doc | Editor | EditorFromTextArea | Editor;
   function ReactCodeMirror(props) {
-    var _this;
+    _classCallCheck(this, ReactCodeMirror);
 
-    (0, _classCallCheck2.default)(this, ReactCodeMirror);
-    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(ReactCodeMirror).call(this, props));
-    _this.textarea = void 0;
-    _this.editor = void 0;
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(ReactCodeMirror).call(this, props));
   }
 
-  (0, _createClass2.default)(ReactCodeMirror, [{
+  _createClass(ReactCodeMirror, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this = this;
 
-      return _react.default.createElement("textarea", {
+      return react_1.default.createElement("textarea", {
         ref: function ref(instance) {
-          return _this2.textarea = instance;
+          return _this.textarea = instance;
         }
       });
     }
@@ -37548,12 +37673,13 @@ function (_Component) {
         }
       }
 
-      var editorOption = (0, _objectSpread2.default)({
+      var editorOption = _objectSpread({
         tabSize: 2,
         lineNumbers: true
       }, options, {
         mode: 'markdown'
       }); // 生成codemirror实例
+
 
       this.editor = cm.fromTextArea(this.textarea, editorOption);
       this.renderCodeMirror(this.props);
@@ -37564,6 +37690,11 @@ function (_Component) {
       if (nextPros.value !== this.props.value || nextPros.width !== this.props.width || nextPros.height !== this.props.height) {
         this.renderCodeMirror(nextPros);
       }
+    }
+  }, {
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      return nextProps.value !== this.props.value || nextProps.options !== this.props.options || nextProps.height !== this.props.height || nextProps.width !== this.props.width;
     } // 将props中所有的事件处理函数映射并保存
 
   }, {
@@ -37584,7 +37715,7 @@ function (_Component) {
   }, {
     key: "renderCodeMirror",
     value: function renderCodeMirror(props) {
-      var _this3 = this;
+      var _this2 = this;
 
       var value = props.value,
           width = props.width,
@@ -37593,9 +37724,9 @@ function (_Component) {
 
       var eventDict = this.getEventHandleFromProps();
       Object.keys(eventDict).forEach(function (event) {
-        var handle = _this3.props[event];
+        var handle = _this2.props[event];
 
-        _this3.editor.on(eventDict[event], handle);
+        _this2.editor.on(eventDict[event], handle);
       }); // Init value
 
       this.editor.setValue(value || ''); // this.editor.setOption(name, editorOption.mode);
@@ -37606,10 +37737,10 @@ function (_Component) {
       }
     }
   }]);
-  return ReactCodeMirror;
-}(_react.Component);
 
-exports.default = ReactCodeMirror;
+  return ReactCodeMirror;
+}(react_1.Component);
+
 ReactCodeMirror.defaultProps = {
   height: '100%',
   options: {
@@ -37620,7 +37751,8 @@ ReactCodeMirror.defaultProps = {
   value: '',
   width: '100%'
 };
-},{"@babel/runtime/helpers/esm/objectSpread":"../node_modules/@babel/runtime/helpers/esm/objectSpread.js","@babel/runtime/helpers/esm/classCallCheck":"../node_modules/@babel/runtime/helpers/esm/classCallCheck.js","@babel/runtime/helpers/esm/createClass":"../node_modules/@babel/runtime/helpers/esm/createClass.js","@babel/runtime/helpers/esm/possibleConstructorReturn":"../node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js","@babel/runtime/helpers/esm/getPrototypeOf":"../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js","@babel/runtime/helpers/esm/inherits":"../node_modules/@babel/runtime/helpers/esm/inherits.js","codemirror/mode/markdown/markdown":"../node_modules/codemirror/mode/markdown/markdown.js","react":"../node_modules/react/index.js","./codemirror.less":"../lib/esm/components/CodeMirror/codemirror.less","./index.less":"../lib/esm/components/CodeMirror/index.less","codemirror":"../node_modules/codemirror/lib/codemirror.js"}],"../node_modules/highlight.js/lib/highlight.js":[function(require,module,exports) {
+exports.default = ReactCodeMirror;
+},{"tslib":"../node_modules/tslib/tslib.es6.js","codemirror/mode/markdown/markdown":"../node_modules/codemirror/mode/markdown/markdown.js","react":"../node_modules/react/index.js","./codemirror.less":"../src/components/CodeMirror/codemirror.less","./index.less":"../src/components/CodeMirror/index.less","codemirror":"../node_modules/codemirror/lib/codemirror.js"}],"../node_modules/highlight.js/lib/highlight.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 /*
@@ -69907,55 +70039,64 @@ ReactMarkdown.types = allTypes;
 ReactMarkdown.renderers = defaultRenderers;
 ReactMarkdown.uriTransformer = uriTransformer;
 module.exports = ReactMarkdown;
-},{"xtend":"../node_modules/xtend/immutable.js","unified":"../node_modules/unified/index.js","remark-parse":"../node_modules/remark-parse/index.js","prop-types":"../node_modules/prop-types/index.js","mdast-add-list-metadata":"../node_modules/mdast-add-list-metadata/index.js","./plugins/naive-html":"../node_modules/react-markdown/lib/plugins/naive-html.js","./plugins/disallow-node":"../node_modules/react-markdown/lib/plugins/disallow-node.js","./ast-to-react":"../node_modules/react-markdown/lib/ast-to-react.js","./wrap-table-rows":"../node_modules/react-markdown/lib/wrap-table-rows.js","./get-definitions":"../node_modules/react-markdown/lib/get-definitions.js","./uri-transformer":"../node_modules/react-markdown/lib/uri-transformer.js","./renderers":"../node_modules/react-markdown/lib/renderers.js","./symbols":"../node_modules/react-markdown/lib/symbols.js"}],"../lib/esm/components/PreviewMarkdown/hljs.less":[function(require,module,exports) {
+},{"xtend":"../node_modules/xtend/immutable.js","unified":"../node_modules/unified/index.js","remark-parse":"../node_modules/remark-parse/index.js","prop-types":"../node_modules/prop-types/index.js","mdast-add-list-metadata":"../node_modules/mdast-add-list-metadata/index.js","./plugins/naive-html":"../node_modules/react-markdown/lib/plugins/naive-html.js","./plugins/disallow-node":"../node_modules/react-markdown/lib/plugins/disallow-node.js","./ast-to-react":"../node_modules/react-markdown/lib/ast-to-react.js","./wrap-table-rows":"../node_modules/react-markdown/lib/wrap-table-rows.js","./get-definitions":"../node_modules/react-markdown/lib/get-definitions.js","./uri-transformer":"../node_modules/react-markdown/lib/uri-transformer.js","./renderers":"../node_modules/react-markdown/lib/renderers.js","./symbols":"../node_modules/react-markdown/lib/symbols.js"}],"../src/components/PreviewMarkdown/hljs.less":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {};
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../lib/esm/components/PreviewMarkdown/index.less":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/PreviewMarkdown/index.less":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {};
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../lib/esm/components/PreviewMarkdown/markdown.less":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/PreviewMarkdown/markdown.less":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {};
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../lib/esm/components/PreviewMarkdown/index.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/PreviewMarkdown/index.tsx":[function(require,module,exports) {
 "use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+var tslib_1 = require("tslib");
 
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/defineProperty"));
+var classnames_1 = tslib_1.__importDefault(require("classnames"));
 
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
+var highlight_js_1 = tslib_1.__importDefault(require("highlight.js"));
 
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/classCallCheck"));
+var React = tslib_1.__importStar(require("react"));
 
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/createClass"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/possibleConstructorReturn"));
-
-var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/getPrototypeOf"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inherits"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _highlight = _interopRequireDefault(require("highlight.js"));
-
-var React = _interopRequireWildcard(require("react"));
-
-var _reactMarkdown = _interopRequireDefault(require("react-markdown"));
+var react_markdown_1 = tslib_1.__importDefault(require("react-markdown"));
 
 require("./hljs.less");
 
@@ -69963,28 +70104,22 @@ require("./index.less");
 
 require("./markdown.less");
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_highlight.default.configure({
+highlight_js_1.default.configure({
   classPrefix: '',
-  // don't append class prefix
-  tabReplace: '  ' // 2 spaces
-
+  tabReplace: '  '
 });
 
 var PreviewMarkdown =
 /*#__PURE__*/
 function (_React$Component) {
-  (0, _inherits2.default)(PreviewMarkdown, _React$Component);
+  _inherits(PreviewMarkdown, _React$Component);
 
   function PreviewMarkdown(props) {
     var _this;
 
-    (0, _classCallCheck2.default)(this, PreviewMarkdown);
-    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(PreviewMarkdown).call(this, props));
-    _this.node = void 0;
+    _classCallCheck(this, PreviewMarkdown);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PreviewMarkdown).call(this, props));
 
     _this.allowNode = function (node) {
       if (node.type === 'html' && node.value) {
@@ -70003,7 +70138,7 @@ function (_React$Component) {
     return _this;
   }
 
-  (0, _createClass2.default)(PreviewMarkdown, [{
+  _createClass(PreviewMarkdown, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.highlight();
@@ -70045,7 +70180,7 @@ function (_React$Component) {
           var tag = value.parentNode;
 
           if (tag && tag.tagName === 'PRE') {
-            _highlight.default.highlightBlock(value);
+            highlight_js_1.default.highlightBlock(value);
           }
         }
       } catch (err) {
@@ -70084,201 +70219,207 @@ function (_React$Component) {
           visble = _this$props.visble,
           value = _this$props.value,
           previewProps = _this$props.previewProps,
-          elementProps = (0, _objectWithoutProperties2.default)(_this$props, ["prefixCls", "visble", "value", "previewProps"]);
-      return React.createElement("div", (0, _extends2.default)({
+          elementProps = _objectWithoutProperties(_this$props, ["prefixCls", "visble", "value", "previewProps"]);
+
+      return React.createElement("div", Object.assign({
         ref: function ref(node) {
           return _this3.node = node;
         },
-        className: (0, _classnames.default)("".concat(prefixCls, "-preview"), (0, _defineProperty2.default)({}, "".concat(prefixCls, "-visble"), this.state.visble))
-      }, elementProps), React.createElement(_reactMarkdown.default, (0, _extends2.default)({
-        className: (0, _classnames.default)("".concat(prefixCls, "-markdown")),
+        className: classnames_1.default("".concat(prefixCls, "-preview"), _defineProperty({}, "".concat(prefixCls, "-visble"), this.state.visble))
+      }, elementProps), React.createElement(react_markdown_1.default, Object.assign({
+        className: classnames_1.default("".concat(prefixCls, "-markdown")),
         source: this.state.value,
         escapeHtml: false,
         allowNode: this.allowNode
       }, previewProps)));
     }
   }]);
+
   return PreviewMarkdown;
 }(React.Component);
 
-exports.default = PreviewMarkdown;
 PreviewMarkdown.defaultProps = {
   prefixCls: 'md-editor',
   visble: true
 };
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/defineProperty":"../node_modules/@babel/runtime/helpers/esm/defineProperty.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","@babel/runtime/helpers/esm/classCallCheck":"../node_modules/@babel/runtime/helpers/esm/classCallCheck.js","@babel/runtime/helpers/esm/createClass":"../node_modules/@babel/runtime/helpers/esm/createClass.js","@babel/runtime/helpers/esm/possibleConstructorReturn":"../node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js","@babel/runtime/helpers/esm/getPrototypeOf":"../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js","@babel/runtime/helpers/esm/inherits":"../node_modules/@babel/runtime/helpers/esm/inherits.js","classnames":"../node_modules/classnames/index.js","highlight.js":"../node_modules/highlight.js/lib/index.js","react":"../node_modules/react/index.js","react-markdown":"../node_modules/react-markdown/lib/react-markdown.js","./hljs.less":"../lib/esm/components/PreviewMarkdown/hljs.less","./index.less":"../lib/esm/components/PreviewMarkdown/index.less","./markdown.less":"../lib/esm/components/PreviewMarkdown/markdown.less"}],"../lib/esm/components/Icon/bar.js":[function(require,module,exports) {
+exports.default = PreviewMarkdown;
+},{"tslib":"../node_modules/tslib/tslib.es6.js","classnames":"../node_modules/classnames/index.js","highlight.js":"../node_modules/highlight.js/lib/index.js","react":"../node_modules/react/index.js","react-markdown":"../node_modules/react-markdown/lib/react-markdown.js","./hljs.less":"../src/components/PreviewMarkdown/hljs.less","./index.less":"../src/components/PreviewMarkdown/index.less","./markdown.less":"../src/components/PreviewMarkdown/markdown.less"}],"../src/components/Icon/bar.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var tslib_1 = require("tslib");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var react_1 = tslib_1.__importDefault(require("react"));
 
-var _default = {
-  bold: _react.default.createElement("svg", {
+exports.default = {
+  bold: react_1.default.createElement("svg", {
     width: "13",
     height: "13",
     viewBox: "0 0 384 512"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M304.793 243.891c33.639-18.537 53.657-54.16 53.657-95.693 0-48.236-26.25-87.626-68.626-104.179C265.138 34.01 240.849 32 209.661 32H24c-8.837 0-16 7.163-16 16v33.049c0 8.837 7.163 16 16 16h33.113v318.53H24c-8.837 0-16 7.163-16 16V464c0 8.837 7.163 16 16 16h195.69c24.203 0 44.834-1.289 66.866-7.584C337.52 457.193 376 410.647 376 350.014c0-52.168-26.573-91.684-71.207-106.123zM142.217 100.809h67.444c16.294 0 27.536 2.019 37.525 6.717 15.828 8.479 24.906 26.502 24.906 49.446 0 35.029-20.32 56.79-53.029 56.79h-76.846V100.809zm112.642 305.475c-10.14 4.056-22.677 4.907-31.409 4.907h-81.233V281.943h84.367c39.645 0 63.057 25.38 63.057 63.057.001 28.425-13.66 52.483-34.782 61.284z"
   })),
-  fullscreen: _react.default.createElement("svg", {
+  fullscreen: react_1.default.createElement("svg", {
     width: "16",
     height: "16",
     viewBox: "0 0 1024 1024"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M189.75 428.89a36.87 36.87 0 0 0 36.84-36.85V228.12h164a36.85 36.85 0 1 0 0-73.7H189.75a36.82 36.82 0 0 0-36.8 36.85v200.8a36.83 36.83 0 0 0 36.8 36.82zM834.26 595.06a36.82 36.82 0 0 0-36.8 36.84v164H633.41a36.85 36.85 0 0 0 0 73.7h200.85a36.87 36.87 0 0 0 36.84-36.85V631.9a36.86 36.86 0 0 0-36.84-36.84zM797.46 228.12v179.31a36.82 36.82 0 1 0 73.64 0V191.24a36.86 36.86 0 0 0-36.84-36.85H602.33a36.85 36.85 0 0 0 0 73.7zM421.62 795.9H226.54V616.56a36.82 36.82 0 1 0-73.64 0v216.19a36.83 36.83 0 0 0 36.85 36.85h231.87a36.85 36.85 0 0 0 0-73.7z"
-  }), _react.default.createElement("path", {
+  }), react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M306.5 307.94m32.95 0l345.1 0q32.95 0 32.95 32.95l0 342.22q0 32.95-32.95 32.95l-345.1 0q-32.95 0-32.95-32.95l0-342.22q0-32.95 32.95-32.95Z"
   })),
-  header: _react.default.createElement("svg", {
+  header: react_1.default.createElement("svg", {
     width: "12",
     height: "12",
     viewBox: "0 0 512 512"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M496 80V48c0-8.837-7.163-16-16-16H320c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h37.621v128H154.379V96H192c8.837 0 16-7.163 16-16V48c0-8.837-7.163-16-16-16H32c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h37.275v320H32c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h160c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16h-37.621V288H357.62v128H320c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h160c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16h-37.275V96H480c8.837 0 16-7.163 16-16z"
   })),
-  image: _react.default.createElement("svg", {
+  image: react_1.default.createElement("svg", {
     width: "14",
     height: "14",
     viewBox: "0 0 20 20"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M15 9c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4-7H1c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h18c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 13l-6-5-2 2-4-5-4 8V4h16v11z"
   })),
-  italic: _react.default.createElement("svg", {
+  italic: react_1.default.createElement("svg", {
     width: "12",
     height: "12",
     viewBox: "0 0 320 512"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M204.758 416h-33.849l62.092-320h40.725a16 16 0 0 0 15.704-12.937l6.242-32C297.599 41.184 290.034 32 279.968 32H120.235a16 16 0 0 0-15.704 12.937l-6.242 32C96.362 86.816 103.927 96 113.993 96h33.846l-62.09 320H46.278a16 16 0 0 0-15.704 12.935l-6.245 32C22.402 470.815 29.967 480 40.034 480h158.479a16 16 0 0 0 15.704-12.935l6.245-32c1.927-9.88-5.638-19.065-15.704-19.065z"
   })),
-  link: _react.default.createElement("svg", {
+  link: react_1.default.createElement("svg", {
     width: "12",
     height: "12",
     viewBox: "0 0 512 512"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"
   })),
-  olist: _react.default.createElement("svg", {
+  olist: react_1.default.createElement("svg", {
     width: "12",
     height: "12",
     viewBox: "0 0 32 32"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M12 2h20v4h-20v-4zM12 14h20v4h-20v-4zM12 26h20v4h-20v-4zM0 4c0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.209-1.791-4-4-4s-4 1.791-4 4zM0 16c0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.209-1.791-4-4-4s-4 1.791-4 4zM0 28c0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.209-1.791-4-4-4s-4 1.791-4 4z"
   })),
-  preview: _react.default.createElement("svg", {
+  preview: react_1.default.createElement("svg", {
     width: "16",
     height: "16",
     viewBox: "0 0 32 32"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M0 16c3.037-5.864 9.058-9.802 16-9.802s12.963 3.938 15.953 9.703l0.047 0.1c-3.037 5.864-9.058 9.802-16 9.802s-12.963-3.938-15.953-9.703l-0.047-0.1zM16 22.531c3.607 0 6.531-2.924 6.531-6.531s-2.924-6.531-6.531-6.531v0c-3.607 0-6.531 2.924-6.531 6.531s2.924 6.531 6.531 6.531v0zM16 19.265c-1.804 0-3.265-1.461-3.265-3.265s1.461-3.265 3.265-3.265v0c1.804 0 3.265 1.461 3.265 3.265s-1.461 3.265-3.265 3.265v0z"
   })),
-  quote: _react.default.createElement("svg", {
+  quote: react_1.default.createElement("svg", {
     width: "12",
     height: "12",
     viewBox: "0 0 512 512"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M512 80v128c0 137.018-63.772 236.324-193.827 271.172-15.225 4.08-30.173-7.437-30.173-23.199v-33.895c0-10.057 6.228-19.133 15.687-22.55C369.684 375.688 408 330.054 408 256h-72c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h128c26.51 0 48 21.49 48 48zM176 32H48C21.49 32 0 53.49 0 80v128c0 26.51 21.49 48 48 48h72c0 74.054-38.316 119.688-104.313 143.528C6.228 402.945 0 412.021 0 422.078v33.895c0 15.762 14.948 27.279 30.173 23.199C160.228 444.324 224 345.018 224 208V80c0-26.51-21.49-48-48-48z"
   })),
-  strike: _react.default.createElement("svg", {
+  strike: react_1.default.createElement("svg", {
     width: "12",
     height: "12",
     viewBox: "0 0 512 512"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M496 288H16c-8.837 0-16-7.163-16-16v-32c0-8.837 7.163-16 16-16h480c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16zm-214.666 16c27.258 12.937 46.524 28.683 46.524 56.243 0 33.108-28.977 53.676-75.621 53.676-32.325 0-76.874-12.08-76.874-44.271V368c0-8.837-7.164-16-16-16H113.75c-8.836 0-16 7.163-16 16v19.204c0 66.845 77.717 101.82 154.487 101.82 88.578 0 162.013-45.438 162.013-134.424 0-19.815-3.618-36.417-10.143-50.6H281.334zm-30.952-96c-32.422-13.505-56.836-28.946-56.836-59.683 0-33.92 30.901-47.406 64.962-47.406 42.647 0 64.962 16.593 64.962 32.985V136c0 8.837 7.164 16 16 16h45.613c8.836 0 16-7.163 16-16v-30.318c0-52.438-71.725-79.875-142.575-79.875-85.203 0-150.726 40.972-150.726 125.646 0 22.71 4.665 41.176 12.777 56.547h129.823z"
   })),
-  todo: _react.default.createElement("svg", {
+  todo: react_1.default.createElement("svg", {
     width: "18",
     height: "18",
     viewBox: "0 0 1024 1024"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M224 800.256L223.712 224H320v31.68c0 35.456 28.64 64.32 63.872 64.32h256.256A64.16 64.16 0 0 0 704 255.68V224l96-0.256L800.256 800 224 800.256zM640 192.32L640.128 256 384 255.68V192.32L383.872 192 640 192.32zM799.84 160H695.04c-11.072-19.04-31.424-32-54.912-32h-256.256c-23.488 0-43.808 12.928-54.912 32H223.712A63.776 63.776 0 0 0 160 223.744v576.512C160 835.392 188.608 864 223.744 864h576.512A63.84 63.84 0 0 0 864 800.256V223.744A64 64 0 0 0 799.84 160zM619.072 429.088l-151.744 165.888-62.112-69.6a32 32 0 1 0-47.744 42.624l85.696 96a32 32 0 0 0 23.68 10.688h0.192c8.96 0 17.536-3.776 23.616-10.4l175.648-192a32 32 0 0 0-47.232-43.2"
   })),
-  ulist: _react.default.createElement("svg", {
+  ulist: react_1.default.createElement("svg", {
     width: "14",
     height: "14",
     viewBox: "0 0 512 512"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M3.263 139.527c0-7.477 3.917-11.572 11.573-11.572h15.131V88.078c0-5.163.534-10.503.534-10.503h-.356s-1.779 2.67-2.848 3.738c-4.451 4.273-10.504 4.451-15.666-1.068l-5.518-6.231c-5.342-5.341-4.984-11.216.534-16.379l21.72-19.938C32.815 33.602 36.732 32 42.785 32H54.89c7.656 0 11.749 3.916 11.749 11.572v84.384h15.488c7.655 0 11.572 4.094 11.572 11.572v8.901c0 7.477-3.917 11.572-11.572 11.572H14.836c-7.656 0-11.573-4.095-11.573-11.572v-8.902zM2.211 304.591c0-47.278 50.955-56.383 50.955-69.165 0-7.18-5.954-8.755-9.28-8.755-3.153 0-6.479 1.051-9.455 3.852-5.079 4.903-10.507 7.004-16.111 2.451l-8.579-6.829c-5.779-4.553-7.18-9.805-2.803-15.409C13.592 201.981 26.025 192 47.387 192c19.437 0 44.476 10.506 44.476 39.573 0 38.347-46.753 46.402-48.679 56.909h39.049c7.529 0 11.557 4.027 11.557 11.382v8.755c0 7.354-4.028 11.382-11.557 11.382h-67.94c-7.005 0-12.083-4.028-12.083-11.382v-4.028zM5.654 454.61l5.603-9.28c3.853-6.654 9.105-7.004 15.584-3.152 4.903 2.101 9.63 3.152 14.359 3.152 10.155 0 14.358-3.502 14.358-8.23 0-6.654-5.604-9.106-15.934-9.106h-4.728c-5.954 0-9.28-2.101-12.258-7.88l-1.05-1.926c-2.451-4.728-1.226-9.806 2.801-14.884l5.604-7.004c6.829-8.405 12.257-13.483 12.257-13.483v-.35s-4.203 1.051-12.608 1.051H16.685c-7.53 0-11.383-4.028-11.383-11.382v-8.755c0-7.53 3.853-11.382 11.383-11.382h58.484c7.529 0 11.382 4.027 11.382 11.382v3.327c0 5.778-1.401 9.806-5.079 14.183l-17.509 20.137c19.611 5.078 28.716 20.487 28.716 34.845 0 21.363-14.358 44.126-48.503 44.126-16.636 0-28.192-4.728-35.896-9.455-5.779-4.202-6.304-9.805-2.626-15.934zM144 132h352c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h352c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h352c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
   })),
-  underline: _react.default.createElement("svg", {
+  underline: react_1.default.createElement("svg", {
     width: "14",
     height: "14",
     viewBox: "0 0 20 20"
-  }, _react.default.createElement("path", {
+  }, react_1.default.createElement("path", {
     fill: "currentColor",
     d: "M10 17c3.3 0 6-2.7 6-6V3.5c0-.8-.7-1.5-1.5-1.5S13 2.7 13 3.5V11c0 1.7-1.3 3-3 3s-3-1.3-3-3V3.5C7 2.7 6.3 2 5.5 2S4 2.7 4 3.5V11c0 3.3 2.7 6 6 6zM16.5 19h-13c-.3 0-.5.2-.5.5s.2.5.5.5h13c.3 0 .5-.2.5-.5s-.2-.5-.5-.5z"
   }))
 };
-exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"../lib/esm/components/ToolBar/index.less":[function(require,module,exports) {
+},{"tslib":"../node_modules/tslib/tslib.es6.js","react":"../node_modules/react/index.js"}],"../src/components/ToolBar/index.less":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {};
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../lib/esm/components/ToolBar/index.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/ToolBar/index.tsx":[function(require,module,exports) {
 "use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+var tslib_1 = require("tslib");
 
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
+var classnames_1 = tslib_1.__importDefault(require("classnames"));
 
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/classCallCheck"));
+var React = tslib_1.__importStar(require("react"));
 
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/createClass"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/possibleConstructorReturn"));
-
-var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/getPrototypeOf"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inherits"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var React = _interopRequireWildcard(require("react"));
-
-var _bar = _interopRequireDefault(require("../Icon/bar"));
+var bar_1 = tslib_1.__importDefault(require("../Icon/bar"));
 
 require("./index.less");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ToolBar =
 /*#__PURE__*/
 function (_React$PureComponent) {
-  (0, _inherits2.default)(ToolBar, _React$PureComponent);
+  _inherits(ToolBar, _React$PureComponent);
 
   function ToolBar() {
-    (0, _classCallCheck2.default)(this, ToolBar);
-    return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(ToolBar).apply(this, arguments));
+    _classCallCheck(this, ToolBar);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ToolBar).apply(this, arguments));
   }
 
-  (0, _createClass2.default)(ToolBar, [{
+  _createClass(ToolBar, [{
     key: "render",
     value: function render() {
       var _this = this;
@@ -70288,11 +70429,12 @@ function (_React$PureComponent) {
           className = _this$props.className,
           onClick = _this$props.onClick,
           toolbars = _this$props.toolbars,
-          htmlProps = (0, _objectWithoutProperties2.default)(_this$props, ["prefixCls", "className", "onClick", "toolbars"]);
-      return React.createElement("div", (0, _extends2.default)({
-        className: (0, _classnames.default)("".concat(prefixCls, "-toolbar"), className)
+          htmlProps = _objectWithoutProperties(_this$props, ["prefixCls", "className", "onClick", "toolbars"]);
+
+      return React.createElement("div", Object.assign({
+        className: classnames_1.default("".concat(prefixCls, "-toolbar"), className)
       }, htmlProps), toolbars.map(function (name, key) {
-        var Icon = _bar.default[name];
+        var Icon = bar_1.default[name];
         return React.createElement("button", {
           type: "button",
           key: key,
@@ -70301,10 +70443,10 @@ function (_React$PureComponent) {
       }));
     }
   }]);
+
   return ToolBar;
 }(React.PureComponent);
 
-exports.default = ToolBar;
 ToolBar.displayName = 'ToolBar';
 ToolBar.defaultProps = {
   onClick: function onClick() {
@@ -70313,58 +70455,65 @@ ToolBar.defaultProps = {
   prefixCls: 'md-editor',
   toolbars: ['bold', 'italic', 'header', 'strike', 'underline', 'olist', 'ulist', 'todo', 'link', 'image', 'quote']
 };
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","@babel/runtime/helpers/esm/classCallCheck":"../node_modules/@babel/runtime/helpers/esm/classCallCheck.js","@babel/runtime/helpers/esm/createClass":"../node_modules/@babel/runtime/helpers/esm/createClass.js","@babel/runtime/helpers/esm/possibleConstructorReturn":"../node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js","@babel/runtime/helpers/esm/getPrototypeOf":"../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js","@babel/runtime/helpers/esm/inherits":"../node_modules/@babel/runtime/helpers/esm/inherits.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","../Icon/bar":"../lib/esm/components/Icon/bar.js","./index.less":"../lib/esm/components/ToolBar/index.less"}],"../lib/esm/components/ToolBarMode/index.less":[function(require,module,exports) {
+exports.default = ToolBar;
+},{"tslib":"../node_modules/tslib/tslib.es6.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","../Icon/bar":"../src/components/Icon/bar.tsx","./index.less":"../src/components/ToolBar/index.less"}],"../src/components/ToolBarMode/index.less":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {};
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../lib/esm/components/ToolBarMode/index.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/ToolBarMode/index.tsx":[function(require,module,exports) {
 "use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+var tslib_1 = require("tslib");
 
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
+var classnames_1 = tslib_1.__importDefault(require("classnames"));
 
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/defineProperty"));
+var React = tslib_1.__importStar(require("react"));
 
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/classCallCheck"));
-
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/createClass"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/possibleConstructorReturn"));
-
-var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/getPrototypeOf"));
-
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inherits"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var React = _interopRequireWildcard(require("react"));
-
-var _bar = _interopRequireDefault(require("../Icon/bar"));
+var bar_1 = tslib_1.__importDefault(require("../Icon/bar"));
 
 require("./index.less");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ToolBarMode =
 /*#__PURE__*/
 function (_React$PureComponent) {
-  (0, _inherits2.default)(ToolBarMode, _React$PureComponent);
+  _inherits(ToolBarMode, _React$PureComponent);
 
   function ToolBarMode(props) {
     var _this;
 
-    (0, _classCallCheck2.default)(this, ToolBarMode);
-    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(ToolBarMode).call(this, props));
+    _classCallCheck(this, ToolBarMode);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ToolBarMode).call(this, props));
     _this.state = {
       fullscreen: false,
       preview: true
@@ -70372,10 +70521,10 @@ function (_React$PureComponent) {
     return _this;
   }
 
-  (0, _createClass2.default)(ToolBarMode, [{
+  _createClass(ToolBarMode, [{
     key: "updateMode",
     value: function updateMode(key, value) {
-      this.setState((0, _defineProperty2.default)({}, key, value));
+      this.setState(_defineProperty({}, key, value));
     }
   }, {
     key: "render",
@@ -70387,18 +70536,19 @@ function (_React$PureComponent) {
           className = _this$props.className,
           onClick = _this$props.onClick,
           toolbarsMode = _this$props.toolbarsMode,
-          htmlProps = (0, _objectWithoutProperties2.default)(_this$props, ["prefixCls", "className", "onClick", "toolbarsMode"]);
+          htmlProps = _objectWithoutProperties(_this$props, ["prefixCls", "className", "onClick", "toolbarsMode"]);
+
       var _this$state = this.state,
           preview = _this$state.preview,
           fullscreen = _this$state.fullscreen;
-      return React.createElement("div", (0, _extends2.default)({
-        className: (0, _classnames.default)("".concat(prefixCls, "-toolbar"), "".concat(prefixCls, "-toolbar-mode"), className)
+      return React.createElement("div", Object.assign({
+        className: classnames_1.default("".concat(prefixCls, "-toolbar"), "".concat(prefixCls, "-toolbar-mode"), className)
       }, htmlProps), toolbarsMode.map(function (name, key) {
-        var Icon = _bar.default[name];
+        var Icon = bar_1.default[name];
         return React.createElement("button", {
           key: key,
           type: "button",
-          className: (0, _classnames.default)({
+          className: classnames_1.default({
             active: preview && name === 'preview' || fullscreen && name === 'fullscreen'
           }),
           onClick: onClick.bind(_this2, name)
@@ -70406,10 +70556,10 @@ function (_React$PureComponent) {
       }));
     }
   }]);
+
   return ToolBarMode;
 }(React.PureComponent);
 
-exports.default = ToolBarMode;
 ToolBarMode.displayName = 'ToolBar';
 ToolBarMode.defaultProps = {
   onClick: function onClick() {
@@ -70418,74 +70568,69 @@ ToolBarMode.defaultProps = {
   prefixCls: 'md-editor',
   toolbarsMode: ['preview', 'fullscreen']
 };
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","@babel/runtime/helpers/esm/defineProperty":"../node_modules/@babel/runtime/helpers/esm/defineProperty.js","@babel/runtime/helpers/esm/classCallCheck":"../node_modules/@babel/runtime/helpers/esm/classCallCheck.js","@babel/runtime/helpers/esm/createClass":"../node_modules/@babel/runtime/helpers/esm/createClass.js","@babel/runtime/helpers/esm/possibleConstructorReturn":"../node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js","@babel/runtime/helpers/esm/getPrototypeOf":"../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js","@babel/runtime/helpers/esm/inherits":"../node_modules/@babel/runtime/helpers/esm/inherits.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","../Icon/bar":"../lib/esm/components/Icon/bar.js","./index.less":"../lib/esm/components/ToolBarMode/index.less"}],"../lib/esm/index.less":[function(require,module,exports) {
+exports.default = ToolBarMode;
+},{"tslib":"../node_modules/tslib/tslib.es6.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","../Icon/bar":"../src/components/Icon/bar.tsx","./index.less":"../src/components/ToolBarMode/index.less"}],"../src/index.less":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {};
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../lib/esm/index.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/index.tsx":[function(require,module,exports) {
 "use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+var tslib_1 = require("tslib");
 
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutProperties"));
+var classnames_1 = tslib_1.__importDefault(require("classnames"));
 
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/classCallCheck"));
+var React = tslib_1.__importStar(require("react"));
 
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/createClass"));
+var CodeMirror_1 = tslib_1.__importDefault(require("./components/CodeMirror"));
 
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/possibleConstructorReturn"));
+var PreviewMarkdown_1 = tslib_1.__importDefault(require("./components/PreviewMarkdown"));
 
-var _getPrototypeOf3 = _interopRequireDefault(require("@babel/runtime/helpers/esm/getPrototypeOf"));
+var ToolBar_1 = tslib_1.__importDefault(require("./components/ToolBar"));
 
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inherits"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var React = _interopRequireWildcard(require("react"));
-
-var _CodeMirror = _interopRequireDefault(require("./components/CodeMirror"));
-
-var _PreviewMarkdown = _interopRequireDefault(require("./components/PreviewMarkdown"));
-
-var _ToolBar = _interopRequireDefault(require("./components/ToolBar"));
-
-var _ToolBarMode = _interopRequireDefault(require("./components/ToolBarMode"));
+var ToolBarMode_1 = tslib_1.__importDefault(require("./components/ToolBarMode"));
 
 require("./index.less");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MarkdownEditor =
 /*#__PURE__*/
 function (_React$PureComponent) {
-  (0, _inherits2.default)(MarkdownEditor, _React$PureComponent);
+  _inherits(MarkdownEditor, _React$PureComponent);
 
   function MarkdownEditor() {
-    var _getPrototypeOf2;
-
     var _this;
 
-    (0, _classCallCheck2.default)(this, MarkdownEditor);
+    _classCallCheck(this, MarkdownEditor);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(MarkdownEditor)).call.apply(_getPrototypeOf2, [this].concat(args)));
-    _this.container = void 0;
-    _this.editorClientHeight = void 0;
-    _this.preview = void 0;
-    _this.toolbarsMode = void 0;
-    _this.CodeMirror = void 0;
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MarkdownEditor).apply(this, arguments));
 
     _this.handleResize = function () {
       var isfullscreen = _this.toolbarsMode.state.fullscreen;
@@ -70502,8 +70647,7 @@ function (_React$PureComponent) {
     };
 
     _this.onChange = function (editor, data, value) {
-      var _ref = _this.props,
-          onChange = _ref.onChange;
+      var onChange = _this.props.onChange;
 
       if (onChange) {
         if (_this.preview) {
@@ -70598,7 +70742,7 @@ function (_React$PureComponent) {
     return _this;
   }
 
-  (0, _createClass2.default)(MarkdownEditor, [{
+  _createClass(MarkdownEditor, [{
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -70611,29 +70755,30 @@ function (_React$PureComponent) {
           onChange = _this$props.onChange,
           visble = _this$props.visble,
           previewProps = _this$props.previewProps,
-          codemirrorProps = (0, _objectWithoutProperties2.default)(_this$props, ["prefixCls", "className", "toolbars", "toolbarsMode", "onChange", "visble", "previewProps"]);
+          codemirrorProps = _objectWithoutProperties(_this$props, ["prefixCls", "className", "toolbars", "toolbarsMode", "onChange", "visble", "previewProps"]);
+
       return React.createElement("div", {
         ref: function ref(node) {
           return _this2.container = node;
         }
       }, React.createElement("div", {
-        className: (0, _classnames.default)(prefixCls, className)
-      }, React.createElement(_ToolBarMode.default, {
+        className: classnames_1.default(prefixCls, className)
+      }, React.createElement(ToolBarMode_1.default, {
         ref: function ref(mode) {
           return _this2.toolbarsMode = mode;
         },
         toolbarsMode: toolbarsMode,
         onClick: this.onClickMode
-      }), React.createElement(_ToolBar.default, {
+      }), React.createElement(ToolBar_1.default, {
         toolbars: toolbars,
         onClick: this.onClick
       }), React.createElement("div", {
-        className: (0, _classnames.default)("".concat(prefixCls, "-content"))
-      }, React.createElement(_CodeMirror.default, (0, _extends2.default)({
+        className: classnames_1.default("".concat(prefixCls, "-content"))
+      }, React.createElement(CodeMirror_1.default, Object.assign({
         ref: this.getInstance
       }, codemirrorProps, {
         onChange: this.onChange
-      })), React.createElement(_PreviewMarkdown.default, {
+      })), React.createElement(PreviewMarkdown_1.default, {
         visble: visble,
         ref: function ref(pmd) {
           return _this2.preview = pmd;
@@ -70686,7 +70831,7 @@ function (_React$PureComponent) {
       if (this.toolbarsMode && this.container) {
         var isfullscreen = !this.toolbarsMode.state.fullscreen;
         this.toolbarsMode.updateMode('fullscreen', isfullscreen);
-        this.container.className = isfullscreen ? (0, _classnames.default)("".concat(prefixCls, "-fullscreen")) : '';
+        this.container.className = isfullscreen ? classnames_1.default("".concat(prefixCls, "-fullscreen")) : '';
         document.body.style.overflow = isfullscreen ? 'hidden' : 'initial';
         this.setEditorSize(isfullscreen);
       }
@@ -70698,10 +70843,10 @@ function (_React$PureComponent) {
       this.CodeMirror.editor.setSize(this.preview.state.visble ? '50%' : '100%', isfullscreen ? clientHeight - 33 : this.editorClientHeight);
     }
   }]);
+
   return MarkdownEditor;
 }(React.PureComponent);
 
-exports.default = MarkdownEditor;
 MarkdownEditor.displayName = 'MarkdownEditor';
 MarkdownEditor.defaultProps = {
   onChange: function onChange() {
@@ -70711,7 +70856,8 @@ MarkdownEditor.defaultProps = {
   value: '',
   visble: true
 };
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutProperties":"../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js","@babel/runtime/helpers/esm/classCallCheck":"../node_modules/@babel/runtime/helpers/esm/classCallCheck.js","@babel/runtime/helpers/esm/createClass":"../node_modules/@babel/runtime/helpers/esm/createClass.js","@babel/runtime/helpers/esm/possibleConstructorReturn":"../node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js","@babel/runtime/helpers/esm/getPrototypeOf":"../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js","@babel/runtime/helpers/esm/inherits":"../node_modules/@babel/runtime/helpers/esm/inherits.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./components/CodeMirror":"../lib/esm/components/CodeMirror/index.js","./components/PreviewMarkdown":"../lib/esm/components/PreviewMarkdown/index.js","./components/ToolBar":"../lib/esm/components/ToolBar/index.js","./components/ToolBarMode":"../lib/esm/components/ToolBarMode/index.js","./index.less":"../lib/esm/index.less"}],"../node_modules/@uiw/reset.css/reset.less":[function(require,module,exports) {
+exports.default = MarkdownEditor;
+},{"tslib":"../node_modules/tslib/tslib.es6.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./components/CodeMirror":"../src/components/CodeMirror/index.tsx","./components/PreviewMarkdown":"../src/components/PreviewMarkdown/index.tsx","./components/ToolBar":"../src/components/ToolBar/index.tsx","./components/ToolBarMode":"../src/components/ToolBarMode/index.tsx","./index.less":"../src/index.less"}],"../node_modules/@uiw/reset.css/reset.less":[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
@@ -70725,10 +70871,10 @@ var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {
-  "warpper": "_warpper_c5664",
-  "editor": "_editor_c5664",
-  "doc": "_doc_c5664",
-  "logo": "_logo_c5664"
+  "warpper": "_warpper_5204c",
+  "editor": "_editor_5204c",
+  "doc": "_doc_5204c",
+  "logo": "_logo_5204c"
 };
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Footer.less":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -70736,7 +70882,7 @@ var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {
-  "footer": "_footer_9a9a4"
+  "footer": "_footer_67c0b"
 };
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Footer.tsx":[function(require,module,exports) {
 "use strict";
@@ -70778,9 +70924,9 @@ var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {
-  "corner": "_corner_3d6e8",
-  "octo-arm": "_octo-arm_3d6e8",
-  "octocat-wave": "_octocat-wave_3d6e8"
+  "corner": "_corner_6fe17",
+  "octo-arm": "_octo-arm_6fe17",
+  "octocat-wave": "_octocat-wave_6fe17"
 };
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/GithubCorner.tsx":[function(require,module,exports) {
 "use strict";
@@ -70844,7 +70990,7 @@ var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 module.exports = {
-  "markdown": "_markdown_a6469"
+  "markdown": "_markdown_4e677"
 };
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Markdown/index.tsx":[function(require,module,exports) {
 "use strict";
@@ -71079,7 +71225,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var __1 = __importDefault(require("../"));
+var src_1 = __importDefault(require("../src"));
 
 require("@uiw/reset.css/reset.less");
 
@@ -71127,7 +71273,7 @@ function (_React$Component) {
         className: App_less_1.default.logo
       }, React.createElement(Logo_1.default, null)), React.createElement("div", {
         className: App_less_1.default.editor
-      }, React.createElement(__1.default, {
+      }, React.createElement(src_1.default, {
         options: {
           autofocus: true,
           showCursorWhenSelecting: true
@@ -71150,7 +71296,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = App;
-},{"../":"../lib/esm/index.js","@uiw/reset.css/reset.less":"../node_modules/@uiw/reset.css/reset.less","react":"../node_modules/react/index.js","../README.md":"../README.md","./App.less":"App.less","./components/Footer":"components/Footer.tsx","./components/GithubCorner":"components/GithubCorner.tsx","./components/Markdown":"components/Markdown/index.tsx","./Logo":"Logo.tsx"}],"index.tsx":[function(require,module,exports) {
+},{"../src":"../src/index.tsx","@uiw/reset.css/reset.less":"../node_modules/@uiw/reset.css/reset.less","react":"../node_modules/react/index.js","../README.md":"../README.md","./App.less":"App.less","./components/Footer":"components/Footer.tsx","./components/GithubCorner":"components/GithubCorner.tsx","./components/Markdown":"components/Markdown/index.tsx","./Logo":"Logo.tsx"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -71208,7 +71354,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60435" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61062" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-markdown-editor",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "description": "A markdown editor with preview, implemented with React.js and TypeScript.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",

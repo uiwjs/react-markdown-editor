@@ -1,4 +1,4 @@
-import MarkdownEditor from '../';
+import MarkdownEditor from '../src';
 import '@uiw/reset.css/reset.less';
 import * as React from 'react';
 import DocumentStr from '../README.md';

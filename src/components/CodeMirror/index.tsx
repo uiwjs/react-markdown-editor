@@ -61,8 +61,11 @@ export interface ICodeMirror extends IProps {
   [key: string]: any,
 }
 
+export interface ICodeMirrorState {
+  value: string;
+}
 
-export default class ReactCodeMirror extends Component<ICodeMirror> {
+export default class ReactCodeMirror extends Component<ICodeMirror, ICodeMirrorState> {
   public static defaultProps: ICodeMirror = {
     height: '100%',
     options: {
@@ -119,6 +122,12 @@ export default class ReactCodeMirror extends Component<ICodeMirror> {
     }
   }
 
+  public shouldComponentUpdate(nextProps: ICodeMirror, nextState: ICodeMirrorState) {
+    return nextProps.value !== this.props.value 
+    || nextProps.options !== this.props.options
+    || nextProps.height !== this.props.height
+    || nextProps.width !== this.props.width;
+  }
   // 将props中所有的事件处理函数映射并保存
   public getEventHandleFromProps(): IEventDict {
     const propNames = Object.keys(this.props);

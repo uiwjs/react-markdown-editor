@@ -6,7 +6,7 @@ import './index.less';
 
 export interface IToolBarProps extends IProps {
   prefixCls: string,
-  toolbars: string[],
+  toolbars: string[] | false,
   onClick: (type: string) => void,
 }
 
@@ -19,6 +19,7 @@ export default class ToolBar extends React.PureComponent<IToolBarProps, {}> {
   };
   public render() {
     const { prefixCls, className, onClick, toolbars, ...htmlProps } = this.props;
+    if (!toolbars || toolbars.length === 0) return null;
     return (
       <div className={classnames(`${prefixCls}-toolbar`, className)} {...htmlProps}>
         {toolbars.map((name: string, key) => {

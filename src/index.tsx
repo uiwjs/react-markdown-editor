@@ -5,7 +5,7 @@ import { IProps } from './common/props';
 import CodeMirror, { ICodeMirror } from './components/CodeMirror';
 import PreviewMarkdown, { IPreviewMarkdown } from './components/PreviewMarkdown';
 import ToolBar from './components/ToolBar';
-import ToolBarMode from './components/ToolBarMode';
+import ToolBarMode, { IToolBarModeProps } from './components/ToolBarMode';
 import './index.less';
 
 export interface IMarkdownEditor extends IProps, ICodeMirror {
@@ -13,8 +13,8 @@ export interface IMarkdownEditor extends IProps, ICodeMirror {
   value?: string,
   height?: number,
   visble?: boolean,
-  toolbars?: string[],
-  toolbarsMode?: string[],
+  toolbars?: string[] | false,
+  toolbarsMode?: IToolBarModeProps['toolbarsMode'] | false,
   previewProps?: IPreviewMarkdown['previewProps'];
   options?: CodeMirror.EditorConfiguration,
 }

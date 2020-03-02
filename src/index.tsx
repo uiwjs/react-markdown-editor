@@ -103,7 +103,7 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
       if (this.preview) {
         this.preview.updateSource(editor.getValue());
       }
-      onChange(editor, data, value);
+      onChange(editor, data, editor.getValue());
     }
   }
 

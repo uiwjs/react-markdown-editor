@@ -33,7 +33,7 @@ export interface IDoc extends CodeMirror.Doc {
   setSelections: (ranges: ISetSelectionOptions[]) => void;
 }
 
-export interface IInstance extends CodeMirror.Editor, IDoc {
+export interface IInstance extends CodeMirror.Editor {
   options: CodeMirror.EditorConfiguration
 }
 

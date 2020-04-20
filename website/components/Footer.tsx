@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Footer.less';
+import style from './Footer.module.less';
 
 export interface IFooterProps {
   name?: string;

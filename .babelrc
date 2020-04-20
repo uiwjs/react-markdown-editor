@@ -4,9 +4,7 @@
       "plugins": [
         [
           "babel-plugin-transform-remove-imports",
-          {
-            "test": "(less|css)$"
-          }
+          { "test": "(less|css)$" }
         ]
       ]
     },
@@ -14,10 +12,7 @@
       "plugins": [
         [
           "babel-plugin-transform-rename-import",
-          {
-            "original": "^(.+?)\\.less$",
-            "replacement": "$1.css"
-          }
+          { "original": "^(.+?)\\.less$", "replacement": "$1.css" }
         ]
       ]
     },
@@ -29,34 +24,11 @@
           {
             "modules": false,
             "targets": {
-              "browsers": [
-                "last 2 versions"
-              ]
+              "browsers": [ "last 2 versions" ]
             },
             "transformRuntime": {
               "useESModules": true
             }
-          }
-        ]
-      ]
-    },
-    "umd": {
-      "presets": [
-        "@tsbb/babel-preset-tsbb",
-        "@babel/preset-react"
-      ],
-      "plugins": [
-        [
-          "@babel/plugin-transform-modules-umd",
-          {
-            "exactGlobals": true
-          }
-        ],
-        [
-          "babel-plugin-transform-rename-import",
-          {
-            "original": "^(.+?)\\.less$",
-            "replacement": "$1.css"
           }
         ]
       ]

@@ -1,11 +1,11 @@
-import MarkdownEditor from '../src';
+import MarkdownEditor from '../';
 import '@uiw/reset.css/reset.less';
 import * as React from 'react';
 import DocumentStr from '../README.md';
-import styles from './App.less';
+import styles from './App.module.less';
 import Footer from './components/Footer';
-import GithubCorner from './components/GithubCorner';
-import ReactMarkdown from './components/Markdown';
+import GithubCorner from '@uiw/react-github-corners';
+import MarkdownPreview from '@uiw/react-markdown-preview';
 import Logo from './Logo';
 
 const DocumentStrSource = DocumentStr.replace(/([\s\S]*)<!--dividing-->/, '').replace(/^\n*/g, '');
@@ -24,7 +24,7 @@ export default class App extends React.Component<any, IAppState> {
   public render() {
     return (
       <div className={styles.warpper}>
-        <GithubCorner url="https://github.com/uiwjs/react-markdown-editor" />
+        <GithubCorner fixed target="__blank" href="https://github.com/uiwjs/react-markdown-editor" />
         <div className={styles.logo}>
           <Logo />
         </div>
@@ -38,7 +38,7 @@ export default class App extends React.Component<any, IAppState> {
             value={this.state.mdstr}
           />
         </div>
-        <ReactMarkdown source={DocumentStrSource} className={styles.doc} />
+        <MarkdownPreview source={DocumentStrSource} className={styles.doc} />
         <Footer name="Kenny Wong" href="https://github.com/uiwjs/react-markdown-editor" github="https://github.com/uiwjs/react-markdown-editor" year={2019}/>
       </div>
     );

@@ -1,34 +1,32 @@
 @editor-prefix:~"md-editor";
 
-:global {
-  .@{editor-prefix} {
-    &-toolbar {
-      border-bottom: 1px solid #dfdfe0;
-      background-color: #fbfbfb;
-      padding: 4px 2px 4px 5px;
-      border-radius: 3px 3px 0 0;
-      button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        outline: 0;
-        display: inline-block;
-        height: 24px;
-        width: 24px;
-        padding: 3px 2px;
-        border-radius: 2px;
-        transition: all .3s;
-        &:hover {
-          color: #06c;
-          background-color: #e8e8e8;
-        }
-        &:active {
-          color: #6a57ff;
-          background-color: #dadada;
-        }
-        svg {
-          vertical-align: middle;
-        }
+.@{editor-prefix} {
+  &-toolbar {
+    border-bottom: 1px solid #dfdfe0;
+    background-color: #fbfbfb;
+    padding: 4px 2px 4px 5px;
+    border-radius: 3px 3px 0 0;
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: 0;
+      display: inline-block;
+      height: 24px;
+      width: 24px;
+      padding: 3px 2px;
+      border-radius: 2px;
+      transition: all .3s;
+      &:hover {
+        color: #06c;
+        background-color: #e8e8e8;
+      }
+      &:active {
+        color: #6a57ff;
+        background-color: #dadada;
+      }
+      svg {
+        vertical-align: middle;
       }
     }
   }

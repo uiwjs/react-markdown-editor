@@ -52,7 +52,7 @@
     "@kkt/loader-less": "5.8.0",
     "@kkt/loader-raw": "5.8.0",
     "@types/codemirror": "0.0.95",
-    "@types/jest": "24.9.1",
+    "@types/jest": "25.2.3",
     "@types/prop-types": "15.7.3",
     "@types/react": "16.9.23",
     "@types/react-dom": "16.9.8",

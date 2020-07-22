@@ -13,7 +13,7 @@ hljs.configure({
 });
 
 export interface IPreviewMarkdown extends IProps {
-  visble: boolean;
+  visible: boolean;
   previewProps?: ReactMarkdownProps;
   value?: string;
   prefixCls?: string;
@@ -22,20 +22,20 @@ export interface IPreviewMarkdown extends IProps {
 
 export interface IPreviewMarkdownState {
   value?: string;
-  visble?: boolean;
+  visible?: boolean;
 }
 
 export default class PreviewMarkdown extends React.Component<IPreviewMarkdown, IPreviewMarkdownState> {
   public static defaultProps: IPreviewMarkdown = {
     prefixCls: 'md-editor',
-    visble: true,
+    visible: true,
   }
   public node!: HTMLDivElement;
   constructor(props: IPreviewMarkdown) {
     super(props);
     this.state = {
       value: props.value,
-      visble: props.visble,
+      visible: props.visible,
     }
   }
 
@@ -44,16 +44,16 @@ export default class PreviewMarkdown extends React.Component<IPreviewMarkdown, I
   }
 
   public show() {
-    this.setState({ visble: true });
+    this.setState({ visible: true });
   }
 
   public hide() {
-    this.setState({ visble: false });
+    this.setState({ visible: false });
   }
 
   public componentWillReceiveProps(nextProps: IPreviewMarkdown) {
-    if (nextProps.visble !== this.props.visble) {
-      this.setState({ visble: nextProps.visble });
+    if (nextProps.visible !== this.props.visible) {
+      this.setState({ visible: nextProps.visible });
     }
   }
 
@@ -74,12 +74,12 @@ export default class PreviewMarkdown extends React.Component<IPreviewMarkdown, I
   }
 
   public render() {
-    const { prefixCls, visble, value, previewProps, ...elementProps } = this.props;
+    const { prefixCls, visible, value, previewProps, ...elementProps } = this.props;
     return (
       <div
         ref={(node: HTMLDivElement) => this.node = node}
         className={classnames(`${prefixCls}-preview`, {
-          [`${prefixCls}-visble`]: this.state.visble,
+          [`${prefixCls}-visible`]: this.state.visible,
         })}
         {...elementProps}
       >

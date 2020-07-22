@@ -12,8 +12,8 @@ export interface IMarkdownEditor extends IProps, ICodeMirror {
   prefixCls?: string,
   value?: string,
   height?: number,
-  visble?: boolean,
-  visbleEditor?: boolean,
+  visible?: boolean,
+  visibleEditor?: boolean,
   toolbars?: string[] | false,
   toolbarsMode?: IToolBarModeProps['toolbarsMode'] | false,
   previewProps?: IPreviewMarkdown['previewProps'];
@@ -26,10 +26,11 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
   public static displayName = 'MarkdownEditor';
   public static defaultProps: IMarkdownEditor = {
     onChange: () => null,
+    onBlur: () => null,
     prefixCls: 'md-editor',
     value: '',
-    visbleEditor: true,
-    visble: true,
+    visibleEditor: true,
+    visible: true,
   };
   public container!: HTMLDivElement;
   public editorClientHeight!: number;
@@ -37,23 +38,24 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
   public toolbarsMode!: ToolBarMode;
   public CodeMirror!: CodeMirror;
   public render() {
-    const { prefixCls, className, toolbars, toolbarsMode, onChange, visble, visbleEditor, previewProps, ...codemirrorProps } = this.props;
+    const { prefixCls, className, toolbars, toolbarsMode, onChange, onBlur, visible: visible, visibleEditor: visibleEditor, previewProps, ...codemirrorProps } = this.props;
     return (
       <div ref={(node: HTMLDivElement) => this.container = node}>
         <div className={classnames(prefixCls, className)}>
           <ToolBarMode ref={(mode: ToolBarMode) => this.toolbarsMode = mode} toolbarsMode={toolbarsMode} onClick={this.onClickMode} />
           <ToolBar toolbars={toolbars} onClick={this.onClick} />
           <div className={classnames(`${prefixCls}-content`)}>
-            {visbleEditor && (
+            {visibleEditor && (
               <CodeMirror
-                visbleEditor={visbleEditor}
+                visibleEditor={visibleEditor}
                 ref={this.getInstance}
                 {...codemirrorProps}
                 onChange={this.onChange}
+                onBlur={this.onBlur}
               />
             )}
             <PreviewMarkdown
-              visble={visble}
+              visible={visible}
               ref={(pmd: PreviewMarkdown) => this.preview = pmd}
               value={this.props.value}
               previewProps={previewProps}
@@ -66,8 +68,8 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
 
   public componentDidMount() {
     if (this.preview && this.CodeMirror) {
-      this.props.visble ? this.preview.show() : this.preview.hide();
-      this.CodeMirror.editor.setSize(this.props.visble ? '50%' : '100%');
+      this.props.visible ? this.preview.show() : this.preview.hide();
+      this.CodeMirror.editor.setSize(this.props.visible ? '50%' : '100%');
       const { clientHeight } = this.CodeMirror.editor.getScrollInfo();
       this.editorClientHeight = clientHeight;
       window.addEventListener('resize', this.handleResize, true);
@@ -79,16 +81,16 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
   }
 
   public handleResize = () => {
-    const isfullscreen = this.toolbarsMode.state.fullscreen
-    if (isfullscreen) {
-      this.setEditorSize(isfullscreen);
+    const isFullScreen = this.toolbarsMode.state.fullscreen
+    if (isFullScreen) {
+      this.setEditorSize(isFullScreen);
     }
   }
 
   public componentWillReceiveProps(nextProps: IMarkdownEditor) {
-    if (nextProps.visble !== this.props.visble) {
-      nextProps.visble ? this.preview.show() : this.preview.hide();
-      this.CodeMirror.editor.setSize(nextProps.visble ? '50%' : '100%');
+    if (nextProps.visible !== this.props.visible) {
+      nextProps.visible ? this.preview.show() : this.preview.hide();
+      this.CodeMirror.editor.setSize(nextProps.visible ? '50%' : '100%');
     }
   }
 
@@ -107,28 +109,35 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
     }
   }
 
+  private onBlur = (editor: IInstance, event: Event) => {
+    const { onBlur } = this.props as IMarkdownEditor;
+    if (onBlur) {
+      onBlur(editor, event);
+    }
+  }
+
   private previewMarkdown() {
     if (this.preview) {
-      this.preview.state.visble ? this.preview.hide() : this.preview.show();
-      this.toolbarsMode.updateMode('preview', !this.preview.state.visble);
-      this.CodeMirror.editor.setSize(this.preview.state.visble ? '100%' : '50%');
+      this.preview.state.visible ? this.preview.hide() : this.preview.show();
+      this.toolbarsMode.updateMode('preview', !this.preview.state.visible);
+      this.CodeMirror.editor.setSize(this.preview.state.visible ? '100%' : '50%');
     }
   }
 
   private fullScreen() {
     const { prefixCls } = this.props;
     if (this.toolbarsMode && this.container) {
-      const isfullscreen = !this.toolbarsMode.state.fullscreen
-      this.toolbarsMode.updateMode('fullscreen', isfullscreen);
-      this.container.className = isfullscreen ? classnames(`${prefixCls}-fullscreen`) : '';
-      document.body.style.overflow = isfullscreen ? 'hidden' : 'initial';
-      this.setEditorSize(isfullscreen);
+      const isFullScreen = !this.toolbarsMode.state.fullscreen
+      this.toolbarsMode.updateMode('fullscreen', isFullScreen);
+      this.container.className = isFullScreen ? classnames(`${prefixCls}-fullscreen`) : '';
+      document.body.style.overflow = isFullScreen ? 'hidden' : 'initial';
+      this.setEditorSize(isFullScreen);
     }
   }
 
-  private setEditorSize(isfullscreen: boolean) {
+  private setEditorSize(isFullScreen: boolean) {
     const clientHeight = document.body.clientHeight;
-    this.CodeMirror.editor.setSize(this.preview.state.visble ? '50%' : '100%', isfullscreen ? clientHeight - 33 : this.editorClientHeight);
+    this.CodeMirror.editor.setSize(this.preview.state.visible ? '50%' : '100%', isFullScreen ? clientHeight - 33 : this.editorClientHeight);
   }
 
   private onClickMode = (type: string) => {

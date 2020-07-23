@@ -26,7 +26,6 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
   public static displayName = 'MarkdownEditor';
   public static defaultProps: IMarkdownEditor = {
     onChange: () => null,
-    onBlur: () => null,
     prefixCls: 'md-editor',
     value: '',
     visibleEditor: true,
@@ -38,7 +37,7 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
   public toolbarsMode!: ToolBarMode;
   public CodeMirror!: CodeMirror;
   public render() {
-    const { prefixCls, className, toolbars, toolbarsMode, onChange, onBlur, visible: visible, visibleEditor: visibleEditor, previewProps, ...codemirrorProps } = this.props;
+    const { prefixCls, className, toolbars, toolbarsMode, onChange, visible: visible, visibleEditor: visibleEditor, previewProps, ...codemirrorProps } = this.props;
     return (
       <div ref={(node: HTMLDivElement) => this.container = node}>
         <div className={classnames(prefixCls, className)}>
@@ -51,7 +50,6 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
                 ref={this.getInstance}
                 {...codemirrorProps}
                 onChange={this.onChange}
-                onBlur={this.onBlur}
               />
             )}
             <PreviewMarkdown

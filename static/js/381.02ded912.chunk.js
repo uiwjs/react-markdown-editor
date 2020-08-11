@@ -1,2 +1,0 @@
-(this["webpackJsonp@uiw/react-markdown-editor"]=this["webpackJsonp@uiw/react-markdown-editor"]||[]).push([[381],{430:function(s,a){var e=Prism.util.clone(Prism.languages.typescript);Prism.languages.tsx=Prism.languages.extend("jsx",e)}}]);
-//# sourceMappingURL=381.02ded912.chunk.js.map

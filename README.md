@@ -96,8 +96,8 @@ ReactDOM.render(
 - `visible?:boolean` - Shows a preview that will be converted to html.
 - `toolbars?:array` - Tool display settings.
 - `toolbarsMode?:array` - Tool display settings.
-- onChange (*function(editor: IInstance, data: CodeMirror.EditorChange, value: string)*) - called when a change is made (**required**)
-- onBlur? (*function(editor: IInstance, event: Event) - event occurs when an object loses focus
+- `onChange?:function(editor: IInstance, data: CodeMirror.EditorChange, value: string)` - called when a change is made (**required**)
+- `onBlur?: function(editor: IInstance, event: Event)` - event occurs when an object loses focus
 - `previewProps` - [react-markdown options](https://github.com/rexxars/react-markdown#options)
 
 > [Other Props Options](https://github.com/uiwjs/react-markdown-editor/blob/8de6abbf628b6d272d7da1c28e985fbbcba71b93/src/components/CodeMirror/index.tsx#L21-L60)

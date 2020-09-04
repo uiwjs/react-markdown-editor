@@ -49,8 +49,8 @@
     "react-markdown": "^4.3.1"
   },
   "devDependencies": {
-    "@kkt/loader-less": "5.8.0",
-    "@kkt/loader-raw": "5.8.0",
+    "@kkt/loader-less": "5.10.3",
+    "@kkt/loader-raw": "5.10.3",
     "@types/codemirror": "0.0.95",
     "@types/jest": "24.9.1",
     "@types/prop-types": "15.7.3",
@@ -61,7 +61,7 @@
     "@uiw/reset.css": "1.0.4",
     "compile-less-cli": "1.4.0",
     "gh-pages": "2.2.0",
-    "kkt": "5.8.0",
+    "kkt": "5.10.3",
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "tsbb": "1.7.6"

@@ -92,7 +92,7 @@ ReactDOM.render(
 
 ## Props
 
-- value (*string*) - the raw markdown that will be converted to html (**required**)
+- `value (string)` - the raw markdown that will be converted to html (**required**)
 - `visible?:boolean` - Shows a preview that will be converted to html.
 - `toolbars?:array` - Tool display settings.
 - `toolbarsMode?:array` - Tool display settings.

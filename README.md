@@ -111,6 +111,12 @@ npm run type-check:watch
 npm run doc
 ```
 
+## Other
+
+- [@uiw/react-codemirror](https://github.com/uiwjs/react-codemirror): CodeMirror component for React.
+- [@uiw/react-monacoeditor](https://github.com/jaywcjlove/react-monacoeditor): Monaco Editor component for React.
+- [@uiw/react-md-editor](https://github.com/uiwjs/react-md-editor): A simple markdown editor with preview, implemented with React.js and TypeScript.
+
 ## License
 
 [MIT © Kenny Wong](./LICENSE)

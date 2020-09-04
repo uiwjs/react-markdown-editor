@@ -20,8 +20,7 @@
     "ts:watch": "tsbb watch --env-name esm:dev --env-name cjs --target react",
     "ts:build": "tsbb build --target react",
     "css:build": "compile-less -d src -o lib/esm",
-    "css:build:dist": "compile-less -d src --combine dist/markdown-editor.css --rm-global",
-    "deploy": "gh-pages -d doc"
+    "css:build:dist": "compile-less -d src --combine dist/markdown-editor.css --rm-global"
   },
   "repository": {
     "type": "git",
@@ -60,7 +59,6 @@
     "@uiw/react-markdown-preview": "1.0.9",
     "@uiw/reset.css": "1.0.4",
     "compile-less-cli": "1.4.0",
-    "gh-pages": "2.2.0",
     "kkt": "5.10.3",
     "react": "16.13.0",
     "react-dom": "16.13.0",

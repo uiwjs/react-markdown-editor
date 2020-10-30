@@ -101,18 +101,13 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
     }
   }
 
-  private onBlur = (editor: IInstance, event: Event) => {
-    const { onBlur } = this.props as IMarkdownEditor;
-    if (onBlur) {
-      onBlur(editor, event);
-    }
-  }
-
   private previewMarkdown() {
+    const isVisible = this.preview.state.visible;
     if (this.preview) {
-      this.preview.state.visible ? this.preview.hide() : this.preview.show();
-      this.toolbarsMode.updateMode('preview', !this.preview.state.visible);
-      this.CodeMirror.editor.setSize(this.preview.state.visible ? '100%' : '50%');
+      isVisible ? this.preview.hide() : this.preview.show();
+      this.preview.setState({ visible: !isVisible });
+      this.toolbarsMode.updateMode('preview', !isVisible);
+      this.CodeMirror.editor.setSize(isVisible ? '100%' : '50%');
     }
   }
 

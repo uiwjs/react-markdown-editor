@@ -56,11 +56,6 @@ export default class PreviewMarkdown extends React.Component<IPreviewMarkdown, I
         value: props.value
       }
     }
-    if (props.visible !== state.visible) {
-      return {
-        visible: props.visible
-      }
-    }
     return null;
   }
 

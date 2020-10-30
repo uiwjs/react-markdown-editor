@@ -81,14 +81,6 @@ export default class ReactCodeMirror extends Component<ICodeMirror, ICodeMirrorS
   // public editor!: Doc | Editor | EditorFromTextArea | Editor;
   public constructor(props: Readonly<ICodeMirror>) {
     super(props);
-  }
-  public render() {
-    return (
-      <textarea ref={(instance: HTMLTextAreaElement) => this.textarea = instance} />
-    );
-  }
-
-  public componentWillMount() {
     if (SERVER_RENDERED) {
       return;
     }
@@ -96,6 +88,11 @@ export default class ReactCodeMirror extends Component<ICodeMirror, ICodeMirrorS
     if (this.props.editorWillMount) {
       this.props.editorWillMount();
     }
+  }
+  public render() {
+    return (
+      <textarea ref={(instance: HTMLTextAreaElement) => this.textarea = instance} />
+    );
   }
 
   public componentDidMount() {
@@ -116,10 +113,9 @@ export default class ReactCodeMirror extends Component<ICodeMirror, ICodeMirrorS
 
     this.renderCodeMirror(this.props);
   }
-  public UNSAFE_componentWillReceiveProps(nextPros: ICodeMirror) {
-    if (nextPros.value !== this.props.value || nextPros.width !== this.props.width || nextPros.height !== this.props.height) {
-      this.renderCodeMirror(nextPros);
-    }
+
+  componentDidUpdate() {
+    this.renderCodeMirror(this.props);
   }
 
   public shouldComponentUpdate(nextProps: ICodeMirror, nextState: ICodeMirrorState) {
@@ -128,7 +124,7 @@ export default class ReactCodeMirror extends Component<ICodeMirror, ICodeMirrorS
     || nextProps.height !== this.props.height
     || nextProps.width !== this.props.width;
   }
-  // 将props中所有的事件处理函数映射并保存
+  // 将 props 中所有的事件处理函数映射并保存
   public getEventHandleFromProps(): IEventDict {
     const propNames = Object.keys(this.props);
     const eventHandle = propNames.filter((prop) => {

@@ -49,7 +49,7 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
                 visibleEditor={visibleEditor}
                 ref={this.getInstance}
                 {...codemirrorProps}
-                onChange={this.onChange}
+                onChange={this.onChange.bind(this)}
               />
             )}
             <PreviewMarkdown
@@ -84,12 +84,9 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
       this.setEditorSize(isFullScreen);
     }
   }
-
-  public componentWillReceiveProps(nextProps: IMarkdownEditor) {
-    if (nextProps.visible !== this.props.visible) {
-      nextProps.visible ? this.preview.show() : this.preview.hide();
-      this.CodeMirror.editor.setSize(nextProps.visible ? '50%' : '100%');
-    }
+  public componentDidUpdate() {
+    this.props.visible ? this.preview.show() : this.preview.hide();
+    this.CodeMirror.editor.setSize(this.props.visible ? '50%' : '100%');
   }
 
   public getInstance = (editor: CodeMirror) => {
@@ -100,9 +97,6 @@ export default class MarkdownEditor extends React.PureComponent<IMarkdownEditor,
   private onChange = (editor: IInstance, data: CodeMirror.EditorChange, value: string) => {
     const { onChange } = this.props as IMarkdownEditor;
     if (onChange) {
-      if (this.preview) {
-        this.preview.updateSource(editor.getValue());
-      }
       onChange(editor, data, editor.getValue());
     }
   }

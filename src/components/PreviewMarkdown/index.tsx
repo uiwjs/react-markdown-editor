@@ -50,11 +50,18 @@ export default class PreviewMarkdown extends React.Component<IPreviewMarkdown, I
   public hide() {
     this.setState({ visible: false });
   }
-
-  public componentWillReceiveProps(nextProps: IPreviewMarkdown) {
-    if (nextProps.visible !== this.props.visible) {
-      this.setState({ visible: nextProps.visible });
+  static getDerivedStateFromProps(props: IPreviewMarkdown, state: IPreviewMarkdownState) {
+    if (props.value !== state.value) {
+      return {
+        value: props.value
+      }
     }
+    if (props.visible !== state.visible) {
+      return {
+        visible: props.visible
+      }
+    }
+    return null;
   }
 
   public highlight() {

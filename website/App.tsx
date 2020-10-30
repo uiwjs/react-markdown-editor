@@ -12,13 +12,17 @@ const DocumentStrSource = DocumentStr.replace(/([\s\S]*)<!--dividing-->/, '').re
 
 interface IAppState {
   mdstr: string;
+  visible: boolean;
 }
+
+let count = 1;
 
 export default class App extends React.Component<any, IAppState> {
   constructor(props: any) {
     super(props);
     this.state = {
       mdstr: DocumentStrSource,
+      visible: true,
     }
   }
   public render() {
@@ -29,7 +33,15 @@ export default class App extends React.Component<any, IAppState> {
           <Logo />
         </div>
         <div className={styles.editor}>
+          <button onClick={() => {
+            count += 1;
+            this.setState({ mdstr: `String ${count}` });
+          }}>Modify Markdown</button>
+          <button onClick={() => {
+            this.setState({ visible: !this.state.visible })
+          }}>{this.state.visible ? 'Show' : 'Hide'}</button>
           <MarkdownEditor
+            visible={this.state.visible}
             options={{
               autofocus: true,
               showCursorWhenSelecting: true,

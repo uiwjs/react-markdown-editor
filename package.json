@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@kkt/loader-less": "5.10.3",
-    "@kkt/loader-raw": "5.10.3",
+    "@kkt/loader-raw": "5.11.1",
     "@types/codemirror": "0.0.95",
     "@types/jest": "24.9.1",
     "@types/prop-types": "15.7.3",

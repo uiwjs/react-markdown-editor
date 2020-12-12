@@ -60,7 +60,7 @@
     "@uiw/reset.css": "1.0.4",
     "babel-plugin-transform-remove-imports": "1.4.1",
     "compile-less-cli": "1.5.1",
-    "kkt": "5.10.3",
+    "kkt": "5.11.1",
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "tsbb": "1.7.7"

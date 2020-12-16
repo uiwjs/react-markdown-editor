@@ -59,7 +59,7 @@
     "@uiw/react-markdown-preview": "1.0.9",
     "@uiw/reset.css": "1.0.4",
     "babel-plugin-transform-remove-imports": "1.4.1",
-    "compile-less-cli": "1.5.1",
+    "compile-less-cli": "1.6.0",
     "kkt": "5.10.3",
     "react": "16.13.0",
     "react-dom": "16.13.0",

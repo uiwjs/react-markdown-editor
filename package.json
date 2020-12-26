@@ -9,16 +9,17 @@
   "scripts": {
     "prepare": "npm run build",
     "released": "npm run build && npm run doc",
-    "doc": "ENTRYDIR=website kkt build",
-    "start": "ENTRYDIR=website PUBLIC_URL=/ kkt start",
+    "doc": "kkt build --app-src ./website",
+    "start": "kkt start --app-src ./website",
     "build": "npm run ts:build && npm run types:esm && npm run types:cjs && npm run css:build && npm run css:build:dist",
     "types:build": "tsbb types --sourceRoot src --target ESNEXT",
     "types:watch": "npm run types:esm -- --watch & npm run types:cjs -- --watch",
     "types:esm": "npm run types:build -- --outDir ../lib/esm",
     "types:cjs": "npm run types:build -- --outDir ../lib/cjs",
-    "watch": "npm run ts:watch & npm run types:watch",
+    "watch": "npm run ts:watch & npm run types:watch & npm run css:watch",
     "ts:watch": "tsbb watch --env-name esm:dev --env-name cjs --target react",
     "ts:build": "tsbb build --target react",
+    "css:watch": "compile-less -d src -o lib/esm --watch",
     "css:build": "compile-less -d src -o lib/esm",
     "css:build:dist": "compile-less -d src --combine dist/markdown-editor.css --rm-global"
   },
@@ -37,7 +38,10 @@
     "dist"
   ],
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "dependencies": {
     "@types/classnames": "^2.2.7",
@@ -48,8 +52,9 @@
     "react-markdown": "^4.3.1"
   },
   "devDependencies": {
-    "@kkt/loader-less": "5.10.3",
-    "@kkt/loader-raw": "5.10.3",
+    "@kkt/less-modules": "6.0.11",
+    "@kkt/raw-modules": "6.0.11",
+    "@kkt/scope-plugin-options": "6.0.11",
     "@types/codemirror": "0.0.95",
     "@types/jest": "24.9.1",
     "@types/prop-types": "15.7.3",
@@ -59,8 +64,8 @@
     "@uiw/react-markdown-preview": "1.0.9",
     "@uiw/reset.css": "1.0.4",
     "babel-plugin-transform-remove-imports": "1.4.1",
-    "compile-less-cli": "1.5.1",
-    "kkt": "5.10.3",
+    "compile-less-cli": "1.6.0",
+    "kkt": "6.0.11",
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "tsbb": "1.7.7"

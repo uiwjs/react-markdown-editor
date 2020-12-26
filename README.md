@@ -7,8 +7,11 @@
 <!--dividing-->
 
 <p align="center">
+  <a href="https://github.com/uiwjs/react-markdown-editor/actions">
+    <img alt="Build & Deploy" src="https://github.com/uiwjs/react-markdown-editor/workflows/Build%20&%20Deploy/badge.svg">
+  </a>
   <a href="https://github.com/uiwjs/react-markdown-editor/issues">
-    <img src="https://img.shields.io/github/issues/uiwjs/react-markdown-editor.svg">
+    <img alt="Issues" src="https://img.shields.io/github/issues/uiwjs/react-markdown-editor.svg">
   </a>
   <a href="https://github.com/uiwjs/react-markdown-editor/network">
     <img alt="Forks" src="https://img.shields.io/github/forks/uiwjs/react-markdown-editor.svg">

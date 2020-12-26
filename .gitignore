@@ -9,6 +9,7 @@ node_modules
 doc
 build
 coverage
+package-lock.json
 
 npm-debug.log*
 lerna-debug.log

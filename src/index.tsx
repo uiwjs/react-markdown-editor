@@ -6,6 +6,8 @@ import ToolBar, { IToolBarProps } from './components/ToolBar';
 import { getCommands, getModeCommands } from './commands';
 import './index.less';
 
+export * from './commands';
+
 export interface IMarkdownEditor extends IProps, ICodeMirror {
   prefixCls?: string,
   value?: string,

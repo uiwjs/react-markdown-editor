@@ -44,24 +44,21 @@
     ]
   },
   "dependencies": {
-    "@types/classnames": "^2.2.7",
-    "@types/highlight.js": "^9.12.3",
-    "classnames": "^2.2.6",
-    "codemirror": "^5.52.0",
-    "highlight.js": "^10.0.0",
-    "react-markdown": "^4.3.1"
+    "@types/classnames": "^2.2.11",
+    "@uiw/react-markdown-preview": "2.1.1",
+    "classnames": "2.2.6",
+    "codemirror": "5.59.2"
   },
   "devDependencies": {
     "@kkt/less-modules": "6.0.11",
     "@kkt/raw-modules": "6.0.11",
     "@kkt/scope-plugin-options": "6.0.11",
-    "@types/codemirror": "0.0.95",
+    "@types/codemirror": "0.0.108",
     "@types/jest": "24.9.1",
     "@types/prop-types": "15.7.3",
     "@types/react": "16.9.23",
     "@types/react-dom": "16.9.8",
     "@uiw/react-github-corners": "1.2.0",
-    "@uiw/react-markdown-preview": "1.0.9",
     "@uiw/reset.css": "1.0.4",
     "babel-plugin-transform-remove-imports": "1.5.2",
     "compile-less-cli": "1.7.0",

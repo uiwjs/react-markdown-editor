@@ -77,7 +77,7 @@ export default class ReactCodeMirror extends Component<ICodeMirror, ICodeMirrorS
     width: '100%',
   }
   public textarea!: HTMLTextAreaElement;
-  public editor!: any;
+  public editor!: CodeMirror.Editor;
   // public editor!: Doc | Editor | EditorFromTextArea | Editor;
   public constructor(props: Readonly<ICodeMirror>) {
     super(props);

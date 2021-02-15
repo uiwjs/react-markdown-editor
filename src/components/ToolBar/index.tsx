@@ -1,34 +1,57 @@
 import classnames from 'classnames';
 import * as React from "react";
-import { IIconProps, IProps } from '../../common/props';
-import icon from '../Icon/bar';
+import { IProps } from '../../common/props';
+import CodeMirror from 'codemirror';
 import './index.less';
+import { ICommand, defaultCommands } from '../../commands';
+import { IMarkdownEditor } from '../../';
 
 export interface IToolBarProps extends IProps {
-  prefixCls: string,
-  toolbars: string[] | false,
-  onClick: (type: string) => void,
+  editorProps: IMarkdownEditor;
+  mode?: boolean;
+  preview?: HTMLDivElement | null;
+  container?: HTMLDivElement | null;
+  containerEditor?: HTMLDivElement | null;
+  prefixCls?: string;
+  editor?: CodeMirror.Editor;
+  toolbars?: (keyof (typeof defaultCommands))[] | ICommand[] | false;
+  onClick?: (type: string) => void;
 }
 
-export default class ToolBar extends React.PureComponent<IToolBarProps, {}> {
-  public static displayName = 'ToolBar';
-  public static defaultProps: IToolBarProps = {
-    onClick: () => null,
-    prefixCls: 'md-editor',
-    toolbars: ['bold', 'italic', 'header', 'strike', 'underline', 'olist', 'ulist', 'todo', 'link', 'image', 'quote'],
-  };
-  public render() {
-    const { prefixCls, className, onClick, toolbars, ...htmlProps } = this.props;
-    if (!toolbars || toolbars.length === 0) return null;
-    return (
-      <div className={classnames(`${prefixCls}-toolbar`, className)} {...htmlProps}>
-        {toolbars.map((name: string, key) => {
-          const Icon = (icon as unknown as IIconProps)[name];
-          return (
-            <button type="button" key={key} onClick={onClick.bind(this, name)}> {Icon} </button>
-          );
-        })}
-      </div>
-    );
+export default function ToolBar(props: IToolBarProps) {
+  const { prefixCls = 'md-editor', className, onClick, toolbars = [], editor, mode, preview, container, containerEditor, editorProps = {}, ...htmlProps } = props;
+  if (!toolbars || toolbars.length === 0) return null;
+  function handleClick(execute: ICommand['execute']) {
+    if (execute && editor) {
+      execute(editor, editor.getSelection(), editor.getCursor(), { preview, container });
+    }
   }
+  return (
+    <div className={classnames(`${prefixCls}-toolbar`, className, {
+      [`${prefixCls}-toolbar-mode`]: mode,
+    })} {...htmlProps}>
+      {[...toolbars].map((command, key) => {
+        let buttonProps: React.ButtonHTMLAttributes<HTMLButtonElement> = {
+          type: 'button',
+        }
+        const obj = typeof command === 'string' ? defaultCommands[command] : command;
+        if (!obj) return;
+        buttonProps.children = obj.icon;
+        buttonProps.onClick = () => handleClick(obj.execute);
+        if (obj.button && typeof obj.button === 'object') {
+          const btn: React.ButtonHTMLAttributes<HTMLButtonElement> = obj.button;
+          (Object.keys(btn) as (keyof React.ButtonHTMLAttributes<HTMLButtonElement>)[]).forEach((key) => {
+            buttonProps[key] = btn[key];
+          });
+        } else if (typeof obj.button === 'function') {
+          return React.cloneElement(obj.button(obj, editorProps, { preview, container, containerEditor, editor }), { key });
+        }
+
+        return (
+          <button {...buttonProps} key={key} />
+        );
+      })}
+    </div>
+  );
+
 }

@@ -21,7 +21,9 @@
     "jsx": "react",
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "noFallthroughCasesInSwitch": true,
+    "noEmit": true
   },
   "include": [
     "website",

@@ -54,6 +54,8 @@ const Dome = () => (
     onChange={this.updateMarkdown}
   />
 );
+
+ReactDOM.render(<Dome />, document.getElementById('app'));
 ```
 
 ## Controlled Usage
@@ -73,10 +75,7 @@ function App() {
   );
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+ReactDOM.render(<App />, document.getElementById('app'));
 ```
 
 ## Custom Toolbars

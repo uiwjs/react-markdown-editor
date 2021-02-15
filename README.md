@@ -56,35 +56,21 @@ const Dome = () => (
 );
 ```
 
-controlled usage
+## Controlled Usage
 
 ```jsx
 import MarkdownEditor from '@uiw/react-markdown-editor';
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      markdown: '# This is a H1  \n## This is a H2  \n###### This is a H6',
-    };
-    this.updateMarkdown = this.updateMarkdown.bind(this);
-  }
-
-  updateMarkdown(editor, data, value) {
-    this.setState({ markdown: value });
-  }
-
-  render() {
-    return (
-      <MarkdownEditor
-        value={this.state.markdown}
-        onChange={this.updateMarkdown}
-      />
-    );
-  }
+function App() {
+  const [markdown, setMarkdown] = useState('# This is a H1  \n## This is a H2  \n###### This is a H6');
+  return (
+    <MarkdownEditor
+      value={markdown}
+      onChange={(editor, data, value) => setMarkdown(value)}
+    />
+  );
 }
 
 ReactDOM.render(
@@ -93,17 +79,52 @@ ReactDOM.render(
 );
 ```
 
+## Custom Toolbars
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+
+const title2 = {
+  name: 'title2',
+  keyCommand: 'title2',
+  icon: (
+    <svg width="12" height="12" viewBox="0 0 512 512">
+      <path fill="currentColor" d="M496 80V48c0-8.837-7.163-16-16-16H320c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h37.621v128H154.379V96H192c8.837 0 16-7.163 16-16V48c0-8.837-7.163-16-16-16H32c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h37.275v320H32c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h160c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16h-37.621V288H357.62v128H320c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h160c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16h-37.275V96H480c8.837 0 16-7.163 16-16z" />
+    </svg>
+  ),
+  execute: (editor, selection, position) => {
+    const value = selection ? `## ${selection}` : '## ';
+    editor.replaceSelection(value);
+    position.ch = !!selection ? position.ch : position.ch + 3;
+    editor.setCursor(position.line, position.ch);
+    editor.focus();
+  },
+};
+
+const Dome = () => (
+  <MarkdownEditor
+    value="Hello Markdown!"
+    toolbars={[
+      'bold', 'italic', 'header', title2
+    ]}
+  />
+);
+
+ReactDOM.render(<Dome />, document.getElementById('app'));
+```
+
 ## Props
 
 - `value (string)` - the raw markdown that will be converted to html (**required**)
-- `visible?:boolean` - Shows a preview that will be converted to html.
-- `toolbars?:array` - Tool display settings.
-- `toolbarsMode?:array` - Tool display settings.
-- `onChange?:function(editor: IInstance, data: CodeMirror.EditorChange, value: string)` - called when a change is made (**required**)
+- `visible?: boolean` - Shows a preview that will be converted to html.
+- `toolbars?: ICommand[] | string[]` - Tool display settings.
+- `toolbarsMode?: ICommand[] | string[]` - Tool display settings.
+- `onChange?:function(editor: IInstance, data: CodeMirror.EditorChange, value: string)` - called when a change is made
 - `onBlur?: function(editor: IInstance, event: Event)` - event occurs when an object loses focus
-- `previewProps` - [react-markdown options](https://github.com/rexxars/react-markdown#options)
+- `previewProps` - [react-markdown options](https://github.com/uiwjs/react-markdown-preview/tree/v2.1.0#options-props)
 
-> [Other Props Options](https://github.com/uiwjs/react-markdown-editor/blob/8de6abbf628b6d272d7da1c28e985fbbcba71b93/src/components/CodeMirror/index.tsx#L21-L60)
+> [Other Props Options](https://github.com/uiwjs/react-markdown-editor/blob/812937bf90abadd5f795d06d97ead9f59cd35954/src/index.tsx#L11-L21)
 
 
 ### Development

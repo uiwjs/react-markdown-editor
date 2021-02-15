@@ -16,6 +16,7 @@ lerna-debug.log
 yarn-error.log
 
 .DS_Store
+.eslintcache
 .cache
 .vscode
 .idea

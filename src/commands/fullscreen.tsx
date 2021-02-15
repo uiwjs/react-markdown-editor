@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import classnames from 'classnames';
 import { ICommand} from './';
 import { IMarkdownEditor } from '../';
 
@@ -58,9 +57,7 @@ const Fullscreen: React.FC<{ command: ICommand, editorProps: IMarkdownEditor & O
     <button
       onClick={() => setFull(!full)}
       type="button"
-      className={classnames({
-        'active': full
-      })}
+      className={full ? 'active' : ''}
     >
       {props.command.icon}
     </button>

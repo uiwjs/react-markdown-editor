@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import classnames from 'classnames';
 import { ICommand} from './';
 import { IMarkdownEditor } from '../';
 
@@ -44,9 +43,7 @@ const Preview: React.FC<{ command: ICommand, editorProps: IMarkdownEditor & Opti
     <button
       onClick={() => setVisible(!visible)}
       type="button"
-      className={classnames({
-        'active': visible
-      })}
+      className={visible ? 'active' : ''}
     >
       {props.command.icon}
     </button>

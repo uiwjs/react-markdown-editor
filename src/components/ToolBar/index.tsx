@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import * as React from "react";
 import { IProps } from '../../common/props';
 import CodeMirror from 'codemirror';
@@ -27,9 +26,7 @@ export default function ToolBar(props: IToolBarProps) {
     }
   }
   return (
-    <div className={classnames(`${prefixCls}-toolbar`, className, {
-      [`${prefixCls}-toolbar-mode`]: mode,
-    })} {...htmlProps}>
+    <div className={`${prefixCls}-toolbar ${className} ${mode ? `${prefixCls}-toolbar-mode` : ''}`} {...htmlProps}>
       {[...toolbars].map((command, key) => {
         let buttonProps: React.ButtonHTMLAttributes<HTMLButtonElement> = {
           type: 'button',

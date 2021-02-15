@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import React, { useState, createRef, useRef, useEffect } from 'react';
 import { IProps } from './common/props';
 import CodeMirror, { ICodeMirror } from './components/CodeMirror';
@@ -49,10 +48,10 @@ export default function MarkdownEditor(props: IMarkdownEditor) {
   }
   return (
     <div ref={container}>
-      <div className={classnames(prefixCls, className)}>
+      <div className={`${prefixCls || ''} ${className || ''}`}>
         <ToolBar {...toolBarProps} toolbars={toolbarsMode} mode />
         <ToolBar {...toolBarProps} toolbars={toolbars} />
-        <div className={classnames(`${prefixCls}-content`)}>
+        <div className={`${prefixCls}-content`}>
           <div className={`${prefixCls}-content-editor`} ref={containerEditor}>
             {visibleEditor && (
               <CodeMirror
@@ -69,7 +68,7 @@ export default function MarkdownEditor(props: IMarkdownEditor) {
           <MarkdownPreview
             {...previewProps}
             data-visible={!!visible}
-            className={classnames(`${prefixCls}-preview`)}
+            className={`${prefixCls}-preview`}
             ref={(instance) => {
               if(instance && instance.mdp) {
                 previewContainer.current = instance.mdp.current

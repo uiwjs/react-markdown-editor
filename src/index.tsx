@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import * as React from "react";
+import React, { useState, createRef, useRef, useEffect } from 'react';
 import { IProps } from './common/props';
 import CodeMirror, { ICodeMirror } from './components/CodeMirror';
 import MarkdownPreview, { MarkdownPreviewProps } from '@uiw/react-markdown-preview';
@@ -28,13 +28,13 @@ export default function MarkdownEditor(props: IMarkdownEditor) {
     visible = true,
     visibleEditor = true,
     previewProps = {}, ...codemirrorProps } = props;
-  const [value, setValue] = React.useState(props.value || '');
-  const codeMirror = React.createRef<CodeMirror>();
-  const previewContainer = React.useRef<HTMLDivElement | null>()
-  const [editor, setEditor] = React.useState<CodeMirror.Editor>();
-	const container = React.useRef<HTMLDivElement>(null);
-	const containerEditor = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
+  const [value, setValue] = useState(props.value || '');
+  const codeMirror = createRef<CodeMirror>();
+  const previewContainer = useRef<HTMLDivElement | null>()
+  const [editor, setEditor] = useState<CodeMirror.Editor>();
+	const container = useRef<HTMLDivElement>(null);
+	const containerEditor = useRef<HTMLDivElement>(null);
+  useEffect(() => {
     if (codeMirror.current) {
       setEditor(codeMirror.current.editor);
     }

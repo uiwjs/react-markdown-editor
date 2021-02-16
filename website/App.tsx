@@ -1,5 +1,5 @@
 import MarkdownEditor from '../';
-import '@uiw/reset.css/reset.less';
+import '@uiw/reset.css';
 import React, { useState } from 'react';
 import DocumentStr from '../README.md';
 import styles from './App.module.less';

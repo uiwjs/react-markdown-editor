@@ -63,7 +63,7 @@
     "kkt": "6.6.3",
     "react": "16.13.0",
     "react-dom": "16.13.0",
-    "tsbb": "1.7.7"
+    "tsbb": "1.7.9"
   },
   "browserslist": {
     "production": [

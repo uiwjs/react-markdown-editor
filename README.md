@@ -80,9 +80,12 @@ ReactDOM.render(<App />, document.getElementById('app'));
 
 ## Custom Toolbars
 
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/react-markdown-editorcustom-toolbars-forked-r9ocu?fontsize=14&hidenavigation=1&theme=dark)
+
 ```jsx
 import React from "react";
 import ReactDOM from "react-dom";
+import MarkdownEditor from '@uiw/react-markdown-editor';
 
 const title2 = {
   name: 'title2',

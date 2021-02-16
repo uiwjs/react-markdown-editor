@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICommand} from './'
+import { ICommand } from './'
 
 export const bold: ICommand = {
   name: 'bold',

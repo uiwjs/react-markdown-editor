@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ICommand} from './';
+import { ICommand } from './';
 import { IMarkdownEditor } from '../';
 
 type Options = {

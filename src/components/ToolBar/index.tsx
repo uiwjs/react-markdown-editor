@@ -1,11 +1,11 @@
 import * as React from "react";
-import { IProps } from '../../common/props';
 import CodeMirror from 'codemirror';
 import './index.less';
 import { ICommand, defaultCommands } from '../../commands';
 import { IMarkdownEditor } from '../../';
 
-export interface IToolBarProps extends IProps {
+export type IToolBarProps<T = (keyof (typeof defaultCommands)) | ICommand> = {
+  className?: string;
   editorProps: IMarkdownEditor;
   mode?: boolean;
   preview?: HTMLDivElement | null;
@@ -13,7 +13,7 @@ export interface IToolBarProps extends IProps {
   containerEditor?: HTMLDivElement | null;
   prefixCls?: string;
   editor?: CodeMirror.Editor;
-  toolbars?: (keyof (typeof defaultCommands))[] | ICommand[] | false;
+  toolbars?: T[];
   onClick?: (type: string) => void;
 }
 
@@ -26,7 +26,7 @@ export default function ToolBar(props: IToolBarProps) {
     }
   }
   return (
-    <div className={`${prefixCls}-toolbar ${className} ${mode ? `${prefixCls}-toolbar-mode` : ''}`} {...htmlProps}>
+    <div className={`${prefixCls}-toolbar ${className || ''} ${mode ? `${prefixCls}-toolbar-mode` : ''}`} {...htmlProps}>
       {[...toolbars].map((command, key) => {
         let buttonProps: React.ButtonHTMLAttributes<HTMLButtonElement> = {
           type: 'button',

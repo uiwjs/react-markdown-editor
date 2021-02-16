@@ -1,5 +1,4 @@
 import React, { useState, createRef, useRef, useEffect } from 'react';
-import { IProps } from './common/props';
 import CodeMirror, { ICodeMirror } from './components/CodeMirror';
 import MarkdownPreview, { MarkdownPreviewProps } from '@uiw/react-markdown-preview';
 import ToolBar, { IToolBarProps } from './components/ToolBar';
@@ -8,7 +7,8 @@ import './index.less';
 
 export * from './commands';
 
-export interface IMarkdownEditor extends IProps, ICodeMirror {
+export interface IMarkdownEditor extends ICodeMirror {
+  className?: string;
   prefixCls?: string,
   value?: string,
   height?: number,

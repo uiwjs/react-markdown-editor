@@ -2,7 +2,6 @@ import * as CodeMirror from 'codemirror';
 import 'codemirror/mode/markdown/markdown';
 import React, { Component } from 'react';
 import { DomEvent, IDefineModeOptions, IEventDict, IGetSelectionOptions, IInstance, ISetScrollOptions, ISetSelectionOptions } from '../../common/codemirror';
-import { IProps } from '../../common/props';
 import './codemirror.less';
 import './index.less';
 
@@ -17,7 +16,7 @@ if (!SERVER_RENDERED) {
   cm = require('codemirror');
 }
 
-export interface ICodeMirror extends IProps {
+export interface ICodeMirror {
   value?: string,
   width?: number | string,
   height?: number | string,

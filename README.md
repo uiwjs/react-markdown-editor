@@ -66,10 +66,10 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 function App() {
-  const [markdown, setMarkdown] = useState('# This is a H1  \n## This is a H2  \n###### This is a H6');
+  const [markdown, setMarkdown] = useState("");
   return (
     <MarkdownEditor
-      value={markdown}
+      value="# This is a H1  \n## This is a H2  \n###### This is a H6"
       onChange={(editor, data, value) => setMarkdown(value)}
     />
   );

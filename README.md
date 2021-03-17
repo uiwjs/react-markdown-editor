@@ -60,6 +60,8 @@ ReactDOM.render(<Dome />, document.getElementById('app'));
 
 ## Controlled Usage
 
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/react-markdown-editor-ybpce?file=/src/App.js)
+
 ```jsx
 import MarkdownEditor from '@uiw/react-markdown-editor';
 import React, { useState } from 'react';

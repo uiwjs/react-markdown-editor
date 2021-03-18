@@ -109,12 +109,18 @@ export default class ReactCodeMirror extends Component<ICodeMirror, ICodeMirrorS
     const editorOption = { tabSize: 2, lineNumbers: true, ...options, mode: 'markdown' };
     // 生成codemirror实例
     this.editor = cm.fromTextArea(this.textarea, editorOption) as CodeMirror.EditorFromTextArea;
-
     this.renderCodeMirror(this.props);
   }
 
-  componentDidUpdate() {
-    this.renderCodeMirror(this.props);
+  componentDidUpdate(prevProps: ICodeMirror) {
+    const { value, width, height } = this.props;
+    if (this.editor.getValue() !== value && value !== prevProps.value) {
+      this.editor.setValue(value || '');
+    }
+    if (width !== prevProps.width || height !== prevProps.height) {
+      // Setting Size
+      this.editor.setSize(width, height);
+    }
   }
 
   public shouldComponentUpdate(nextProps: ICodeMirror, nextState: ICodeMirrorState) {

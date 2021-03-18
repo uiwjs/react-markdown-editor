@@ -1,4 +1,4 @@
-import React, { useState, createRef, useRef, useEffect } from 'react';
+import React, { useState, createRef, useRef, useEffect, useImperativeHandle, useMemo } from 'react';
 import CodeMirror, { ICodeMirror } from './components/CodeMirror';
 import MarkdownPreview, { MarkdownPreviewProps } from '@uiw/react-markdown-preview';
 import ToolBar, { IToolBarProps } from './components/ToolBar';
@@ -20,7 +20,20 @@ export interface IMarkdownEditor extends ICodeMirror {
   options?: CodeMirror.EditorConfiguration,
 }
 
-export default function MarkdownEditor(props: IMarkdownEditor) {
+export interface MarkdownEditorRef {
+  editor?: CodeMirror.Editor;
+  preview?: HTMLDivElement | null;
+}
+
+export default React.forwardRef<MarkdownEditorRef, IMarkdownEditor>(MarkdownEditor);
+
+function MarkdownEditor(
+  props: IMarkdownEditor,
+  ref?:
+    | ((instance: MarkdownEditorRef) => void)
+    | React.RefObject<MarkdownEditorRef>
+    | null
+) {
   const {
     prefixCls = 'md-editor', className,
     onChange,
@@ -35,6 +48,12 @@ export default function MarkdownEditor(props: IMarkdownEditor) {
   const [editor, setEditor] = useState<CodeMirror.Editor>();
 	const container = useRef<HTMLDivElement>(null);
 	const containerEditor = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => ({
+    editor: editor,
+    preview: previewContainer.current,
+  }));
+
   useEffect(() => {
     if (codeMirror.current) {
       setEditor(codeMirror.current.editor);
@@ -48,6 +67,17 @@ export default function MarkdownEditor(props: IMarkdownEditor) {
     containerEditor: containerEditor.current,
     editorProps: props
   }
+  const codeEditor = useMemo(() => (
+    <CodeMirror
+      visibleEditor={visibleEditor}
+      {...codemirrorProps}
+      ref={codeMirror}
+      onChange={(editor, data) => {
+        setValue(editor.getValue());
+        onChange && onChange(editor, data, editor.getValue())
+      }}
+    />
+  ), [visibleEditor, codemirrorProps])
   return (
     <div ref={container}>
       <div className={`${prefixCls || ''} ${className || ''}`}>
@@ -55,17 +85,7 @@ export default function MarkdownEditor(props: IMarkdownEditor) {
         <ToolBar {...toolBarProps} toolbars={toolbars} />
         <div className={`${prefixCls}-content`}>
           <div className={`${prefixCls}-content-editor`} ref={containerEditor}>
-            {visibleEditor && (
-              <CodeMirror
-                visibleEditor={visibleEditor}
-                {...codemirrorProps}
-                ref={codeMirror}
-                onChange={(editor, data) => {
-                  setValue(editor.getValue());
-                  onChange && onChange(editor, data, editor.getValue())
-                }}
-              />
-            )}
+            {visibleEditor && codeEditor}
           </div>
           <MarkdownPreview
             {...previewProps}

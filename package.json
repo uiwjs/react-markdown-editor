@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@kkt/less-modules": "6.8.0",
-    "@kkt/raw-modules": "6.6.3",
+    "@kkt/raw-modules": "6.8.0",
     "@kkt/scope-plugin-options": "6.8.0",
     "@types/codemirror": "0.0.108",
     "@types/jest": "26.0.21",

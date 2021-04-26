@@ -50,7 +50,7 @@
   "devDependencies": {
     "@kkt/less-modules": "6.8.3",
     "@kkt/raw-modules": "6.8.3",
-    "@kkt/scope-plugin-options": "6.8.3",
+    "@kkt/scope-plugin-options": "6.9.0",
     "@types/codemirror": "0.0.109",
     "@types/jest": "26.0.22",
     "@types/prop-types": "15.7.3",

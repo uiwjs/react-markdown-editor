@@ -54,7 +54,7 @@
     "@types/codemirror": "0.0.109",
     "@types/jest": "26.0.22",
     "@types/prop-types": "15.7.3",
-    "@types/react": "17.0.3",
+    "@types/react": "17.0.5",
     "@types/react-dom": "17.0.3",
     "@uiw/react-github-corners": "1.2.0",
     "@uiw/reset.css": "1.0.4",

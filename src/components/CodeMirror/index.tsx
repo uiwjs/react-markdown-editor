@@ -151,7 +151,7 @@ export default class ReactCodeMirror extends Component<ICodeMirror, ICodeMirrorS
     const eventDict = this.getEventHandleFromProps();
     Object.keys(eventDict).forEach((event: string) => {
       const handle = this.props[event];
-      this.editor.on(eventDict[event], handle);
+      this.editor.on(eventDict[event] as keyof CodeMirror.EditorEventMap, handle);
     });
     // Init value
     this.editor.setValue(value || '');

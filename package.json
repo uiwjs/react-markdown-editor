@@ -58,7 +58,7 @@
     "@uiw/react-github-corners": "1.2.0",
     "@uiw/reset.css": "1.0.4",
     "babel-plugin-transform-remove-imports": "1.5.4",
-    "compile-less-cli": "1.7.0",
+    "compile-less-cli": "1.8.0",
     "kkt": "6.9.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",

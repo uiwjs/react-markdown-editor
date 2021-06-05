@@ -11,7 +11,7 @@ export const link: ICommand = {
     </svg>
   ),
   execute: (editor, selection, position) => {
-    const value = '[连接说明](连接地址 "连接标题")';
+    const value = '[]()';
     editor.replaceSelection(value);
     position.ch = !!selection ? position.ch : position.ch + 1;
     editor.setCursor(position.line, position.ch);

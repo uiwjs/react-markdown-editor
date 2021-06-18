@@ -48,7 +48,7 @@
     "codemirror": "5.61.1"
   },
   "devDependencies": {
-    "@kkt/less-modules": "6.9.0",
+    "@kkt/less-modules": "6.10.4",
     "@kkt/raw-modules": "6.9.0",
     "@kkt/scope-plugin-options": "6.9.0",
     "@types/codemirror": "5.60.0",

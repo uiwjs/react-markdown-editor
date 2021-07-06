@@ -51,7 +51,7 @@
     "@kkt/less-modules": "6.10.4",
     "@kkt/raw-modules": "6.10.4",
     "@kkt/scope-plugin-options": "6.10.4",
-    "@types/codemirror": "5.60.1",
+    "@types/codemirror": "5.60.2",
     "@types/jest": "26.0.23",
     "@types/react": "17.0.9",
     "@types/react-dom": "17.0.6",

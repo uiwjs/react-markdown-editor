@@ -11,7 +11,7 @@ export const image: ICommand = {
     </svg>
   ),
   execute: (editor, selection, position) => {
-    const value = selection ? `${selection} ![](图片地址 "图片描述")` : '![图片描述](图片地址 "图片描述")\n';
+    const value = selection ? `${selection} ![]()` : '![]()\n';
     editor.replaceSelection(value);
     // position.ch = !!selection ? position.ch : position.ch + 1;
     editor.setCursor(position.line, position.ch);

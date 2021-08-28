@@ -32,7 +32,7 @@ export default function ToolBar(props: IToolBarProps) {
           type: 'button',
         }
         const obj = typeof command === 'string' ? defaultCommands[command] : command;
-        if (!obj) return;
+        if (!obj) return null;
         buttonProps.children = obj.icon;
         buttonProps.onClick = () => handleClick(obj.execute);
         if (obj.button && typeof obj.button === 'object') {

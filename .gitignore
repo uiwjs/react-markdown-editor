@@ -1,14 +1,12 @@
 cjs
 esm
-esnext
-umd
-typings
 dist
 lib
-node_modules
 doc
 build
 coverage
+node_modules
+markdown-editor.css
 package-lock.json
 
 npm-debug.log*

@@ -118,6 +118,44 @@ const Dome = () => (
 ReactDOM.render(<Dome />, document.getElementById('app'));
 ```
 
+## Support Nextjs
+
+Use examples in [nextjs](https://nextjs.org/). [#52](https://github.com/uiwjs/react-md-editor/issues/52#issuecomment-848969341) [#224](https://github.com/uiwjs/react-md-editor/issues/224#issuecomment-901112079)
+
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/nextjs-example-react-markdown-editor-72s9d?fontsize=14&hidenavigation=1&theme=dark)
+
+```bash
+npm install next-remove-imports
+npm install @uiw/react-markdown-editor
+```
+
+```js
+// next.config.js
+const removeImports = require('next-remove-imports')();
+module.exports = removeImports({});
+```
+
+```jsx
+import dynamic from 'next/dynamic';
+import '@uiw/react-markdown-editor/markdown-editor.css';
+import '@uiw/react-markdown-preview/markdown.css';
+
+const MarkdownEditor = dynamic(
+  () => import("@uiw/react-markdown-editor").then((mod) => mod.default),
+  { ssr: false }
+);
+
+function HomePage() {
+  return (
+    <div>
+      <MarkdownEditor value="Hello Markdown!" />
+    </div>
+  );
+}
+
+export default HomePage;
+```
+
 ## Props
 
 - `value (string)` - the raw markdown that will be converted to html (**required**)

@@ -10,17 +10,8 @@
   <a href="https://github.com/uiwjs/react-markdown-editor/actions">
     <img alt="Build & Deploy" src="https://github.com/uiwjs/react-markdown-editor/workflows/Build%20&%20Deploy/badge.svg">
   </a>
-  <a href="https://github.com/uiwjs/react-markdown-editor/issues">
-    <img alt="Issues" src="https://img.shields.io/github/issues/uiwjs/react-markdown-editor.svg">
-  </a>
-  <a href="https://github.com/uiwjs/react-markdown-editor/network">
-    <img alt="Forks" src="https://img.shields.io/github/forks/uiwjs/react-markdown-editor.svg">
-  </a>
-  <a href="https://github.com/uiwjs/react-markdown-editor/stargazers">
-    <img alt="Stars" src="https://img.shields.io/github/stars/uiwjs/react-markdown-editor.svg">
-  </a>
-  <a href="https://github.com/uiwjs/react-markdown-editor/releases">
-    <img alt="Release" src="https://img.shields.io/github/release/uiwjs/react-markdown-editor.svg">
+  <a href="https://www.npmjs.com/package/@uiw/react-markdown-editor">
+    <img alt="NPM Download" src="https://img.shields.io/npm/dm/@uiw/react-markdown-editor.svg?style=flat">
   </a>
   <a href="https://www.npmjs.com/package/@uiw/react-markdown-editor">
     <img alt="npm version" src="https://img.shields.io/npm/v/@uiw/react-markdown-editor.svg">

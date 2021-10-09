@@ -40,13 +40,13 @@
   },
   "dependencies": {
     "@uiw/react-markdown-preview": "3.3.2",
-    "codemirror": "5.62.3"
+    "codemirror": "5.63.1"
   },
   "devDependencies": {
     "@kkt/less-modules": "6.11.0",
     "@kkt/raw-modules": "6.11.0",
     "@kkt/scope-plugin-options": "6.11.0",
-    "@types/codemirror": "5.60.2",
+    "@types/codemirror": "5.60.4",
     "@types/jest": "27.0.1",
     "@types/react": "17.0.20",
     "@types/react-dom": "17.0.9",

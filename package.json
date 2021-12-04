@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-markdown-editor",
-  "version": "3.2.5",
+  "version": "3.2.6",
   "description": "A markdown editor with preview, implemented with React.js and TypeScript.",
   "homepage": "https://uiwjs.github.io/react-markdown-editor",
   "main": "cjs/index.js",
@@ -49,19 +49,19 @@
     "@kkt/raw-modules": "6.11.0",
     "@kkt/scope-plugin-options": "6.11.0",
     "@types/codemirror": "5.60.5",
-    "@types/jest": "27.0.2",
-    "@types/react": "17.0.28",
-    "@types/react-dom": "17.0.9",
+    "@types/jest": "27.0.3",
+    "@types/react": "17.0.37",
+    "@types/react-dom": "17.0.11",
     "@uiw/react-github-corners": "1.5.3",
     "@uiw/reset.css": "1.0.5",
     "compile-less-cli": "1.8.9",
     "kkt": "6.11.0",
-    "prettier": "2.4.1",
-    "pretty-quick": "3.1.1",
+    "prettier": "2.5.0",
+    "pretty-quick": "3.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "tsbb": "3.4.4",
-    "husky": "7.0.2"
+    "tsbb": "3.5.2",
+    "husky": "7.0.4"
   },
   "browserslist": {
     "production": [

@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react-markdown-editor/static/css/main.d0d93058.css",
-    "main.js": "/react-markdown-editor/static/js/main.c8b09c06.js",
-    "refractor-vendor.js": "/react-markdown-editor/static/js/refractor-vendor.ffff3bb6.js",
+    "main.css": "/react-markdown-editor/static/css/main.573aa934.css",
+    "main.js": "/react-markdown-editor/static/js/main.ac992756.js",
+    "refractor-vendor.js": "/react-markdown-editor/static/js/refractor-vendor.27b67baa.js",
     "parse5-vendor.js": "/react-markdown-editor/static/js/parse5-vendor.92ba3de1.js",
     "react-vendor.js": "/react-markdown-editor/static/js/react-vendor.66477096.js",
-    "codemirror-vendor.js": "/react-markdown-editor/static/js/codemirror-vendor.74ada98f.js",
+    "codemirror-vendor.js": "/react-markdown-editor/static/js/codemirror-vendor.5c3d7ae8.js",
     "index.html": "/react-markdown-editor/index.html",
-    "main.d0d93058.css.map": "/react-markdown-editor/static/css/main.d0d93058.css.map",
-    "main.c8b09c06.js.map": "/react-markdown-editor/static/js/main.c8b09c06.js.map",
-    "refractor-vendor.ffff3bb6.js.map": "/react-markdown-editor/static/js/refractor-vendor.ffff3bb6.js.map",
+    "main.573aa934.css.map": "/react-markdown-editor/static/css/main.573aa934.css.map",
+    "main.ac992756.js.map": "/react-markdown-editor/static/js/main.ac992756.js.map",
+    "refractor-vendor.27b67baa.js.map": "/react-markdown-editor/static/js/refractor-vendor.27b67baa.js.map",
     "parse5-vendor.92ba3de1.js.map": "/react-markdown-editor/static/js/parse5-vendor.92ba3de1.js.map",
     "react-vendor.66477096.js.map": "/react-markdown-editor/static/js/react-vendor.66477096.js.map",
-    "codemirror-vendor.74ada98f.js.map": "/react-markdown-editor/static/js/codemirror-vendor.74ada98f.js.map"
+    "codemirror-vendor.5c3d7ae8.js.map": "/react-markdown-editor/static/js/codemirror-vendor.5c3d7ae8.js.map"
   },
   "entrypoints": [
-    "static/js/refractor-vendor.ffff3bb6.js",
+    "static/js/refractor-vendor.27b67baa.js",
     "static/js/parse5-vendor.92ba3de1.js",
     "static/js/react-vendor.66477096.js",
-    "static/js/codemirror-vendor.74ada98f.js",
-    "static/css/main.d0d93058.css",
-    "static/js/main.c8b09c06.js"
+    "static/js/codemirror-vendor.5c3d7ae8.js",
+    "static/css/main.573aa934.css",
+    "static/js/main.ac992756.js"
   ]
 }

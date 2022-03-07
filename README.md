@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://github.com/uiwjs/react-markdown-editor/actions">
-    <img alt="Build & Deploy" src="https://github.com/uiwjs/react-markdown-editor/workflows/Build%20&%20Deploy/badge.svg">
+    <img alt="Build & Deploy" src="https://github.com/uiwjs/react-markdown-editor/actions/workflows/ci.yml/badge.svg">
   </a>
   <a href="https://www.npmjs.com/package/@uiw/react-markdown-editor">
     <img alt="NPM Download" src="https://img.shields.io/npm/dm/@uiw/react-markdown-editor.svg?style=flat">
@@ -176,6 +176,16 @@ npm run doc
 - [@uiw/react-md-editor](https://github.com/uiwjs/react-md-editor): A simple markdown editor with preview, implemented with React.js and TypeScript.
 - [@uiw/react-markdown-preview](https://github.com/uiwjs/react-markdown-preview): React component preview markdown text in web browser. 
 
+## Contributors
+
+As always, thanks to our amazing contributors!
+
+<a href="https://github.com/uiwjs/react-markdown-editor/graphs/contributors">
+  <img src="https://uiwjs.github.io/react-markdown-editor/CONTRIBUTORS.svg" />
+</a>
+
+Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
+
 ## License
 
-[MIT © Kenny Wong](./LICENSE)
+Licensed under the MIT License.

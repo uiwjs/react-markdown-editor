@@ -41,7 +41,7 @@
     ]
   },
   "dependencies": {
-    "@uiw/react-markdown-preview": "~3.5.1",
+    "@uiw/react-markdown-preview": "~4.0.0",
     "codemirror": "~5.65.2"
   },
   "devDependencies": {

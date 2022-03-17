@@ -147,6 +147,32 @@ function HomePage() {
 export default HomePage;
 ```
 
+## Support dark-mode/night-mode
+
+By default, the [`dark-mode`](https://github.com/jaywcjlove/dark-mode/) is automatically switched according to the system. If you need to switch manually, just set the `data-color-mode="dark"` parameter for html Element. 
+
+```html
+<html data-color-mode="dark">
+```
+
+```js
+document.documentElement.setAttribute('data-color-mode', 'dark')
+document.documentElement.setAttribute('data-color-mode', 'light')
+```
+
+Inherit custom color variables by adding `.wmde-markdown-var` selector.
+
+```jsx
+const Demo = () => {
+  return (
+    <div>
+      <div className="wmde-markdown-var"> </div>
+      <MarkdownEditor value="Hello Markdown!" />
+    </div>
+  )
+}
+```
+
 ## Props
 
 - `value (string)` - the raw markdown that will be converted to html (**required**)

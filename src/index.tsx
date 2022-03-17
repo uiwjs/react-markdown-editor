@@ -68,7 +68,7 @@ function MarkdownEditor(
     editorProps: props,
   };
   return (
-    <div className={`${prefixCls || ''} ${className || ''}`} ref={container}>
+    <div className={`${prefixCls || ''} wmde-markdown-var ${className || ''}`} ref={container}>
       <ToolBar {...toolBarProps} toolbars={toolbarsMode} mode />
       <ToolBar {...toolBarProps} toolbars={toolbars} />
       <div className={`${prefixCls}-content`} style={{ height: codemirrorProps.height }}>

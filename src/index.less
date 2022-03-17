@@ -1,12 +1,19 @@
-@editor-prefix:~"md-editor";
+@editor-prefix:~ "md-editor";
+
+[data-color-mode*='dark'] .@{editor-prefix} {
+  --color-border-shadow: 0 0 0 1px rgb(255 255 255 / 10%), 0 0 0 rgb(255 255 255 / 0%), 0 1px 1px rgb(255 255 255 / 20%);
+}
+[data-color-mode*='light'] .@{editor-prefix} {
+  --color-border-shadow: 0 0 0 1px rgb(16 22 26 / 10%), 0 0 0 rgb(16 22 26 / 0%), 0 1px 1px rgb(16 22 26 / 20%);
+}
 
 .@{editor-prefix} {
-  color: #24292e;
+  color: var(--color-thme-text);
+  box-shadow: var(--color-border-shadow);
   text-align: left;
-  box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 0 0 rgba(16, 22, 26, 0), 0 1px 1px rgba(16, 22, 26, 0.2);
   border-radius: 3px;
   position: relative;
-  background-color: #fff;
+  background-color: var(--color-thme-bg);
   &-content {
     position: relative;
   }
@@ -25,7 +32,7 @@
     border-radius: 0;
   }
   &-preview {
-    background-color: #fff;
+    background-color: var(--color-thme-bg);
     padding: 20px;
     width: 0%;
     overflow: hidden;
@@ -36,7 +43,12 @@
     bottom: 0;
     box-sizing: border-box;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     a {
       display: none;
     }

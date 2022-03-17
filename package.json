@@ -41,7 +41,7 @@
     ]
   },
   "dependencies": {
-    "@uiw/react-markdown-preview": "~3.5.1",
+    "@uiw/react-markdown-preview": "~4.0.3",
     "codemirror": "~5.65.2"
   },
   "devDependencies": {
@@ -53,6 +53,7 @@
     "@types/react-dom": "~17.0.13",
     "@uiw/react-github-corners": "~1.5.3",
     "@uiw/reset.css": "~1.0.6",
+    "@wcj/dark-mode": "~1.0.10",
     "compile-less-cli": "~1.8.11",
     "kkt": "~7.1.5",
     "prettier": "~2.5.1",

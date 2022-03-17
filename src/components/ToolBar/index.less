@@ -1,9 +1,9 @@
-@editor-prefix:~"md-editor";
+@editor-prefix:~ "md-editor";
 
 .@{editor-prefix} {
   &-toolbar {
-    border-bottom: 1px solid #dfdfe0;
-    background-color: #fbfbfb;
+    border-bottom: 1px solid var(--color-border-muted);
+    background-color: var(--color-thme-bg);
     padding: 4px 2px 4px 5px;
     border-radius: 3px 3px 0 0;
     button {
@@ -16,7 +16,7 @@
       width: 24px;
       padding: 3px 2px;
       border-radius: 2px;
-      transition: all .3s;
+      transition: all 0.3s;
       &:hover {
         color: #06c;
         background-color: #e8e8e8;
@@ -35,7 +35,7 @@
     &-mode {
       float: right;
       padding-right: 5px;
-      border-bottom: 0!important;
+      border-bottom: 0 !important;
     }
   }
 }

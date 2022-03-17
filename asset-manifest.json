@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-markdown-editor/static/css/main.573aa934.css",
-    "main.js": "/react-markdown-editor/static/js/main.3c54f365.js",
+    "main.js": "/react-markdown-editor/static/js/main.39d3c843.js",
     "refractor-vendor.js": "/react-markdown-editor/static/js/refractor-vendor.27b67baa.js",
     "parse5-vendor.js": "/react-markdown-editor/static/js/parse5-vendor.92ba3de1.js",
     "react-vendor.js": "/react-markdown-editor/static/js/react-vendor.66477096.js",
     "codemirror-vendor.js": "/react-markdown-editor/static/js/codemirror-vendor.5c3d7ae8.js",
     "index.html": "/react-markdown-editor/index.html",
     "main.573aa934.css.map": "/react-markdown-editor/static/css/main.573aa934.css.map",
-    "main.3c54f365.js.map": "/react-markdown-editor/static/js/main.3c54f365.js.map",
+    "main.39d3c843.js.map": "/react-markdown-editor/static/js/main.39d3c843.js.map",
     "refractor-vendor.27b67baa.js.map": "/react-markdown-editor/static/js/refractor-vendor.27b67baa.js.map",
     "parse5-vendor.92ba3de1.js.map": "/react-markdown-editor/static/js/parse5-vendor.92ba3de1.js.map",
     "react-vendor.66477096.js.map": "/react-markdown-editor/static/js/react-vendor.66477096.js.map",
@@ -20,6 +20,6 @@
     "static/js/react-vendor.66477096.js",
     "static/js/codemirror-vendor.5c3d7ae8.js",
     "static/css/main.573aa934.css",
-    "static/js/main.3c54f365.js"
+    "static/js/main.39d3c843.js"
   ]
 }

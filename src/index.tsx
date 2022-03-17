@@ -1,4 +1,4 @@
-import React, { useState, createRef, useRef, useEffect, useImperativeHandle, useMemo } from 'react';
+import React, { useState, createRef, useRef, useEffect, useImperativeHandle } from 'react';
 import CodeMirror, { ICodeMirror } from './components/CodeMirror';
 import MarkdownPreview, { MarkdownPreviewProps } from '@uiw/react-markdown-preview';
 import ToolBar, { IToolBarProps } from './components/ToolBar';

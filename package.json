@@ -15,7 +15,7 @@
     "css:build:dist": "compile-less -d src --combine markdown-editor.css --rm-global",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "pretty-quick": "pretty-quick --staged",
-    "watch": "tsbb watch",
+    "watch": "tsbb watch & npm run css:watch",
     "build": "tsbb build && npm run css:build && npm run css:build:dist"
   },
   "repository": {

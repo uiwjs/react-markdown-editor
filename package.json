@@ -50,7 +50,7 @@
     "@kkt/scope-plugin-options": "~7.1.1",
     "@types/codemirror": "~5.60.5",
     "@types/react": "~17.0.39",
-    "@types/react-dom": "~17.0.13",
+    "@types/react-dom": "~18.0.0",
     "@uiw/react-github-corners": "~1.5.3",
     "@uiw/reset.css": "~1.0.6",
     "@wcj/dark-mode": "~1.0.10",

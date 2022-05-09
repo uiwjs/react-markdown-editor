@@ -61,7 +61,7 @@
     "react": "~18.0.0",
     "react-dom": "~18.0.0",
     "tsbb": "~3.7.2",
-    "husky": "~7.0.4"
+    "husky": "~8.0.0"
   },
   "browserslist": {
     "production": [

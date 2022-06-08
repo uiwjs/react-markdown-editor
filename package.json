@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@uiw/react-markdown-preview": "~4.0.3",
-    "codemirror": "~5.65.2"
+    "codemirror": "~6.0.0"
   },
   "devDependencies": {
     "@kkt/less-modules": "~7.1.1",

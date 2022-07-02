@@ -63,7 +63,7 @@ function App() {
   return (
     <MarkdownEditor
       value="# This is a H1  \n## This is a H2  \n###### This is a H6"
-      onChange={(editor, data, value) => setMarkdown(value)}
+      onChange={(value, viewUpdate) => setMarkdown(value)}
     />
   );
 }

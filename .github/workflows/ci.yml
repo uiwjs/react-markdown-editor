@@ -94,7 +94,7 @@ jobs:
       - name: "Modify @uiw/react-markdown-editor => @uiwjs/react-markdown-editor"
         uses: jaywcjlove/github-action-package@main
         with:
-          path: core/package.json
+          path: ./package.json
           data: |
             { "name": "@uiwjs/react-markdown-editor" }
 

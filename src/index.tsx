@@ -1,6 +1,7 @@
 import React, { useState, createRef, useRef, useImperativeHandle } from 'react';
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 import { languages } from '@codemirror/language-data';
+import { EditorView } from '@codemirror/view';
 import CodeMirror, { ReactCodeMirrorProps, ReactCodeMirrorRef } from '@uiw/react-codemirror';
 import MarkdownPreview, { MarkdownPreviewProps, MarkdownPreviewRef } from '@uiw/react-markdown-preview';
 import ToolBar, { IToolBarProps } from './components/ToolBar';
@@ -9,6 +10,13 @@ import { defaultTheme } from './theme';
 import './index.less';
 
 export * from './commands';
+
+export const scrollerStyle = EditorView.theme({
+  '&.cm-editor, & .cm-scroller': {
+    borderBottomRightRadius: '3px',
+    borderBottomLeftRadius: '3px',
+  },
+});
 
 export interface IMarkdownEditor extends ReactCodeMirrorProps {
   className?: string;
@@ -92,7 +100,11 @@ function MarkdownEditor(
             <CodeMirror
               theme={defaultTheme}
               {...codemirrorProps}
-              extensions={[markdown({ base: markdownLanguage, codeLanguages: languages }), ...extensions]}
+              extensions={[
+                markdown({ base: markdownLanguage, codeLanguages: languages }),
+                scrollerStyle,
+                ...extensions,
+              ]}
               height={
                 typeof codemirrorProps.height === 'number' ? `${codemirrorProps.height}px` : codemirrorProps.height
               }

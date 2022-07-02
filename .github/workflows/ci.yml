@@ -7,68 +7,97 @@ jobs:
   build-deploy:
     runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
-    - run: npm install
-    - run: npm run build
-    - run: npm run doc
+      - run: npm install
+      - run: npm run build
+      - run: npm run doc
 
-    - name: Generate Contributors Images
-      uses: jaywcjlove/github-action-contributors@main
-      with:
-        filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
-        output: build/CONTRIBUTORS.svg
-        avatarSize: 42
+      - name: Generate Contributors Images
+        uses: jaywcjlove/github-action-contributors@main
+        with:
+          filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
+          output: build/CONTRIBUTORS.svg
+          avatarSize: 42
 
-    - name: Create Tag
-      id: create_tag
-      uses: jaywcjlove/create-tag-action@v1.3.7
-      with:
-        package-path: ./package.json
+      - name: Create Tag
+        id: create_tag
+        uses: jaywcjlove/create-tag-action@v1.3.7
+        with:
+          package-path: ./package.json
 
-    - name: get tag version
-      id: tag_version
-      uses: jaywcjlove/changelog-generator@v1.5.7
+      - name: get tag version
+        id: tag_version
+        uses: jaywcjlove/changelog-generator@v1.5.7
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        commit_message: ${{steps.tag_version.outputs.tag}} ${{ github.event.head_commit.message }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          commit_message: ${{steps.tag_version.outputs.tag}} ${{ github.event.head_commit.message }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
 
-    - name: Generate Changelog
-      id: changelog
-      uses: jaywcjlove/changelog-generator@v1.5.7
-      with:
-        head-ref: ${{steps.create_tag.outputs.version}}
-        filter-author: (小弟调调™)
-        filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
+      - name: Generate Changelog
+        id: changelog
+        uses: jaywcjlove/changelog-generator@v1.5.7
+        with:
+          head-ref: ${{steps.create_tag.outputs.version}}
+          filter-author: (小弟调调™)
+          filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
-    - name: Create Release
-      uses: ncipollo/release-action@v1
-      if: steps.create_tag.outputs.successful
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        name: ${{ steps.create_tag.outputs.version }}
-        tag: ${{ steps.create_tag.outputs.version }}
-        body: |
-          [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-markdown-editor@${{steps.create_tag.outputs.versionNumber}}/file/README.md) [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-markdown-editor)](https://bundlephobia.com/result?p=@uiw/react-markdown-editor@${{steps.create_tag.outputs.versionNumber}}) [![npm version](https://img.shields.io/npm/v/@uiw/react-markdown-editor.svg)](https://www.npmjs.com/package/@uiw/react-markdown-editor)
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        if: steps.create_tag.outputs.successful
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ steps.create_tag.outputs.version }}
+          tag: ${{ steps.create_tag.outputs.version }}
+          body: |
+            [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-markdown-editor@${{steps.create_tag.outputs.versionNumber}}/file/README.md) [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-markdown-editor)](https://bundlephobia.com/result?p=@uiw/react-markdown-editor@${{steps.create_tag.outputs.versionNumber}}) [![npm version](https://img.shields.io/npm/v/@uiw/react-markdown-editor.svg)](https://www.npmjs.com/package/@uiw/react-markdown-editor)
 
-          Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/uiwjs/react-markdown-editor/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
-          Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
+            Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/uiwjs/react-markdown-editor/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
+            Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
 
-          ```bash
-          npm i @uiw/react-markdown-editor@${{steps.create_tag.outputs.versionNumber}}
-          ```
+            ```bash
+            npm i @uiw/react-markdown-editor@${{steps.create_tag.outputs.versionNumber}}
+            ```
 
-          ${{ steps.changelog.outputs.changelog }}
+            ${{ steps.changelog.outputs.changelog }}
 
-    - name: 📦 @uiw/react-markdown-editor 📦
-      uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        package: ./package.json
+      - name: 📦 @uiw/react-markdown-editor 📦
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./package.json
+
+    outputs:
+      successful: ${{steps.create_tag.outputs.successful }}
+
+  github-package:
+    runs-on: ubuntu-18.04
+    needs: build-deploy
+    if: needs.build-deploy.outputs.successful
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com
+          scope: '@uiwjs'
+
+      - run: npm install
+      - run: npm run build
+
+      - name: "Modify @uiw/react-markdown-editor => @uiwjs/react-markdown-editor"
+        uses: jaywcjlove/github-action-package@main
+        with:
+          path: core/package.json
+          data: |
+            { "name": "@uiwjs/react-markdown-editor" }
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

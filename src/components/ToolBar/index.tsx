@@ -1,36 +1,46 @@
-import * as React from "react";
-import CodeMirror from 'codemirror';
-import './index.less';
+import React from 'react';
 import { ICommand, defaultCommands } from '../../commands';
-import { IMarkdownEditor } from '../../';
+import { IMarkdownEditor, ToolBarProps } from '../../';
+import './index.less';
 
-export type IToolBarProps<T = (keyof (typeof defaultCommands)) | ICommand> = {
+export interface IToolBarProps<T = keyof typeof defaultCommands | ICommand> extends ToolBarProps {
   className?: string;
   editorProps: IMarkdownEditor;
   mode?: boolean;
-  preview?: HTMLDivElement | null;
-  container?: HTMLDivElement | null;
-  containerEditor?: HTMLDivElement | null;
   prefixCls?: string;
-  editor?: CodeMirror.Editor;
   toolbars?: T[];
   onClick?: (type: string) => void;
 }
 
 export default function ToolBar(props: IToolBarProps) {
-  const { prefixCls = 'md-editor', className, onClick, toolbars = [], editor, mode, preview, container, containerEditor, editorProps = {}, ...htmlProps } = props;
+  const {
+    prefixCls = 'md-editor',
+    className,
+    onClick,
+    toolbars = [],
+    editor,
+    mode,
+    preview,
+    container,
+    containerEditor,
+    editorProps = {},
+    ...htmlProps
+  } = props;
   if (!toolbars || toolbars.length === 0) return null;
   function handleClick(execute: ICommand['execute']) {
-    if (execute && editor) {
-      execute(editor, editor.getSelection(), editor.getCursor(), { preview, container });
+    if (execute && editor && editor) {
+      execute(editor);
     }
   }
   return (
-    <div className={`${prefixCls}-toolbar ${className || ''} ${mode ? `${prefixCls}-toolbar-mode` : ''}`} {...htmlProps}>
+    <div
+      className={`${prefixCls}-toolbar ${className || ''} ${mode ? `${prefixCls}-toolbar-mode` : ''}`}
+      {...htmlProps}
+    >
       {[...toolbars].map((command, key) => {
         let buttonProps: React.ButtonHTMLAttributes<HTMLButtonElement> = {
           type: 'button',
-        }
+        };
         const obj = typeof command === 'string' ? defaultCommands[command] : command;
         if (!obj) return null;
         buttonProps.children = obj.icon;
@@ -41,14 +51,19 @@ export default function ToolBar(props: IToolBarProps) {
             buttonProps[key] = btn[key];
           });
         } else if (typeof obj.button === 'function') {
-          return React.cloneElement(obj.button(obj, editorProps, { preview, container, containerEditor, editor }), { key });
+          return React.cloneElement(
+            obj.button(obj, editorProps, {
+              preview,
+              container,
+              containerEditor,
+              editor,
+              editorProps,
+            }),
+            { key },
+          );
         }
-
-        return (
-          <button {...buttonProps} key={key} />
-        );
+        return <button {...buttonProps} key={key} />;
       })}
     </div>
   );
-
 }

@@ -1,64 +1,58 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ICommand } from './';
-import { IMarkdownEditor } from '../';
+import { IMarkdownEditor, ToolBarProps } from '../';
 
-type Options = {
-  preview?: HTMLDivElement | null | undefined;
-  container?: HTMLDivElement | null | undefined;
-  editor?: CodeMirror.Editor;
-};
-
-const Fullscreen: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & Options }> = (props) => {
-  const {
-    editorProps: { container, preview, editor },
-  } = props;
+const Fullscreen: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & ToolBarProps }> = (props) => {
+  const { editorProps } = props;
+  const $height = useRef<number>(0);
   const [full, setFull] = useState(false);
-  const initEditorHeight = useRef(0);
-  const containerRef = useRef<HTMLDivElement | null>();
-  const editorRef = useRef<CodeMirror.Editor>();
-  function handleResize() {
-    if (containerRef.current && editorRef.current && editorRef.current.setSize) {
-      editorRef.current.setSize('initial', containerRef.current.clientHeight - 35);
-    }
-  }
   useEffect(() => {
-    window && window.addEventListener('resize', handleResize, true);
-    return () => {
-      window && window.removeEventListener('resize', handleResize, true);
-    };
-  }, []);
-  useEffect(() => {
-    if (editor) {
-      editorRef.current = editor;
-      const { clientHeight } = editor.getScrollInfo();
-      initEditorHeight.current = clientHeight;
+    if (
+      editorProps.containerEditor &&
+      editorProps.containerEditor.current &&
+      editorProps.containerEditor.current.parentElement
+    ) {
+      const parentElement = editorProps.containerEditor.current.parentElement;
+      const robserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          if (!$height.current) {
+            $height.current = entry.target.clientHeight;
+          }
+          if (editorProps.editor && editorProps.editor.view?.dom) {
+            if (full) {
+              editorProps.editor.view.dom.style.height = `${entry.target.clientHeight}px`;
+            } else {
+              editorProps.editor.view.dom.removeAttribute('style');
+            }
+          }
+        }
+      });
+      robserver.observe(parentElement);
     }
-  }, [editor]);
+  }, [editorProps.containerEditor, editorProps.editor, full]);
+
   useEffect(() => {
     if (!document) return;
-    containerRef.current = container;
-    document.body.style.overflow = full ? 'hidden' : 'initial';
-    if (container && full) {
-      container.style.zIndex = '999';
-      container.style.position = 'fixed';
-      container.style.top = '0px';
-      container.style.bottom = '0px';
-      container.style.left = '0px';
-      container.style.right = '0px';
-      if (editor) {
-        editor.setSize('initial', container.clientHeight - 35);
-      }
-    } else if (container) {
-      container.style.position = 'initial';
-      container.style.top = 'initial';
-      container.style.bottom = 'initial';
-      container.style.left = 'initial';
-      container.style.right = 'initial';
-      if (editor) {
-        editor.setSize('initial', initEditorHeight.current);
+    if (editorProps && editorProps.container && editorProps.container.current && editorProps.editor) {
+      const container = editorProps.container.current;
+      document.body.style.overflow = full ? 'hidden' : 'initial';
+      if (container && full) {
+        container.style.zIndex = '999';
+        container.style.position = 'fixed';
+        container.style.top = '0px';
+        container.style.bottom = '0px';
+        container.style.left = '0px';
+        container.style.right = '0px';
+      } else if (container) {
+        container.style.position = 'initial';
+        container.style.top = 'initial';
+        container.style.bottom = 'initial';
+        container.style.left = 'initial';
+        container.style.right = 'initial';
       }
     }
-  }, [full, container, preview, editor]);
+  }, [full, editorProps]);
+
   return (
     <button onClick={() => setFull(!full)} type="button" className={full ? 'active' : ''}>
       {props.command.icon}

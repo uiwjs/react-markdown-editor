@@ -1,45 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { ICommand } from './';
-import { IMarkdownEditor } from '../';
+import { IMarkdownEditor, ToolBarProps } from '../';
 
-type Options = {
-  preview?: HTMLDivElement | null;
-  container?: HTMLDivElement | null;
-  containerEditor?: HTMLDivElement | null;
-  editor?: CodeMirror.Editor;
-};
-
-const Preview: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & Options }> = (props) => {
-  const {
-    editorProps: { preview, containerEditor },
-  } = props;
+const Preview: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & ToolBarProps }> = (props) => {
+  const { editorProps } = props;
+  const { preview, containerEditor } = editorProps;
   const [visible, setVisible] = useState(props.editorProps.visible);
+  useEffect(() => setVisible(props.editorProps.visible), [props.editorProps.visible]);
   useEffect(() => {
-    setVisible(props.editorProps.visible);
-  }, [props.editorProps.visible]);
+    if (editorProps && editorProps.preview.current) {
+      const preview = editorProps.preview.current.mdp.current;
+      if (preview) {
+        preview.style.borderBottomRightRadius = '3px';
+      }
 
-  useEffect(() => {
-    if (preview) {
-      preview.style.borderBottomRightRadius = '3px';
-    }
-    if (preview && visible) {
-      preview.style.width = '50%';
-      preview.style.overflow = 'auto';
-      preview.style.borderLeft = '1px solid var(--color-border-muted)';
-      preview.style.padding = '20px';
-      if (containerEditor) {
-        containerEditor.style.width = '50%';
-      }
-    } else if (preview) {
-      preview.style.width = '0%';
-      preview.style.overflow = 'hidden';
-      preview.style.borderLeft = '0px';
-      preview.style.padding = '0';
-      if (containerEditor) {
-        containerEditor.style.width = '100%';
+      if (preview && visible) {
+        preview.style.width = '50%';
+        preview.style.overflow = 'auto';
+        preview.style.borderLeft = '1px solid var(--color-border-muted)';
+        preview.style.padding = '20px';
+        if (containerEditor.current) {
+          containerEditor.current.style.width = '50%';
+        }
+      } else if (preview) {
+        preview.style.width = '0%';
+        preview.style.overflow = 'hidden';
+        preview.style.borderLeft = '0px';
+        preview.style.padding = '0';
+        if (containerEditor.current) {
+          containerEditor.current.style.width = '100%';
+        }
       }
     }
-  }, [preview, containerEditor, visible]);
+  }, [preview, editorProps, visible, containerEditor]);
 
   return (
     <button onClick={() => setVisible(!visible)} type="button" className={visible ? 'active' : ''}>

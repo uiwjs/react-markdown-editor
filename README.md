@@ -83,17 +83,36 @@ import MarkdownEditor from '@uiw/react-markdown-editor';
 const title2 = {
   name: 'title2',
   keyCommand: 'title2',
+  button: { 'aria-label': 'Add title text' },
   icon: (
     <svg width="12" height="12" viewBox="0 0 512 512">
       <path fill="currentColor" d="M496 80V48c0-8.837-7.163-16-16-16H320c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h37.621v128H154.379V96H192c8.837 0 16-7.163 16-16V48c0-8.837-7.163-16-16-16H32c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h37.275v320H32c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h160c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16h-37.621V288H357.62v128H320c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h160c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16h-37.275V96H480c8.837 0 16-7.163 16-16z" />
     </svg>
   ),
-  execute: (editor, selection, position) => {
-    const value = selection ? `## ${selection}` : '## ';
-    editor.replaceSelection(value);
-    position.ch = !!selection ? position.ch : position.ch + 3;
-    editor.setCursor(position.line, position.ch);
-    editor.focus();
+  execute: ({ state, view }) => {
+    if (!state || !view) return;
+    const lineInfo = view.state.doc.lineAt(view.state.selection.main.from);
+    let mark = '#';
+    const matchMark = lineInfo.text.match(/^#+/)
+    if (matchMark && matchMark[0]) {
+      const txt = matchMark[0];
+      if (txt.length < 6) {
+        mark = txt + '#';
+      }
+    }
+    if (mark.length > 6) {
+      mark = '#';
+    }
+    const title = lineInfo.text.replace(/^#+/, '')
+    view.dispatch({
+      changes: {
+        from: lineInfo.from,
+        to: lineInfo.to,
+        insert: `${mark}${title}`
+      },
+      // selection: EditorSelection.range(lineInfo.from + mark.length, lineInfo.to),
+      selection: { anchor: lineInfo.from + mark.length },
+    });
   },
 };
 
@@ -183,14 +202,80 @@ const Demo = () => {
 - `onBlur?: function(editor: IInstance, event: Event)` - event occurs when an object loses focus
 - `previewProps` - [react-markdown options](https://github.com/uiwjs/react-markdown-preview/tree/v2.1.0#options-props)
 
-> [Other Props Options](https://github.com/uiwjs/react-markdown-editor/blob/812937bf90abadd5f795d06d97ead9f59cd35954/src/index.tsx#L11-L21)
+```ts
+import { ReactCodeMirrorProps } from '@uiw/react-codemirror';
+export interface IMarkdownEditor extends ReactCodeMirrorProps {
+  className?: string;
+  prefixCls?: string;
+  /** The raw markdown that will be converted to html (**required**) */
+  value?: string;
+  /** Shows a preview that will be converted to html. */
+  visible?: boolean;
+  visibleEditor?: boolean;
+  /** Tool display settings. */
+  toolbars?: IToolBarProps['toolbars'];
+  /** Tool display settings. */
+  toolbarsMode?: IToolBarProps['toolbars'];
+  /** [@uiw/react-markdown-preview](https://github.com/uiwjs/react-markdown-preview#options-props) options */
+  previewProps?: MarkdownPreviewProps;
+}
+```
 
+```ts
+import React from 'react';
+import { ReactCodeMirrorRef } from '@uiw/react-codemirror';
+import { MarkdownPreviewProps, MarkdownPreviewRef } from '@uiw/react-markdown-preview';
+export interface ToolBarProps {
+  editor?: ReactCodeMirrorRef;
+  preview: React.RefObject<MarkdownPreviewRef>;
+  container: React.RefObject<HTMLDivElement>;
+  containerEditor: React.RefObject<HTMLDivElement>;
+  editorProps: IMarkdownEditor;
+}
+export interface MarkdownEditorRef {
+  editor: React.RefObject<ReactCodeMirrorRef> | null;
+  preview?: React.RefObject<MarkdownPreviewRef> | null;
+}
+export interface IToolBarProps<T = keyof typeof defaultCommands | ICommand> extends ToolBarProps {
+  className?: string;
+  editorProps: IMarkdownEditor;
+  mode?: boolean;
+  prefixCls?: string;
+  toolbars?: T[];
+  onClick?: (type: string) => void;
+}
+export declare type ButtonHandle = (command: ICommand, props: IMarkdownEditor, options: ToolBarProps) => JSX.Element;
+export declare type ICommand = {
+  icon?: React.ReactElement;
+  name?: string;
+  keyCommand?: string;
+  button?: ButtonHandle | React.ButtonHTMLAttributes<HTMLButtonElement>;
+  execute?: (editor: ReactCodeMirrorRef) => void;
+};
+export declare const defaultCommands: {
+  bold: ICommand;
+  italic: ICommand;
+  header: ICommand;
+  strike: ICommand;
+  underline: ICommand;
+  olist: ICommand;
+  ulist: ICommand;
+  link: ICommand;
+  todo: ICommand;
+  image: ICommand;
+  fullscreen: ICommand;
+  preview: ICommand;
+};
+export declare const getCommands: () => ICommand[];
+export declare const getModeCommands: () => ICommand[];
+```
 
 ### Development
 
 ```bash
-npm run dev
-npm run type-check:watch
+npm run watch # Listen create type and .tsx files.
+npm run start # Preview code example.
+
 npm run doc
 ```
 

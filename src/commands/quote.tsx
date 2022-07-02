@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICommand} from './'
+import { ICommand } from './';
 
 export const quote: ICommand = {
   name: 'quote',
@@ -7,14 +7,28 @@ export const quote: ICommand = {
   button: { 'aria-label': 'Add quote text' },
   icon: (
     <svg width="12" height="12" viewBox="0 0 512 512">
-      <path fill="currentColor" d="M512 80v128c0 137.018-63.772 236.324-193.827 271.172-15.225 4.08-30.173-7.437-30.173-23.199v-33.895c0-10.057 6.228-19.133 15.687-22.55C369.684 375.688 408 330.054 408 256h-72c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h128c26.51 0 48 21.49 48 48zM176 32H48C21.49 32 0 53.49 0 80v128c0 26.51 21.49 48 48 48h72c0 74.054-38.316 119.688-104.313 143.528C6.228 402.945 0 412.021 0 422.078v33.895c0 15.762 14.948 27.279 30.173 23.199C160.228 444.324 224 345.018 224 208V80c0-26.51-21.49-48-48-48z" />
+      <path
+        fill="currentColor"
+        d="M512 80v128c0 137.018-63.772 236.324-193.827 271.172-15.225 4.08-30.173-7.437-30.173-23.199v-33.895c0-10.057 6.228-19.133 15.687-22.55C369.684 375.688 408 330.054 408 256h-72c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h128c26.51 0 48 21.49 48 48zM176 32H48C21.49 32 0 53.49 0 80v128c0 26.51 21.49 48 48 48h72c0 74.054-38.316 119.688-104.313 143.528C6.228 402.945 0 412.021 0 422.078v33.895c0 15.762 14.948 27.279 30.173 23.199C160.228 444.324 224 345.018 224 208V80c0-26.51-21.49-48-48-48z"
+      />
     </svg>
   ),
-  execute: (editor, selection, position) => {
-    const value = selection ? `> ${selection}` : '> ';
-    editor.replaceSelection(value);
-    position.ch = !!selection ? position.ch : position.ch + 2;
-    editor.setCursor(position.line, position.ch);
-    editor.focus();
+  execute: ({ state, view }) => {
+    if (!state || !view) return;
+    const lineInfo = view.state.doc.lineAt(view.state.selection.main.from);
+    let mark = '> ';
+    const matchMark = lineInfo.text.match(/^>\s/);
+    if (matchMark && matchMark[0]) {
+      mark = '';
+    }
+    view.dispatch({
+      changes: {
+        from: lineInfo.from,
+        to: lineInfo.to,
+        insert: `${mark}${lineInfo.text}`,
+      },
+      // selection: EditorSelection.range(lineInfo.from + mark.length, lineInfo.to),
+      selection: { anchor: view.state.selection.main.from + mark.length },
+    });
   },
 };

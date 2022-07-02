@@ -2,9 +2,11 @@
 
 [data-color-mode*='dark'] .@{editor-prefix} {
   --color-border-shadow: 0 0 0 1px rgb(255 255 255 / 10%), 0 0 0 rgb(255 255 255 / 0%), 0 1px 1px rgb(255 255 255 / 20%);
+  // --color-mde-background: #000;
 }
 [data-color-mode*='light'] .@{editor-prefix} {
   --color-border-shadow: 0 0 0 1px rgb(16 22 26 / 10%), 0 0 0 rgb(16 22 26 / 0%), 0 1px 1px rgb(16 22 26 / 20%);
+  // --color-mde-background: #fff;
 }
 
 .@{editor-prefix} {
@@ -13,9 +15,13 @@
   text-align: left;
   border-radius: 3px;
   position: relative;
+  display: flex;
+  flex-direction: column;
   background-color: var(--color-canvas-subtle);
   &-content {
     position: relative;
+    flex: 1;
+    overflow: auto;
   }
   &-fullscreen & {
     border-radius: 0;
@@ -32,7 +38,6 @@
     border-radius: 0;
   }
   &-preview {
-    background-color: var(--color-canvas-subtle);
     padding: 20px;
     width: 0%;
     overflow: hidden;

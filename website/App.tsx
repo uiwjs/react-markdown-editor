@@ -22,24 +22,18 @@ export default function App() {
         <Logo style={{ fill: 'currentColor' }} />
       </div>
       <div className={styles.editor}>
-        <button
-          onClick={() => {
-            count += 1;
-            setMdstr(`String ${count}`);
-          }}
-        >
-          Modify Markdown
-        </button>
-        <button onClick={() => setVisible(!visible)}>{visible ? 'Show' : 'Hide'}</button>
-        <MarkdownEditor
-          visible={visible}
-          options={{
-            autofocus: true,
-            showCursorWhenSelecting: true,
-          }}
-          height={500}
-          value={mdstr}
-        />
+        <MarkdownEditor visible={visible} height="500px" value={mdstr} />
+        <div style={{ marginTop: 10 }}>
+          <button
+            onClick={() => {
+              count += 1;
+              setMdstr(`String ${count}`);
+            }}
+          >
+            Modify Markdown
+          </button>
+          <button onClick={() => setVisible(!visible)}>{visible ? 'Show' : 'Hide'}</button>
+        </div>
       </div>
       <MarkdownPreview source={DocumentStrSource} className={styles.doc} />
       <Footer

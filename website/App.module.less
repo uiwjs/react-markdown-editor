@@ -1,11 +1,11 @@
 .editor {
-  width: 980px;
+  max-width: 980px;
   padding: 0 10px;
   margin: 0 auto 0 auto;
 }
 
 .doc {
-  width: 960px;
+  max-width: 980px;
   padding: 20px 10px 25px 10px;
   border-radius: 5px;
   margin: 30px auto 0 auto;
@@ -14,7 +14,8 @@
 .logo {
   svg {
     width: auto;
-    height: 256px;
+    width: -webkit-fill-available;
+    max-height: 256px;
     margin: 0 auto;
     display: block;
     fill: var(--color-theme-text);

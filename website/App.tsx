@@ -23,7 +23,7 @@ export default function App() {
       </div>
       <div className={styles.editor}>
         <MarkdownEditor visible={visible} height="500px" value={mdstr} />
-        <div style={{ marginTop: 10 }}>
+        <div style={{ marginTop: 10, display: 'flex', gap: '10px' }}>
           <button
             onClick={() => {
               count += 1;
@@ -33,6 +33,7 @@ export default function App() {
             Modify Markdown
           </button>
           <button onClick={() => setVisible(!visible)}>{visible ? 'Show' : 'Hide'}</button>
+          <span>v{VERSION}</span>
         </div>
       </div>
       <MarkdownPreview source={DocumentStrSource} className={styles.doc} />

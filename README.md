@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/uiwjs/react-markdown-editor">
-    <img alt="react-markdown-editor logo" src="./website/logo.svg?sanitize=true">
+    <img alt="React Markdown Editor logo" src="./website/logo.svg?sanitize=true">
   </a>
 </p>
 
@@ -23,7 +23,7 @@
 </p>
 
 
-[Migrate from @uiw/react-markdown-editor 4.x to 5.x.](https://github.com/uiwjs/react-markdown-editor/releases/tag/v5.0.0)
+> Migrate from @uiw/react-markdown-editor [4.x to 5.x.](https://github.com/uiwjs/react-markdown-editor/releases/tag/v5.0.0)
 
 ## Install
 

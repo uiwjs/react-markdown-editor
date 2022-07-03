@@ -22,6 +22,9 @@
   A markdown editor with preview, implemented with React.js and TypeScript.
 </p>
 
+
+[Migrate from @uiw/react-markdown-editor 4.x to 5.x.](https://github.com/uiwjs/react-markdown-editor/releases/tag/v5.0.0)
+
 ## Install
 
 ```bash
@@ -295,7 +298,7 @@ As always, thanks to our amazing contributors!
   <img src="https://uiwjs.github.io/react-markdown-editor/CONTRIBUTORS.svg" />
 </a>
 
-Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
+Made with [action-contributors](https://github.com/jaywcjlove/github-action-contributors).
 
 ## License
 

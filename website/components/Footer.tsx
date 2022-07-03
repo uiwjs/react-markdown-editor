@@ -10,7 +10,7 @@ export interface IFooterProps {
 
 export default function Footer({ name, href, year, github }: IFooterProps) {
   return (
-    <div className={style.footer}>
+    <div className={[style.footer, 'wmde-markdown-var'].join(' ')}>
       <div>
         Licensed under MIT. (Yes it&acute;s free and <a href={github}>open-sourced</a>)
       </div>

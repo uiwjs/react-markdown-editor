@@ -31,9 +31,13 @@
 npm i @uiw/react-markdown-editor
 ```
 
+<!--rehype:ignore:start-->
+
 ## Document
 
 Official document [demo preview](https://uiwjs.github.io/react-markdown-editor/) ([🇨🇳中国镜像网站](http://uiw.gitee.io/react-markdown-editor/))
+
+<!--rehype:ignore:end-->
 
 ## Basic Usage
 

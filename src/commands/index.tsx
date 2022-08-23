@@ -10,6 +10,8 @@ import { quote } from './quote';
 import { link } from './link';
 import { todo } from './todo';
 import { image } from './image';
+import { redo } from './redo';
+import { undo } from './undo';
 import { fullscreen } from './fullscreen';
 import { preview } from './preview';
 import { IMarkdownEditor, ToolBarProps } from '../';
@@ -25,6 +27,8 @@ export type ICommand = {
 };
 
 export const defaultCommands = {
+  undo,
+  redo,
   bold,
   italic,
   header,

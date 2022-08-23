@@ -22,6 +22,9 @@
   A markdown editor with preview, implemented with React.js and TypeScript.
 </p>
 
+<!--rehype:ignore:start-->
+[![React Markdown Editor](https://user-images.githubusercontent.com/1680273/186128463-5f819e3f-926b-4dea-b5d8-e9d1d1a8d72e.png)](https://uiwjs.github.io/react-markdown-editor/)
+<!--rehype:ignore:end-->
 
 > Migrate from @uiw/react-markdown-editor [4.x to 5.x.](https://github.com/uiwjs/react-markdown-editor/releases/tag/v5.0.0)
 

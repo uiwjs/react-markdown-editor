@@ -26,6 +26,8 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   /** Shows a preview that will be converted to html. */
   visible?: boolean;
   visibleEditor?: boolean;
+  /** Option to hide the tool bar. */
+  hideToolbar?: boolean;
   /** Tool display settings. */
   toolbars?: IToolBarProps['toolbars'];
   /** Tool display settings. */
@@ -61,6 +63,7 @@ function MarkdownEditor(
     toolbarsMode = getModeCommands(),
     visible = true,
     visibleEditor = true,
+    hideToolbar = true,
     previewProps = {},
     extensions = [],
     ...codemirrorProps
@@ -90,10 +93,12 @@ function MarkdownEditor(
   };
   return (
     <div className={`${prefixCls || ''} wmde-markdown-var ${className || ''}`} ref={container}>
-      <div>
-        <ToolBar {...toolBarProps} toolbars={toolbarsMode} mode />
-        <ToolBar {...toolBarProps} toolbars={toolbars} />
-      </div>
+      {hideToolbar && (
+        <div>
+          <ToolBar {...toolBarProps} toolbars={toolbarsMode} mode />
+          <ToolBar {...toolBarProps} toolbars={toolbars} />
+        </div>
+      )}
       <div className={`${prefixCls}-content`} style={{ height: codemirrorProps.height }}>
         <div className={`${prefixCls}-content-editor`} ref={containerEditor}>
           {visibleEditor && (

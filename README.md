@@ -222,6 +222,8 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   /** Shows a preview that will be converted to html. */
   visible?: boolean;
   visibleEditor?: boolean;
+  /** Option to hide the tool bar. */
+  hideToolbar?: boolean;
   /** Tool display settings. */
   toolbars?: IToolBarProps['toolbars'];
   /** Tool display settings. */

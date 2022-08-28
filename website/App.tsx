@@ -14,6 +14,7 @@ let count = 1;
 export default function App() {
   const [visible, setVisible] = useState(true);
   const [mdstr, setMdstr] = useState<string>(DocumentStrSource);
+  const [hideToolbar, setHideToolbar] = useState(true);
   return (
     <div className={styles.warpper}>
       <dark-mode light="Light" dark="Dart" style={{ position: 'fixed' }}></dark-mode>
@@ -22,7 +23,7 @@ export default function App() {
         <Logo style={{ fill: 'currentColor' }} />
       </div>
       <div className={styles.editor}>
-        <MarkdownEditor visible={visible} height="500px" value={mdstr} />
+        <MarkdownEditor visible={visible} height="500px" value={mdstr} hideToolbar={hideToolbar} />
         <div style={{ marginTop: 10, display: 'flex', gap: '10px' }}>
           <button
             onClick={() => {
@@ -32,6 +33,10 @@ export default function App() {
           >
             Modify Markdown
           </button>
+          <label>
+            <input type="checkbox" checked={hideToolbar} onChange={(evn) => setHideToolbar(evn.target.checked)} />
+            hideToolbar
+          </label>
           <button onClick={() => setVisible(!visible)}>{visible ? 'Show' : 'Hide'}</button>
           <span>v{VERSION}</span>
         </div>

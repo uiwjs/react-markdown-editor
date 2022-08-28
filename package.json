@@ -53,17 +53,18 @@
     "@kkt/scope-plugin-options": "^7.2.0",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
+    "@uiw/react-back-to-top": "^1.1.1",
     "@uiw/react-github-corners": "^1.5.14",
     "@uiw/reset.css": "^1.0.6",
     "@wcj/dark-mode": "^1.0.14",
     "compile-less-cli": "^1.8.13",
+    "husky": "^8.0.1",
     "kkt": "^7.2.0",
     "prettier": "^2.7.1",
     "pretty-quick": "~3.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tsbb": "^3.7.6",
-    "husky": "^8.0.1"
+    "tsbb": "^3.7.6"
   },
   "browserslist": {
     "production": [

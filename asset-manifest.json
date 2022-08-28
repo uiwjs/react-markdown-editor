@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-markdown-editor/static/css/main.0269b666.css",
-    "main.js": "/react-markdown-editor/static/js/main.f2a62061.js",
-    "static/js/7549.def8ccb0.chunk.js": "/react-markdown-editor/static/js/7549.def8ccb0.chunk.js",
+    "main.js": "/react-markdown-editor/static/js/main.73c49f64.js",
+    "static/js/7549.9a6e9d5c.chunk.js": "/react-markdown-editor/static/js/7549.9a6e9d5c.chunk.js",
     "static/js/4618.00a583c1.chunk.js": "/react-markdown-editor/static/js/4618.00a583c1.chunk.js",
     "static/js/6336.cdc604e7.chunk.js": "/react-markdown-editor/static/js/6336.cdc604e7.chunk.js",
     "static/js/5996.2402d5d3.chunk.js": "/react-markdown-editor/static/js/5996.2402d5d3.chunk.js",
@@ -108,15 +108,15 @@
     "static/js/4117.ee3d7a23.chunk.js": "/react-markdown-editor/static/js/4117.ee3d7a23.chunk.js",
     "static/js/282.da6d7a5d.chunk.js": "/react-markdown-editor/static/js/282.da6d7a5d.chunk.js",
     "static/js/8711.0d06c577.chunk.js": "/react-markdown-editor/static/js/8711.0d06c577.chunk.js",
-    "refractor-vendor.js": "/react-markdown-editor/static/js/refractor-vendor.f65cddc3.js",
+    "refractor-vendor.js": "/react-markdown-editor/static/js/refractor-vendor.c1747410.js",
     "parse5-vendor.js": "/react-markdown-editor/static/js/parse5-vendor.b29dc714.js",
-    "uiw-vendor.js": "/react-markdown-editor/static/js/uiw-vendor.b9bd7db8.js",
+    "uiw-vendor.js": "/react-markdown-editor/static/js/uiw-vendor.9f8e2143.js",
     "react-vendor.js": "/react-markdown-editor/static/js/react-vendor.0b51ff10.js",
     "static/media/logo.svg": "/react-markdown-editor/static/media/logo.b075bb6ed038a64816637dafbdf6bd35.svg",
     "index.html": "/react-markdown-editor/index.html",
     "main.0269b666.css.map": "/react-markdown-editor/static/css/main.0269b666.css.map",
-    "main.f2a62061.js.map": "/react-markdown-editor/static/js/main.f2a62061.js.map",
-    "7549.def8ccb0.chunk.js.map": "/react-markdown-editor/static/js/7549.def8ccb0.chunk.js.map",
+    "main.73c49f64.js.map": "/react-markdown-editor/static/js/main.73c49f64.js.map",
+    "7549.9a6e9d5c.chunk.js.map": "/react-markdown-editor/static/js/7549.9a6e9d5c.chunk.js.map",
     "4618.00a583c1.chunk.js.map": "/react-markdown-editor/static/js/4618.00a583c1.chunk.js.map",
     "6336.cdc604e7.chunk.js.map": "/react-markdown-editor/static/js/6336.cdc604e7.chunk.js.map",
     "5996.2402d5d3.chunk.js.map": "/react-markdown-editor/static/js/5996.2402d5d3.chunk.js.map",
@@ -222,17 +222,17 @@
     "4117.ee3d7a23.chunk.js.map": "/react-markdown-editor/static/js/4117.ee3d7a23.chunk.js.map",
     "282.da6d7a5d.chunk.js.map": "/react-markdown-editor/static/js/282.da6d7a5d.chunk.js.map",
     "8711.0d06c577.chunk.js.map": "/react-markdown-editor/static/js/8711.0d06c577.chunk.js.map",
-    "refractor-vendor.f65cddc3.js.map": "/react-markdown-editor/static/js/refractor-vendor.f65cddc3.js.map",
+    "refractor-vendor.c1747410.js.map": "/react-markdown-editor/static/js/refractor-vendor.c1747410.js.map",
     "parse5-vendor.b29dc714.js.map": "/react-markdown-editor/static/js/parse5-vendor.b29dc714.js.map",
-    "uiw-vendor.b9bd7db8.js.map": "/react-markdown-editor/static/js/uiw-vendor.b9bd7db8.js.map",
+    "uiw-vendor.9f8e2143.js.map": "/react-markdown-editor/static/js/uiw-vendor.9f8e2143.js.map",
     "react-vendor.0b51ff10.js.map": "/react-markdown-editor/static/js/react-vendor.0b51ff10.js.map"
   },
   "entrypoints": [
-    "static/js/refractor-vendor.f65cddc3.js",
+    "static/js/refractor-vendor.c1747410.js",
     "static/js/parse5-vendor.b29dc714.js",
-    "static/js/uiw-vendor.b9bd7db8.js",
+    "static/js/uiw-vendor.9f8e2143.js",
     "static/js/react-vendor.0b51ff10.js",
     "static/css/main.0269b666.css",
-    "static/js/main.f2a62061.js"
+    "static/js/main.73c49f64.js"
   ]
 }

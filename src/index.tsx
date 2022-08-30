@@ -37,7 +37,7 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
 }
 
 export interface ToolBarProps {
-  editor?: ReactCodeMirrorRef;
+  editor?: React.RefObject<ReactCodeMirrorRef>;
   preview: React.RefObject<MarkdownPreviewRef>;
   container: React.RefObject<HTMLDivElement>;
   containerEditor: React.RefObject<HTMLDivElement>;
@@ -45,7 +45,7 @@ export interface ToolBarProps {
 }
 
 export interface MarkdownEditorRef {
-  editor: React.RefObject<ReactCodeMirrorRef> | null;
+  editor: React.RefObject<ReactCodeMirrorRef>;
   preview?: React.RefObject<MarkdownPreviewRef> | null;
 }
 
@@ -73,24 +73,25 @@ function MarkdownEditor(
   const previewContainer = useRef<MarkdownPreviewRef>(null);
   const container = useRef<HTMLDivElement>(null);
   const containerEditor = useRef<HTMLDivElement>(null);
-  const [editor, setEditor] = useState<ReactCodeMirrorRef>();
 
-  useImperativeHandle(
-    ref,
-    () => ({
-      editor: codeMirror,
-      preview: previewContainer,
-    }),
-    [codeMirror, previewContainer],
-  );
+  useImperativeHandle(ref, () => ({
+    editor: codeMirror,
+    preview: previewContainer,
+  }));
 
   const toolBarProps: ToolBarProps = {
-    editor: editor,
+    editor: codeMirror,
     preview: previewContainer,
     container: container,
     containerEditor: containerEditor,
     editorProps: props,
   };
+  const height = typeof codemirrorProps.height === 'number' ? `${codemirrorProps.height}px` : codemirrorProps.height;
+  const extensionsData: IMarkdownEditor['extensions'] = [
+    markdown({ base: markdownLanguage, codeLanguages: languages }),
+    scrollerStyle,
+    ...extensions,
+  ];
   return (
     <div className={`${prefixCls || ''} wmde-markdown-var ${className || ''}`} ref={container}>
       {hideToolbar && (
@@ -105,19 +106,9 @@ function MarkdownEditor(
             <CodeMirror
               theme={defaultTheme}
               {...codemirrorProps}
-              extensions={[
-                markdown({ base: markdownLanguage, codeLanguages: languages }),
-                scrollerStyle,
-                ...extensions,
-              ]}
-              height={
-                typeof codemirrorProps.height === 'number' ? `${codemirrorProps.height}px` : codemirrorProps.height
-              }
-              ref={($ref) => {
-                if (!editor && $ref && $ref.editor && $ref.state && $ref.view) {
-                  setEditor({ ...$ref });
-                }
-              }}
+              extensions={extensionsData}
+              height={height}
+              ref={codeMirror}
               onChange={(value, viewUpdate) => {
                 setValue(value);
                 onChange && onChange(value, viewUpdate);

@@ -29,7 +29,7 @@ export default function ToolBar(props: IToolBarProps) {
   if (!toolbars || toolbars.length === 0) return null;
   function handleClick(execute: ICommand['execute']) {
     if (execute && editor && editor) {
-      execute(editor);
+      execute(editor.current!);
     }
   }
   return (

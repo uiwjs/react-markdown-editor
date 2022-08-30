@@ -18,11 +18,11 @@ const Fullscreen: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & T
           if (!$height.current) {
             $height.current = entry.target.clientHeight;
           }
-          if (editorProps.editor && editorProps.editor.view?.dom) {
+          if (editorProps.editor?.current?.view?.dom) {
             if (full) {
-              editorProps.editor.view.dom.style.height = `${entry.target.clientHeight}px`;
+              editorProps.editor.current.view.dom.style.height = `${entry.target.clientHeight}px`;
             } else {
-              editorProps.editor.view.dom.removeAttribute('style');
+              editorProps.editor.current.view.dom.removeAttribute('style');
             }
           }
         }

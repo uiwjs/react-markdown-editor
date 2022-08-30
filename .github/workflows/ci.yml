@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   build-deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -77,7 +77,7 @@ jobs:
       successful: ${{steps.create_tag.outputs.successful }}
 
   github-package:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     needs: build-deploy
     if: needs.build-deploy.outputs.successful
     steps:

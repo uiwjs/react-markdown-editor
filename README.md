@@ -65,8 +65,8 @@ ReactDOM.render(<Dome />, document.getElementById('app'));
 
 ```jsx
 import MarkdownEditor from '@uiw/react-markdown-editor';
+import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 
 function App() {
   const [markdown, setMarkdown] = useState("");
@@ -78,7 +78,7 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+export default App;
 ```
 
 ## Custom Toolbars
@@ -135,7 +135,7 @@ const Dome = () => (
   />
 );
 
-ReactDOM.render(<Dome />, document.getElementById('app'));
+export default Dome;
 ```
 
 ## Support Nextjs

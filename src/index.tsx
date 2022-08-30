@@ -28,6 +28,8 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   visibleEditor?: boolean;
   /** Option to hide the tool bar. */
   hideToolbar?: boolean;
+  /** Override the default preview component */
+  renderPreview?: (props: MarkdownPreviewProps, visible: boolean) => React.ReactNode;
   /** Tool display settings. */
   toolbars?: IToolBarProps['toolbars'];
   /** Tool display settings. */
@@ -62,6 +64,7 @@ function MarkdownEditor(
     toolbars = getCommands(),
     toolbarsMode = getModeCommands(),
     visible = true,
+    renderPreview,
     visibleEditor = true,
     hideToolbar = true,
     previewProps = {},
@@ -92,6 +95,8 @@ function MarkdownEditor(
     scrollerStyle,
     ...extensions,
   ];
+  previewProps['className'] = `${prefixCls}-preview`;
+  previewProps['source'] = value;
   return (
     <div className={`${prefixCls || ''} wmde-markdown-var ${className || ''}`} ref={container}>
       {hideToolbar && (
@@ -116,13 +121,11 @@ function MarkdownEditor(
             />
           )}
         </div>
-        <MarkdownPreview
-          {...previewProps}
-          data-visible={!!visible}
-          className={`${prefixCls}-preview`}
-          ref={previewContainer}
-          source={value}
-        />
+        {renderPreview ? (
+          renderPreview(previewProps, !!visible)
+        ) : (
+          <MarkdownPreview {...previewProps} data-visible={!!visible} ref={previewContainer} />
+        )}
       </div>
     </div>
   );

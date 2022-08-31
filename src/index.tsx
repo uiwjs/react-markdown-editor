@@ -1,4 +1,4 @@
-import React, { useState, createRef, useRef, useImperativeHandle } from 'react';
+import React, { useState, useRef, useImperativeHandle } from 'react';
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 import { languages } from '@codemirror/language-data';
 import { EditorView } from '@codemirror/view';
@@ -39,7 +39,7 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
 }
 
 export interface ToolBarProps {
-  editor?: React.RefObject<ReactCodeMirrorRef>;
+  editor: React.RefObject<ReactCodeMirrorRef>;
   preview: React.RefObject<MarkdownPreviewRef>;
   container: React.RefObject<HTMLDivElement>;
   containerEditor: React.RefObject<HTMLDivElement>;
@@ -72,15 +72,19 @@ function MarkdownEditor(
     ...codemirrorProps
   } = props;
   const [value, setValue] = useState(props.value || '');
-  const codeMirror = createRef<ReactCodeMirrorRef>();
+  const codeMirror = useRef<ReactCodeMirrorRef>(null);
   const previewContainer = useRef<MarkdownPreviewRef>(null);
   const container = useRef<HTMLDivElement>(null);
   const containerEditor = useRef<HTMLDivElement>(null);
 
-  useImperativeHandle(ref, () => ({
-    editor: codeMirror,
-    preview: previewContainer,
-  }));
+  useImperativeHandle(
+    ref,
+    () => ({
+      editor: codeMirror,
+      preview: previewContainer,
+    }),
+    [codeMirror, previewContainer],
+  );
 
   const toolBarProps: ToolBarProps = {
     editor: codeMirror,

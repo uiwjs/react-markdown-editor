@@ -224,12 +224,12 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   visibleEditor?: boolean;
   /** Option to hide the tool bar. */
   hideToolbar?: boolean;
+  /** Override the default preview component */
+  renderPreview?: (props: MarkdownPreviewProps, initVisible: boolean) => React.ReactNode;
   /** Tool display settings. */
   toolbars?: IToolBarProps['toolbars'];
   /** Tool display settings. */
   toolbarsMode?: IToolBarProps['toolbars'];
-  /** Override the default preview component */
-  renderPreview?: (props: MarkdownPreviewProps, visible: boolean) => React.ReactNode;
   /** [@uiw/react-markdown-preview](https://github.com/uiwjs/react-markdown-preview#options-props) options */
   previewProps?: MarkdownPreviewProps;
 }
@@ -240,8 +240,8 @@ import React from 'react';
 import { ReactCodeMirrorRef } from '@uiw/react-codemirror';
 import { MarkdownPreviewProps, MarkdownPreviewRef } from '@uiw/react-markdown-preview';
 export interface ToolBarProps {
-  editor?: ReactCodeMirrorRef;
-  preview: React.RefObject<MarkdownPreviewRef>;
+  editor: React.RefObject<ReactCodeMirrorRef>;
+  preview: React.RefObject<HTMLDivElement>;
   container: React.RefObject<HTMLDivElement>;
   containerEditor: React.RefObject<HTMLDivElement>;
   editorProps: IMarkdownEditor;

@@ -4,35 +4,34 @@ import { IMarkdownEditor, ToolBarProps } from '../';
 
 const Preview: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & ToolBarProps }> = (props) => {
   const { editorProps } = props;
-  const { preview, containerEditor } = editorProps;
+  const { containerEditor, preview } = editorProps;
   const [visible, setVisible] = useState(props.editorProps.visible);
   useEffect(() => setVisible(props.editorProps.visible), [props.editorProps.visible]);
   useEffect(() => {
-    if (editorProps && editorProps.preview.current) {
-      const preview = editorProps.preview.current.mdp.current;
+    if (preview.current) {
+      const $preview = preview.current;
       if (preview) {
-        preview.style.borderBottomRightRadius = '3px';
+        $preview.style.borderBottomRightRadius = '3px';
       }
-
-      if (preview && visible) {
-        preview.style.width = '50%';
-        preview.style.overflow = 'auto';
-        preview.style.borderLeft = '1px solid var(--color-border-muted)';
-        preview.style.padding = '20px';
+      if ($preview && visible) {
+        $preview.style.width = '50%';
+        $preview.style.overflow = 'auto';
+        $preview.style.borderLeft = '1px solid var(--color-border-muted)';
+        $preview.style.padding = '20px';
         if (containerEditor.current) {
           containerEditor.current.style.width = '50%';
         }
-      } else if (preview) {
-        preview.style.width = '0%';
-        preview.style.overflow = 'hidden';
-        preview.style.borderLeft = '0px';
-        preview.style.padding = '0';
+      } else if ($preview) {
+        $preview.style.width = '0%';
+        $preview.style.overflow = 'hidden';
+        $preview.style.borderLeft = '0px';
+        $preview.style.padding = '0';
         if (containerEditor.current) {
           containerEditor.current.style.width = '100%';
         }
       }
     }
-  }, [preview, editorProps, visible, containerEditor]);
+  }, [visible, containerEditor, preview]);
 
   return (
     <button onClick={() => setVisible(!visible)} type="button" className={visible ? 'active' : ''}>

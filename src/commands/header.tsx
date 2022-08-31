@@ -31,10 +31,10 @@ export const header: ICommand = {
       changes: {
         from: lineInfo.from,
         to: lineInfo.to,
-        insert: `${mark}${title}`,
+        insert: `${mark} ${title}`,
       },
       // selection: EditorSelection.range(lineInfo.from + mark.length, lineInfo.to),
-      selection: { anchor: lineInfo.from + mark.length },
+      selection: { anchor: lineInfo.from + mark.length + 1 },
     });
   },
 };

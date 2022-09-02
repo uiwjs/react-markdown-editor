@@ -82,6 +82,8 @@ export default App;
 
 ## Only Markdown Preview
 
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/react-markdown-editor-forked-qyp83q?fontsize=14&hidenavigation=1&theme=dark)
+
 This markdown preview sub-component is a direct export [`@uiw/react-markdown-preview`](https://github.com/uiwjs/react-markdown-preview) component, API documentation, please check [`@uiw/react-markdown-preview`](https://github.com/uiwjs/react-markdown-preview).
 
 ```jsx

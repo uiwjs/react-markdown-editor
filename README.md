@@ -257,6 +257,7 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
 import React from 'react';
 import { ReactCodeMirrorRef } from '@uiw/react-codemirror';
 import { MarkdownPreviewProps, MarkdownPreviewRef } from '@uiw/react-markdown-preview';
+export * from '@uiw/react-markdown-preview';
 export interface ToolBarProps {
   editor: React.RefObject<ReactCodeMirrorRef>;
   preview: React.RefObject<HTMLDivElement>;
@@ -276,6 +277,16 @@ export interface IToolBarProps<T = keyof typeof defaultCommands | ICommand> exte
   toolbars?: T[];
   onClick?: (type: string) => void;
 }
+declare const MarkdownEditor: MarkdownEditorComponent;
+declare type MarkdownEditorComponent = React.FC<React.PropsWithRef<IMarkdownEditor>> & {
+  Markdown: typeof MarkdownPreview;
+};
+export default MarkdownEditor;
+```
+
+```ts
+import { ReactCodeMirrorRef } from '@uiw/react-codemirror';
+import { MarkdownPreviewProps, MarkdownPreviewRef } from '@uiw/react-markdown-preview';
 export declare type ButtonHandle = (command: ICommand, props: IMarkdownEditor, options: ToolBarProps) => JSX.Element;
 export declare type ICommand = {
   icon?: React.ReactElement;
@@ -285,27 +296,26 @@ export declare type ICommand = {
   execute?: (editor: ReactCodeMirrorRef) => void;
 };
 export declare const defaultCommands: {
+  undo: ICommand;
+  redo: ICommand;
   bold: ICommand;
   italic: ICommand;
   header: ICommand;
   strike: ICommand;
   underline: ICommand;
+  quote: ICommand;
   olist: ICommand;
   ulist: ICommand;
-  link: ICommand;
   todo: ICommand;
+  link: ICommand;
   image: ICommand;
   fullscreen: ICommand;
   preview: ICommand;
 };
 export declare const getCommands: () => ICommand[];
 export declare const getModeCommands: () => ICommand[];
+export declare const defaultTheme: import("@codemirror/state").Extension;
 
-declare const MarkdownEditor: MarkdownEditorComponent;
-declare type MarkdownEditorComponent = React.FC<React.PropsWithRef<IMarkdownEditor>> & {
-  Markdown: typeof MarkdownPreview;
-};
-export default MarkdownEditor;
 ```
 
 ### Development

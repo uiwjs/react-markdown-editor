@@ -9,6 +9,7 @@ import { getCommands, getModeCommands } from './commands';
 import { defaultTheme } from './theme';
 import './index.less';
 
+export * from './theme';
 export * from './commands';
 export * from '@uiw/react-markdown-preview';
 

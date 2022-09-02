@@ -64,9 +64,8 @@ ReactDOM.render(<Dome />, document.getElementById('app'));
 [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/react-markdown-editor-ybpce?file=/src/App.js)
 
 ```jsx
-import MarkdownEditor from '@uiw/react-markdown-editor';
-import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
+import MarkdownEditor from '@uiw/react-markdown-editor';
 
 function App() {
   const [markdown, setMarkdown] = useState("");
@@ -75,6 +74,23 @@ function App() {
       value="# This is a H1  \n## This is a H2  \n###### This is a H6"
       onChange={(value, viewUpdate) => setMarkdown(value)}
     />
+  );
+}
+
+export default App;
+```
+
+## Only Markdown Preview
+
+This markdown preview sub-component is a direct export [`@uiw/react-markdown-preview`](https://github.com/uiwjs/react-markdown-preview) component, API documentation, please check [`@uiw/react-markdown-preview`](https://github.com/uiwjs/react-markdown-preview).
+
+```jsx
+import React from 'react';
+import MarkdownEditor from '@uiw/react-markdown-editor';
+
+function App() {
+  return (
+    <MarkdownEditor.Markdown source="# This is a H1  \n## This is a H2  \n###### This is a H6" />
   );
 }
 
@@ -282,6 +298,12 @@ export declare const defaultCommands: {
 };
 export declare const getCommands: () => ICommand[];
 export declare const getModeCommands: () => ICommand[];
+
+declare const MarkdownEditor: MarkdownEditorComponent;
+declare type MarkdownEditorComponent = React.FC<React.PropsWithRef<IMarkdownEditor>> & {
+  Markdown: typeof MarkdownPreview;
+};
+export default MarkdownEditor;
 ```
 
 ### Development

@@ -52,9 +52,18 @@ export interface MarkdownEditorRef {
   preview: React.RefObject<HTMLDivElement> | null;
 }
 
-export default React.forwardRef<MarkdownEditorRef, IMarkdownEditor>(MarkdownEditor);
+const MarkdownEditor: MarkdownEditorComponent = React.forwardRef<MarkdownEditorRef, IMarkdownEditor>(
+  MarkdownEditorInternal,
+) as unknown as MarkdownEditorComponent;
+type MarkdownEditorComponent = React.FC<React.PropsWithRef<IMarkdownEditor>> & {
+  Markdown: typeof MarkdownPreview;
+};
 
-function MarkdownEditor(
+MarkdownEditor.Markdown = MarkdownPreview;
+
+export default MarkdownEditor;
+
+function MarkdownEditorInternal(
   props: IMarkdownEditor,
   ref?: ((instance: MarkdownEditorRef) => void) | React.RefObject<MarkdownEditorRef> | null,
 ) {

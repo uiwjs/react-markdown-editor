@@ -120,9 +120,9 @@ function MarkdownEditorInternal(
   return (
     <div className={cls} ref={container}>
       {hideToolbar && (
-        <div>
-          <ToolBar {...toolBarProps} toolbars={toolbarsMode} mode />
+        <div className={`${prefixCls}-toolbar-warp`}>
           <ToolBar {...toolBarProps} toolbars={toolbars} />
+          <ToolBar {...toolBarProps} toolbars={toolbarsMode} mode />
         </div>
       )}
       <div className={`${prefixCls}-content`} style={{ height: codemirrorProps.height }}>

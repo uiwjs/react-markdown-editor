@@ -38,6 +38,8 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   toolbarsMode?: IToolBarProps['toolbars'];
   /** [@uiw/react-markdown-preview](https://github.com/uiwjs/react-markdown-preview#options-props) options */
   previewProps?: MarkdownPreviewProps;
+  /** replace the default `extensions` */
+  reExtensions?: ReactCodeMirrorProps['extensions'];
 }
 
 export interface ToolBarProps {
@@ -80,6 +82,7 @@ function MarkdownEditorInternal(
     hideToolbar = true,
     previewProps = {},
     extensions = [],
+    reExtensions,
     ...codemirrorProps
   } = props;
   const [value, setValue] = useState(props.value || '');
@@ -105,11 +108,9 @@ function MarkdownEditorInternal(
     editorProps: props,
   };
   const height = typeof codemirrorProps.height === 'number' ? `${codemirrorProps.height}px` : codemirrorProps.height;
-  const extensionsData: IMarkdownEditor['extensions'] = [
-    markdown({ base: markdownLanguage, codeLanguages: languages }),
-    scrollerStyle,
-    ...extensions,
-  ];
+  const extensionsData: IMarkdownEditor['extensions'] = reExtensions
+    ? reExtensions
+    : [markdown({ base: markdownLanguage, codeLanguages: languages }), scrollerStyle, ...extensions];
   const clsPreview = `${prefixCls}-preview`;
   const cls = [prefixCls, 'wmde-markdown-var', className].filter(Boolean).join(' ');
   previewProps['source'] = value;

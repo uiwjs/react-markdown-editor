@@ -158,9 +158,11 @@ export default Dome;
 
 ## Support Nextjs
 
-Use examples in [nextjs](https://nextjs.org/). [#52](https://github.com/uiwjs/react-md-editor/issues/52#issuecomment-848969341) [#224](https://github.com/uiwjs/react-md-editor/issues/224#issuecomment-901112079)
+Use examples in [nextjs](https://nextjs.org/). 
 
 [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/nextjs-example-react-markdown-editor-72s9d?fontsize=14&hidenavigation=1&theme=dark)
+[![#52](https://img.shields.io/github/issues/detail/state/uiwjs/react-md-editor/52)](https://github.com/uiwjs/react-md-editor/issues/52#issuecomment-848969341)
+[![#224](https://img.shields.io/github/issues/detail/state/uiwjs/react-md-editor/224)](https://github.com/uiwjs/react-md-editor/issues/224#issuecomment-901112079)
 
 ```bash
 npm install next-remove-imports

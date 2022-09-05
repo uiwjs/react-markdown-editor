@@ -246,6 +246,8 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   hideToolbar?: boolean;
   /** Override the default preview component */
   renderPreview?: (props: MarkdownPreviewProps, initVisible: boolean) => React.ReactNode;
+  /** Preview expanded width @default `50%` */
+  previewWidth?: string;
   /** Tool display settings. */
   toolbars?: IToolBarProps['toolbars'];
   /** Tool display settings. */

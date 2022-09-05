@@ -12,7 +12,7 @@ export function Example() {
   const [hideToolbar, setHideToolbar] = useState(true);
   return (
     <div className={styles.editor}>
-      <MarkdownEditor visible={visible} previewWidth="100%" height="500px" value={mdstr} hideToolbar={hideToolbar} />
+      <MarkdownEditor visible={visible} height="500px" value={mdstr} hideToolbar={hideToolbar} />
       <div style={{ marginTop: 10, display: 'flex', gap: '10px' }}>
         <button
           onClick={() => {

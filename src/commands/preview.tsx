@@ -4,7 +4,7 @@ import { IMarkdownEditor, ToolBarProps } from '../';
 
 const Preview: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & ToolBarProps }> = (props) => {
   const { editorProps } = props;
-  const { containerEditor, preview } = editorProps;
+  const { containerEditor, preview, previewWidth = '50%' } = editorProps;
   const [visible, setVisible] = useState(props.editorProps.visible);
   useEffect(() => setVisible(props.editorProps.visible), [props.editorProps.visible]);
   useEffect(() => {
@@ -14,12 +14,14 @@ const Preview: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & Tool
         $preview.style.borderBottomRightRadius = '3px';
       }
       if ($preview && visible) {
-        $preview.style.width = '50%';
+        $preview.style.width = previewWidth;
         $preview.style.overflow = 'auto';
-        $preview.style.borderLeft = '1px solid var(--color-border-muted)';
+        if (previewWidth !== '100%') {
+          $preview.style.borderLeft = '1px solid var(--color-border-muted)';
+        }
         $preview.style.padding = '20px';
         if (containerEditor.current) {
-          containerEditor.current.style.width = '50%';
+          containerEditor.current.style.width = `calc(100% - ${previewWidth})`;
         }
       } else if ($preview) {
         $preview.style.width = '0%';
@@ -31,7 +33,7 @@ const Preview: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & Tool
         }
       }
     }
-  }, [visible, containerEditor, preview]);
+  }, [visible, containerEditor, preview, previewWidth]);
 
   return (
     <button onClick={() => setVisible(!visible)} type="button" className={visible ? 'active' : ''}>

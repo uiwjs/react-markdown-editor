@@ -1,7 +1,8 @@
-import React, { useState, useRef, useImperativeHandle, Fragment } from 'react';
+import React, { useState, useRef, useImperativeHandle, Fragment, useEffect, useCallback } from 'react';
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 import { languages } from '@codemirror/language-data';
 import { EditorView, ViewUpdate } from '@codemirror/view';
+import * as events from '@uiw/codemirror-extensions-events';
 import CodeMirror, { ReactCodeMirrorProps, ReactCodeMirrorRef } from '@uiw/react-codemirror';
 import MarkdownPreview, { MarkdownPreviewProps } from '@uiw/react-markdown-preview';
 import ToolBar, { IToolBarProps } from './components/ToolBar';
@@ -32,6 +33,8 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   renderPreview?: (props: MarkdownPreviewProps, initVisible: boolean) => React.ReactNode;
   /** Preview expanded width @default `50%` */
   previewWidth?: string;
+  /** Whether to enable scrolling */
+  enableScroll?: boolean;
   /** Tool display settings. */
   toolbars?: IToolBarProps['toolbars'];
   /** The tool on the right shows the settings. */
@@ -86,6 +89,7 @@ function MarkdownEditorInternal(
     visibleEditor = true,
     hideToolbar = true,
     toolbarBottom = false,
+    enableScroll = true,
     previewProps = {},
     extensions = [],
     previewWidth = '50%',
@@ -97,6 +101,7 @@ function MarkdownEditorInternal(
   const container = useRef<HTMLDivElement>(null);
   const containerEditor = useRef<HTMLDivElement>(null);
   const preview = useRef<HTMLDivElement>(null);
+  const active = useRef<'editor' | 'preview'>('editor');
 
   useImperativeHandle(
     ref,
@@ -115,9 +120,51 @@ function MarkdownEditorInternal(
     editorProps: { ...props, previewWidth },
   };
   const height = typeof codemirrorProps.height === 'number' ? `${codemirrorProps.height}px` : codemirrorProps.height;
-  const extensionsData: IMarkdownEditor['extensions'] = reExtensions
+
+  const previewScrollHandle = useCallback(
+    (event: Event) => {
+      if (!enableScroll) return;
+      const target = event.target as HTMLDivElement;
+      const percent = target.scrollTop / target.scrollHeight;
+      if (active.current === 'editor' && preview.current) {
+        const previewHeihgt = preview.current?.scrollHeight || 0;
+        preview.current!.scrollTop = previewHeihgt * percent;
+      } else if (codeMirror.current && codeMirror.current.view) {
+        const editorScrollDom = codeMirror.current.view.scrollDOM;
+        const editorScrollHeihgt = codeMirror.current.view.scrollDOM.scrollHeight || 0;
+        editorScrollDom.scrollTop = editorScrollHeihgt * percent;
+      }
+    },
+    [enableScroll],
+  );
+  const mouseoverHandle = () => (active.current = 'preview');
+  const mouseleaveHandle = () => (active.current = 'editor');
+  useEffect(() => {
+    const $preview = preview.current;
+    if ($preview && enableScroll) {
+      $preview.addEventListener('mouseover', mouseoverHandle, false);
+      $preview.addEventListener('mouseleave', mouseleaveHandle, false);
+      $preview.addEventListener('scroll', previewScrollHandle, false);
+    }
+    return () => {
+      if ($preview && enableScroll) {
+        $preview.removeEventListener('mouseover', mouseoverHandle);
+        $preview.removeEventListener('mouseleave', mouseoverHandle);
+        $preview.addEventListener('mouseleave', previewScrollHandle, false);
+      }
+    };
+  }, [preview, enableScroll, previewScrollHandle]);
+
+  const scrollExtensions = events.scroll({
+    scroll: previewScrollHandle,
+  });
+
+  let extensionsData: IMarkdownEditor['extensions'] = reExtensions
     ? reExtensions
     : [markdown({ base: markdownLanguage, codeLanguages: languages }), scrollerStyle, ...extensions];
+  if (enableScroll) {
+    extensionsData.push(scrollExtensions);
+  }
   const clsPreview = `${prefixCls}-preview`;
   const cls = [prefixCls, 'wmde-markdown-var', className].filter(Boolean).join(' ');
   previewProps['source'] = value;

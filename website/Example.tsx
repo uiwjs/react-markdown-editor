@@ -11,12 +11,14 @@ export function Example() {
   const [mdstr, setMdstr] = useState<string>(DocumentStrSource);
   const [hideToolbar, setHideToolbar] = useState(true);
   const [toolbarBottom, setToolbarBottom] = useState(false);
+  const [enableScroll, setEnableScroll] = useState(true);
   return (
     <div className={styles.editor}>
       <MarkdownEditor
         visible={visible}
         height="500px"
         value={mdstr}
+        enableScroll={enableScroll}
         hideToolbar={hideToolbar}
         toolbarBottom={toolbarBottom}
       />
@@ -32,6 +34,10 @@ export function Example() {
         <label>
           <input type="checkbox" checked={hideToolbar} onChange={(evn) => setHideToolbar(evn.target.checked)} />
           hideToolbar
+        </label>
+        <label>
+          <input type="checkbox" checked={enableScroll} onChange={(evn) => setEnableScroll(evn.target.checked)} />
+          enableScroll
         </label>
         <label>
           <input type="checkbox" checked={toolbarBottom} onChange={(evn) => setToolbarBottom(evn.target.checked)} />

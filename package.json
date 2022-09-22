@@ -43,8 +43,9 @@
   "dependencies": {
     "@codemirror/lang-markdown": "^6.0.0",
     "@codemirror/language-data": "^6.1.0",
-    "@uiw/codemirror-themes": "^4.10.4",
-    "@uiw/react-codemirror": "^4.10.4",
+    "@uiw/codemirror-extensions-events": "^4.12.3",
+    "@uiw/codemirror-themes": "^4.12.3",
+    "@uiw/react-codemirror": "^4.12.3",
     "@uiw/react-markdown-preview": "^4.0.20"
   },
   "devDependencies": {

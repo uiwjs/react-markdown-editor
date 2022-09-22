@@ -55,14 +55,15 @@ export const codeBlock: ICommand = {
   ),
   execute: ({ state, view }) => {
     if (!state || !view) return;
-    view.dispatch(
-      view.state.changeByRange((range) => ({
-        changes: [
-          { from: range.from, insert: '```js\n' },
-          { from: range.to, insert: '\n```' },
-        ],
-        range: EditorSelection.range(range.from + 5, range.to + 3),
-      })),
-    );
+    const main = view.state.selection.main;
+    const txt = view.state.sliceDoc(view.state.selection.main.from, view.state.selection.main.to);
+    view.dispatch({
+      changes: {
+        from: main.from,
+        to: main.to,
+        insert: `\`\`\`js\n${txt}\n\`\`\``,
+      },
+      selection: EditorSelection.range(main.from + 3, main.from + 5),
+    });
   },
 };

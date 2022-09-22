@@ -1,5 +1,6 @@
 import { ReactCodeMirrorRef } from '@uiw/react-codemirror';
 import { bold } from './bold';
+import { code, codeBlock } from './code';
 import { italic } from './italic';
 import { header } from './header';
 import { strike } from './strike';
@@ -40,6 +41,8 @@ export const defaultCommands = {
   todo,
   link,
   image,
+  code,
+  codeBlock,
   fullscreen,
   preview,
 };

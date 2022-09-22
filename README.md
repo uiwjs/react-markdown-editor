@@ -315,6 +315,8 @@ export declare const defaultCommands: {
   todo: ICommand;
   link: ICommand;
   image: ICommand;
+  code: ICommand;
+  codeBlock: ICommand;
   fullscreen: ICommand;
   preview: ICommand;
 };

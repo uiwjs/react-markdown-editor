@@ -10,11 +10,11 @@ export const code: ICommand = {
       <path
         d="M16 13 4 25.432 16 37m16-24 12 12.432L32 37"
         stroke="currentColor"
-        stroke-width="5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      <path d="m28 4-7 40" stroke="currentColor" stroke-width="5" stroke-linecap="round" />
+      <path d="m28 4-7 40" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
     </svg>
   ),
   execute: ({ state, view }) => {
@@ -40,16 +40,16 @@ export const codeBlock: ICommand = {
       <path
         d="M21 6H9a3 3 0 0 0-3 3v22a3 3 0 0 0 3 3h30a3 3 0 0 0 3-3V21M24 34v8"
         stroke="currentColor"
-        stroke-width="5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="m32 6-4 4 4 4m6-8 4 4-4 4M14 42h20"
         stroke="currentColor"
-        stroke-width="5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),

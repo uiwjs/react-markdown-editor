@@ -23,7 +23,7 @@
 </p>
 
 <!--rehype:ignore:start-->
-[![React Markdown Editor](https://user-images.githubusercontent.com/1680273/186128463-5f819e3f-926b-4dea-b5d8-e9d1d1a8d72e.png)](https://uiwjs.github.io/react-markdown-editor/)
+[![React Markdown Editor](https://user-images.githubusercontent.com/1680273/191638380-55abdad5-09b8-45f2-952e-6b9879fcf4fa.png)](https://uiwjs.github.io/react-markdown-editor/)
 <!--rehype:ignore:end-->
 
 > Migrate from @uiw/react-markdown-editor [4.x to 5.x.](https://github.com/uiwjs/react-markdown-editor/releases/tag/v5.0.0)
@@ -242,16 +242,18 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   /** Shows a preview that will be converted to html. */
   visible?: boolean;
   visibleEditor?: boolean;
-  /** Option to hide the tool bar. */
-  hideToolbar?: boolean;
   /** Override the default preview component */
   renderPreview?: (props: MarkdownPreviewProps, initVisible: boolean) => React.ReactNode;
   /** Preview expanded width @default `50%` */
   previewWidth?: string;
   /** Tool display settings. */
   toolbars?: IToolBarProps['toolbars'];
-  /** Tool display settings. */
+  /** The tool on the right shows the settings. */
   toolbarsMode?: IToolBarProps['toolbars'];
+  /** Toolbar on bottom */
+  toolbarBottom?: boolean;
+  /** Option to hide the tool bar. */
+  hideToolbar?: boolean;
   /** [@uiw/react-markdown-preview](https://github.com/uiwjs/react-markdown-preview#options-props) options */
   previewProps?: MarkdownPreviewProps;
   /** replace the default `extensions` */

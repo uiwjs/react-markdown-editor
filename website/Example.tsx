@@ -10,9 +10,16 @@ export function Example() {
   const [visible, setVisible] = useState(true);
   const [mdstr, setMdstr] = useState<string>(DocumentStrSource);
   const [hideToolbar, setHideToolbar] = useState(true);
+  const [toolbarBottom, setToolbarBottom] = useState(false);
   return (
     <div className={styles.editor}>
-      <MarkdownEditor visible={visible} height="500px" value={mdstr} hideToolbar={hideToolbar} />
+      <MarkdownEditor
+        visible={visible}
+        height="500px"
+        value={mdstr}
+        hideToolbar={hideToolbar}
+        toolbarBottom={toolbarBottom}
+      />
       <div style={{ marginTop: 10, display: 'flex', gap: '10px' }}>
         <button
           onClick={() => {
@@ -25,6 +32,10 @@ export function Example() {
         <label>
           <input type="checkbox" checked={hideToolbar} onChange={(evn) => setHideToolbar(evn.target.checked)} />
           hideToolbar
+        </label>
+        <label>
+          <input type="checkbox" checked={toolbarBottom} onChange={(evn) => setToolbarBottom(evn.target.checked)} />
+          toolbarBottom
         </label>
         <button onClick={() => setVisible(!visible)}>{visible ? 'Show' : 'Hide'}</button>
         <span>v{VERSION}</span>

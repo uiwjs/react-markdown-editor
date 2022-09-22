@@ -1,4 +1,4 @@
-import React, { useState, useRef, useImperativeHandle } from 'react';
+import React, { useState, useRef, useImperativeHandle, Fragment } from 'react';
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 import { languages } from '@codemirror/language-data';
 import { EditorView, ViewUpdate } from '@codemirror/view';
@@ -28,16 +28,18 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   /** Shows a preview that will be converted to html. */
   visible?: boolean;
   visibleEditor?: boolean;
-  /** Option to hide the tool bar. */
-  hideToolbar?: boolean;
   /** Override the default preview component */
   renderPreview?: (props: MarkdownPreviewProps, initVisible: boolean) => React.ReactNode;
   /** Preview expanded width @default `50%` */
   previewWidth?: string;
   /** Tool display settings. */
   toolbars?: IToolBarProps['toolbars'];
-  /** Tool display settings. */
+  /** The tool on the right shows the settings. */
   toolbarsMode?: IToolBarProps['toolbars'];
+  /** Toolbar on bottom */
+  toolbarBottom?: boolean;
+  /** Option to hide the tool bar. */
+  hideToolbar?: boolean;
   /** [@uiw/react-markdown-preview](https://github.com/uiwjs/react-markdown-preview#options-props) options */
   previewProps?: MarkdownPreviewProps;
   /** replace the default `extensions` */
@@ -60,6 +62,7 @@ export interface MarkdownEditorRef {
 const MarkdownEditor: MarkdownEditorComponent = React.forwardRef<MarkdownEditorRef, IMarkdownEditor>(
   MarkdownEditorInternal,
 ) as unknown as MarkdownEditorComponent;
+
 type MarkdownEditorComponent = React.FC<React.PropsWithRef<IMarkdownEditor>> & {
   Markdown: typeof MarkdownPreview;
 };
@@ -82,6 +85,7 @@ function MarkdownEditorInternal(
     renderPreview,
     visibleEditor = true,
     hideToolbar = true,
+    toolbarBottom = false,
     previewProps = {},
     extensions = [],
     previewWidth = '50%',
@@ -121,35 +125,56 @@ function MarkdownEditorInternal(
     setValue(value);
     onChange && onChange(value, viewUpdate);
   };
+  const conentView = (
+    <div className={`${prefixCls}-content`} style={{ height: codemirrorProps.height }}>
+      <div className={`${prefixCls}-content-editor`} ref={containerEditor}>
+        {visibleEditor && (
+          <CodeMirror
+            theme={defaultTheme}
+            {...codemirrorProps}
+            extensions={extensionsData}
+            height={height}
+            ref={codeMirror}
+            onChange={handleChange}
+          />
+        )}
+      </div>
+      <div className={clsPreview} ref={preview}>
+        {renderPreview ? (
+          renderPreview(previewProps, !!visible)
+        ) : (
+          <MarkdownPreview {...previewProps} data-visible={!!visible} />
+        )}
+      </div>
+    </div>
+  );
+
+  const clsToolbar = [
+    prefixCls && `${prefixCls}-toolbar-warp`,
+    prefixCls && toolbarBottom && `${prefixCls}-toolbar-bottom`,
+  ]
+    .filter(Boolean)
+    .join(' ');
+  const toolbarView = hideToolbar && (
+    <div className={clsToolbar}>
+      <ToolBar {...toolBarProps} toolbars={toolbars} />
+      <ToolBar {...toolBarProps} toolbars={toolbarsMode} mode />
+    </div>
+  );
+  const child = toolbarBottom ? (
+    <Fragment>
+      {conentView}
+      {toolbarView}
+    </Fragment>
+  ) : (
+    <Fragment>
+      {toolbarView}
+      {conentView}
+    </Fragment>
+  );
   return (
     <div className={cls} ref={container}>
-      {hideToolbar && (
-        <div className={`${prefixCls}-toolbar-warp`}>
-          <ToolBar {...toolBarProps} toolbars={toolbars} />
-          <ToolBar {...toolBarProps} toolbars={toolbarsMode} mode />
-        </div>
-      )}
-      <div className={`${prefixCls}-content`} style={{ height: codemirrorProps.height }}>
-        <div className={`${prefixCls}-content-editor`} ref={containerEditor}>
-          {visibleEditor && (
-            <CodeMirror
-              theme={defaultTheme}
-              {...codemirrorProps}
-              extensions={extensionsData}
-              height={height}
-              ref={codeMirror}
-              onChange={handleChange}
-            />
-          )}
-        </div>
-        <div className={clsPreview} ref={preview}>
-          {renderPreview ? (
-            renderPreview(previewProps, !!visible)
-          ) : (
-            <MarkdownPreview {...previewProps} data-visible={!!visible} />
-          )}
-        </div>
-      </div>
+      {child}
     </div>
   );
 }

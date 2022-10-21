@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   build-deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -25,13 +25,13 @@ jobs:
 
       - name: Create Tag
         id: create_tag
-        uses: jaywcjlove/create-tag-action@v1.3.7
+        uses: jaywcjlove/create-tag-action@main
         with:
           package-path: ./package.json
 
       - name: get tag version
         id: tag_version
-        uses: jaywcjlove/changelog-generator@v1.5.7
+        uses: jaywcjlove/changelog-generator@main
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -42,7 +42,7 @@ jobs:
 
       - name: Generate Changelog
         id: changelog
-        uses: jaywcjlove/changelog-generator@v1.5.7
+        uses: jaywcjlove/changelog-generator@main
         with:
           head-ref: ${{steps.create_tag.outputs.version}}
           filter-author: (小弟调调™)
@@ -95,8 +95,7 @@ jobs:
         uses: jaywcjlove/github-action-package@main
         with:
           path: ./package.json
-          data: |
-            { "name": "@uiwjs/react-markdown-editor" }
+          rename: '@uiwjs/react-markdown-editor'
 
       - run: npm publish
         env:

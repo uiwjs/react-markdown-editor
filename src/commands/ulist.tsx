@@ -16,8 +16,8 @@ export const ulist: ICommand = {
   execute: ({ state, view }) => {
     if (!state || !view) return;
     const lineInfo = view.state.doc.lineAt(view.state.selection.main.from);
-    let mark = '1. ';
-    const matchMark = lineInfo.text.match(/^\1\./);
+    let mark = '- ';
+    const matchMark = lineInfo.text.match(/^-/);
     if (matchMark && matchMark[0]) {
       mark = '';
     }

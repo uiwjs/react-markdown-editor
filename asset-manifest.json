@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-markdown-editor/static/css/main.dfa2113e.css",
-    "main.js": "/react-markdown-editor/static/js/main.257b2469.js",
+    "main.js": "/react-markdown-editor/static/js/main.60c3dfb3.js",
     "static/js/7549.075bab12.chunk.js": "/react-markdown-editor/static/js/7549.075bab12.chunk.js",
     "static/js/4618.07d2a66f.chunk.js": "/react-markdown-editor/static/js/4618.07d2a66f.chunk.js",
     "static/js/6336.c15f7efa.chunk.js": "/react-markdown-editor/static/js/6336.c15f7efa.chunk.js",
@@ -115,7 +115,7 @@
     "static/media/logo.svg": "/react-markdown-editor/static/media/logo.b075bb6ed038a64816637dafbdf6bd35.svg",
     "index.html": "/react-markdown-editor/index.html",
     "main.dfa2113e.css.map": "/react-markdown-editor/static/css/main.dfa2113e.css.map",
-    "main.257b2469.js.map": "/react-markdown-editor/static/js/main.257b2469.js.map",
+    "main.60c3dfb3.js.map": "/react-markdown-editor/static/js/main.60c3dfb3.js.map",
     "7549.075bab12.chunk.js.map": "/react-markdown-editor/static/js/7549.075bab12.chunk.js.map",
     "4618.07d2a66f.chunk.js.map": "/react-markdown-editor/static/js/4618.07d2a66f.chunk.js.map",
     "6336.c15f7efa.chunk.js.map": "/react-markdown-editor/static/js/6336.c15f7efa.chunk.js.map",
@@ -233,6 +233,6 @@
     "static/js/uiw-vendor.ba1aeb76.js",
     "static/js/react-vendor.4110ab6b.js",
     "static/css/main.dfa2113e.css",
-    "static/js/main.257b2469.js"
+    "static/js/main.60c3dfb3.js"
   ]
 }

@@ -249,9 +249,11 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   /** Whether to enable scrolling */
   enableScroll?: boolean;
   /** Tool display settings. */
-  toolbars?: IToolBarProps['toolbars'];
+  toolbars?: Commands[];
   /** The tool on the right shows the settings. */
-  toolbarsMode?: IToolBarProps['toolbars'];
+  toolbarsMode?: Commands[];
+  /** Tool display filter settings. */
+  toolbarsFilter?: (tool: Commands, idx: number) => boolean;
   /** Toolbar on bottom */
   toolbarBottom?: boolean;
   /** Option to hide the tool bar. */
@@ -279,7 +281,8 @@ export interface MarkdownEditorRef {
   editor: React.RefObject<ReactCodeMirrorRef> | null;
   preview?: React.RefObject<MarkdownPreviewRef> | null;
 }
-export interface IToolBarProps<T = keyof typeof defaultCommands | ICommand> extends ToolBarProps {
+export declare type Commands = keyof typeof defaultCommands | ICommand;
+export interface IToolBarProps<T = Commands> extends ToolBarProps {
   className?: string;
   editorProps: IMarkdownEditor;
   mode?: boolean;
@@ -327,7 +330,6 @@ export declare const defaultCommands: {
 export declare const getCommands: () => ICommand[];
 export declare const getModeCommands: () => ICommand[];
 export declare const defaultTheme: import("@codemirror/state").Extension;
-
 ```
 
 ### Development

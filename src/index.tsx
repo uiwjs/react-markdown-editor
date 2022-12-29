@@ -5,7 +5,7 @@ import { EditorView, ViewUpdate } from '@codemirror/view';
 import * as events from '@uiw/codemirror-extensions-events';
 import CodeMirror, { ReactCodeMirrorProps, ReactCodeMirrorRef } from '@uiw/react-codemirror';
 import MarkdownPreview, { MarkdownPreviewProps } from '@uiw/react-markdown-preview';
-import ToolBar, { IToolBarProps } from './components/ToolBar';
+import ToolBar, { Commands } from './components/ToolBar';
 import { getCommands, getModeCommands } from './commands';
 import { defaultTheme } from './theme';
 import './index.less';
@@ -36,9 +36,11 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   /** Whether to enable scrolling */
   enableScroll?: boolean;
   /** Tool display settings. */
-  toolbars?: IToolBarProps['toolbars'];
+  toolbars?: Commands[];
   /** The tool on the right shows the settings. */
-  toolbarsMode?: IToolBarProps['toolbars'];
+  toolbarsMode?: Commands[];
+  /** Tool display filter settings. */
+  toolbarsFilter?: (tool: Commands, idx: number) => boolean;
   /** Toolbar on bottom */
   toolbarBottom?: boolean;
   /** Option to hide the tool bar. */
@@ -84,6 +86,7 @@ function MarkdownEditorInternal(
     onChange,
     toolbars = getCommands(),
     toolbarsMode = getModeCommands(),
+    toolbarsFilter,
     visible = true,
     renderPreview,
     visibleEditor = true,
@@ -202,10 +205,13 @@ function MarkdownEditorInternal(
   ]
     .filter(Boolean)
     .join(' ');
+
+  const tools = toolbarsFilter ? toolbars.filter(toolbarsFilter) : toolbars;
+  const toolsMode = toolbarsFilter ? toolbarsMode.filter(toolbarsFilter) : toolbarsMode;
   const toolbarView = hideToolbar && (
     <div className={clsToolbar}>
-      <ToolBar {...toolBarProps} toolbars={toolbars} />
-      <ToolBar {...toolBarProps} toolbars={toolbarsMode} mode />
+      <ToolBar {...toolBarProps} toolbars={tools} />
+      <ToolBar {...toolBarProps} toolbars={toolsMode} mode />
     </div>
   );
   const child = toolbarBottom ? (

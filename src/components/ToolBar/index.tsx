@@ -3,7 +3,9 @@ import { ICommand, defaultCommands } from '../../commands';
 import { IMarkdownEditor, ToolBarProps } from '../../';
 import './index.less';
 
-export interface IToolBarProps<T = keyof typeof defaultCommands | ICommand> extends ToolBarProps {
+export type Commands = keyof typeof defaultCommands | ICommand;
+
+export interface IToolBarProps<T = Commands> extends ToolBarProps {
   className?: string;
   editorProps: IMarkdownEditor;
   mode?: boolean;

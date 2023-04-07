@@ -2,6 +2,8 @@
   "$schema": "http://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -9,16 +11,14 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "declaration": true,
     "baseUrl": ".",
     "jsx": "react-jsx",
+    "outDir": "./cjs",
     "noFallthroughCasesInSwitch": true,
-    "noEmit": true,
     "types": ["jest", "node"]
   },
-  "include": ["website", "src", ".kktrc.ts", "test"]
+  "include": ["src"]
 }

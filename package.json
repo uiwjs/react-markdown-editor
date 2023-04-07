@@ -15,8 +15,8 @@
     "css:build:dist": "compile-less -d src --combine markdown-editor.css --rm-global",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "pretty-quick": "pretty-quick --staged",
-    "watch": "tsbb watch & npm run css:watch",
-    "build": "tsbb build && npm run css:build && npm run css:build:dist"
+    "watch": "tsbb watch src/*.tsx --use-babel & npm run css:watch",
+    "build": "tsbb build src/*.tsx --use-babel && npm run css:build && npm run css:build:dist"
   },
   "repository": {
     "type": "git",
@@ -65,7 +65,7 @@
     "pretty-quick": "~3.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tsbb": "^3.7.6"
+    "tsbb": "^4.1.4"
   },
   "browserslist": {
     "production": [

@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/uiwjs/react-markdown-editor">
-    <img alt="React Markdown Editor logo" src="./website/logo.svg?sanitize=true">
+    <img alt="React Markdown Editor logo" src="https://github.com/uiwjs/react-markdown-editor/assets/1680273/473491e0-c955-46c2-abbd-6f506068d84b?sanitize=true">
   </a>
 </p>
 

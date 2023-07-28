@@ -6,30 +6,34 @@ const Fullscreen: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & T
   const { editorProps } = props;
   const $height = useRef<number>(0);
   const [full, setFull] = useState(false);
+  const robserver = useRef<ResizeObserver>();
+  useEffect(() => {
+    robserver.current = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (!$height.current) {
+          $height.current = entry.target.clientHeight;
+        }
+        if (editorProps.editor?.current?.view?.dom) {
+          if (full) {
+            editorProps.editor.current.view.dom.style.height = `${entry.target.clientHeight}px`;
+          } else {
+            editorProps.editor.current.view.dom.removeAttribute('style');
+          }
+        }
+      }
+    });
+  }, []);
   useEffect(() => {
     if (
       editorProps.containerEditor &&
       editorProps.containerEditor.current &&
-      editorProps.containerEditor.current.parentElement
+      editorProps.containerEditor.current.parentElement &&
+      robserver.current
     ) {
       const parentElement = editorProps.containerEditor.current.parentElement;
-      const robserver = new ResizeObserver((entries) => {
-        for (const entry of entries) {
-          if (!$height.current) {
-            $height.current = entry.target.clientHeight;
-          }
-          if (editorProps.editor?.current?.view?.dom) {
-            if (full) {
-              editorProps.editor.current.view.dom.style.height = `${entry.target.clientHeight}px`;
-            } else {
-              editorProps.editor.current.view.dom.removeAttribute('style');
-            }
-          }
-        }
-      });
-      robserver.observe(parentElement);
+      robserver.current.observe(parentElement);
     }
-  }, [editorProps.containerEditor, editorProps.editor, full]);
+  }, [editorProps.containerEditor, editorProps.editor, full, robserver]);
 
   useEffect(() => {
     if (!document) return;

@@ -1,0 +1,44 @@
+{
+  "name": "website",
+  "version": "5.11.1",
+  "preview": true,
+  "scripts": {
+    "build": "kkt build",
+    "start": "kkt start",
+    "map": "source-map-explorer build/static/js/*.js --html build/website-result.html"
+  },
+  "dependencies": {
+    "@uiw/react-markdown-preview-example": "^1.5.6",
+    "@uiw/react-markdown-editor": "5.11.1",
+    "@types/react": "^18.2.17",
+    "@types/react-dom": "^18.2.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@kkt/less-modules": "^7.5.1",
+    "@kkt/scope-plugin-options": "^7.5.1",
+    "kkt": "^7.5.1",
+    "markdown-react-code-preview-loader": "^2.1.2",
+    "source-map-explorer": "^2.5.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

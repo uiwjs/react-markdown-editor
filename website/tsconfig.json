@@ -1,9 +1,0 @@
-{
-  "extends": "../tsconfig",
-  "include": ["../src", "../website"],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "emitDeclarationOnly": true,
-    "noEmit": false
-  }
-}

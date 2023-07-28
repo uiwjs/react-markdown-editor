@@ -1,0 +1,62 @@
+{
+  "name": "@uiw/react-markdown-editor",
+  "version": "5.11.1",
+  "description": "A markdown editor with preview, implemented with React.js and TypeScript.",
+  "homepage": "https://uiwjs.github.io/react-markdown-editor",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uiwjs/react-markdown-editor"
+  },
+  "author": "Kenny Wong <wowohoo@qq.com>",
+  "license": "MIT",
+  "files": [
+    "src/**/*.{ts,tsx,less}",
+    "markdown-editor.css",
+    "cjs",
+    "esm"
+  ],
+  "peerDependencies": {
+    "@babel/runtime": ">=7.10.0",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "keywords": [
+    "array-viewer",
+    "component",
+    "interactive",
+    "interactive-json",
+    "json",
+    "json-component",
+    "json-display",
+    "json-tree",
+    "json-view",
+    "json-viewer",
+    "json-inspector",
+    "json-tree",
+    "react",
+    "react-component",
+    "react-json",
+    "theme",
+    "tree",
+    "tree-view",
+    "treeview"
+  ],
+  "dependencies": {
+    "@babel/runtime": "^7.22.6",
+    "@codemirror/lang-markdown": "^6.0.0",
+    "@codemirror/language-data": "^6.1.0",
+    "@uiw/codemirror-extensions-events": "^4.12.3",
+    "@uiw/codemirror-themes": "^4.12.3",
+    "@uiw/react-codemirror": "^4.12.3",
+    "@uiw/react-markdown-preview": "^4.0.20"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@types/react-test-renderer": "^18.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-test-renderer": "^18.2.0"
+  }
+}

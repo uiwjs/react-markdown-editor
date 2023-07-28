@@ -1,82 +1,39 @@
 {
-  "name": "@uiw/react-markdown-editor",
-  "version": "5.11.1",
-  "description": "A markdown editor with preview, implemented with React.js and TypeScript.",
-  "homepage": "https://uiwjs.github.io/react-markdown-editor",
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
+  "private": true,
   "scripts": {
-    "prepare": "npm run build && husky install",
-    "released": "npm run build && npm run doc",
-    "doc": "kkt build --app-src ./website",
-    "start": "kkt start --app-src ./website",
+    "watch": "lerna exec --scope @uiw/react-markdown-editor -- tsbb watch \"src/*.{ts,tsx}\" --use-babel --cjs cjs & npm run css:watch",
+    "build": "lerna exec --scope @uiw/react-markdown-editor -- tsbb build \"src/*.{ts,tsx}\" --use-babel --cjs cjs && npm run css:build",
+    "start": "lerna exec --scope website -- npm run start",
+    "doc": "lerna exec --scope website -- npm run build",
     "css:watch": "compile-less -d src -o esm --watch",
     "css:build": "compile-less -d src -o esm",
     "css:build:dist": "compile-less -d src --combine markdown-editor.css --rm-global",
+    "test": "lerna exec --scope @uiw/react-markdown-editor -- tsbb test --env=jsdom",
+    "coverage": "lerna exec --scope @uiw/react-markdown-editor -- tsbb test --env=jsdom --coverage --bail",
+    "prepare": "husky install",
+    "publish": "lerna publish from-package --yes --no-verify-access",
+    "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
-    "pretty-quick": "pretty-quick --staged",
-    "watch": "tsbb watch src/*.tsx --use-babel & npm run css:watch",
-    "build": "tsbb build src/*.tsx --use-babel && npm run css:build && npm run css:build:dist"
+    "remove": "npm run clean && lerna exec \"rm -rf package-lock.json\" --scope @uiw/react-markdown-editor --scope website",
+    "clean": "lerna clean --yes"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/uiwjs/react-markdown-editor"
-  },
-  "author": "Kenny Wong <wowohoo@qq.com>",
   "license": "MIT",
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
-  },
-  "files": [
-    "src/**/*.{ts,tsx,less}",
-    "markdown-editor.css",
-    "cjs",
-    "esm"
+  "workspaces": [
+    "core",
+    "www"
   ],
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "engines": {
+    "node": ">=16.0.0"
   },
-  "dependencies": {
-    "@codemirror/lang-markdown": "^6.0.0",
-    "@codemirror/language-data": "^6.1.0",
-    "@uiw/codemirror-extensions-events": "^4.12.3",
-    "@uiw/codemirror-themes": "^4.12.3",
-    "@uiw/react-codemirror": "^4.12.3",
-    "@uiw/react-markdown-preview": "^4.0.20"
+  "overrides": {
+    "typescript": "^5.1.3"
   },
   "devDependencies": {
-    "@kkt/less-modules": "^7.2.0",
-    "@kkt/raw-modules": "^7.2.0",
-    "@kkt/scope-plugin-options": "^7.2.0",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
-    "@uiw/react-back-to-top": "^1.1.1",
-    "@uiw/react-github-corners": "^1.5.14",
-    "@uiw/reset.css": "^1.0.6",
-    "@wcj/dark-mode": "^1.0.14",
     "compile-less-cli": "^1.8.13",
-    "husky": "^8.0.1",
-    "kkt": "^7.2.0",
-    "prettier": "^2.7.1",
-    "pretty-quick": "~3.1.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tsbb": "^4.1.4"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "lerna": "^7.1.3",
+    "prettier": "^3.0.0",
+    "tsbb": "^4.1.14"
   }
 }

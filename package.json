@@ -5,9 +5,9 @@
     "build": "lerna exec --scope @uiw/react-markdown-editor -- tsbb build \"src/*.{ts,tsx}\" --use-babel --cjs cjs && npm run css:build",
     "start": "lerna exec --scope website -- npm run start",
     "doc": "lerna exec --scope website -- npm run build",
-    "css:watch": "compile-less -d src -o esm --watch",
-    "css:build": "compile-less -d src -o esm",
-    "css:build:dist": "compile-less -d src --combine markdown-editor.css --rm-global",
+    "css:watch": "lerna exec --scope @uiw/react-markdown-editor -- compile-less -d src -o esm --watch",
+    "css:build": "lerna exec --scope @uiw/react-markdown-editor -- compile-less -d src -o esm",
+    "css:build:dist": "lerna exec --scope @uiw/react-markdown-editor -- compile-less -d src --combine markdown-editor.css --rm-global",
     "test": "lerna exec --scope @uiw/react-markdown-editor -- tsbb test --env=jsdom",
     "coverage": "lerna exec --scope @uiw/react-markdown-editor -- tsbb test --env=jsdom --coverage --bail",
     "prepare": "husky install",
@@ -29,7 +29,7 @@
     "typescript": "^5.1.3"
   },
   "devDependencies": {
-    "compile-less-cli": "^1.8.13",
+    "compile-less-cli": "^1.8.14",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "lerna": "^7.1.3",

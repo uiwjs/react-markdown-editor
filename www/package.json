@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "5.11.2",
+  "version": "5.11.3",
   "preview": true,
   "scripts": {
     "build": "kkt build",
@@ -10,7 +10,7 @@
   "dependencies": {
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
-    "@uiw/react-markdown-editor": "5.11.2",
+    "@uiw/react-markdown-editor": "5.11.3",
     "@uiw/react-markdown-preview-example": "^1.5.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

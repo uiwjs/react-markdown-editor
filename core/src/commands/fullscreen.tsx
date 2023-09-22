@@ -6,24 +6,30 @@ const Fullscreen: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & T
   const { editorProps } = props;
   const $height = useRef<number>(0);
   const [full, setFull] = useState(false);
-  const robserver = useRef<ResizeObserver>();
-  useEffect(() => {
-    robserver.current = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        if (!$height.current) {
-          $height.current = entry.target.clientHeight;
-        }
-        if (editorProps.editor?.current?.view?.dom) {
-          if (full) {
-            editorProps.editor.current.view.dom.style.height = `${entry.target.clientHeight}px`;
-          } else {
-            editorProps.editor.current.view.dom.removeAttribute('style');
-          }
+  const fullRef = useRef(full);
+  const entriesHandle: ResizeObserverCallback = (entries: ResizeObserverEntry[]) => {
+    for (const entry of entries) {
+      if (!$height.current) {
+        $height.current = entry.target.clientHeight;
+      }
+      if (editorProps.editor?.current?.view?.dom) {
+        if (fullRef.current) {
+          editorProps.editor.current.view.dom.style.height = `${entry.target.clientHeight}px`;
+        } else {
+          editorProps.editor.current.view.dom.removeAttribute('style');
         }
       }
-    });
-  }, []);
+    }
+    robserver.current?.disconnect();
+    robserver.current = undefined;
+  };
+
+  const robserver = useRef<ResizeObserver | undefined>(new ResizeObserver(entriesHandle));
+
   useEffect(() => {
+    if (!robserver.current) {
+      robserver.current = new ResizeObserver(entriesHandle);
+    }
     if (
       editorProps.containerEditor &&
       editorProps.containerEditor.current &&
@@ -33,7 +39,13 @@ const Fullscreen: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & T
       const parentElement = editorProps.containerEditor.current.parentElement;
       robserver.current.observe(parentElement);
     }
-  }, [editorProps.containerEditor, editorProps.editor, full, robserver]);
+    return () => {
+      if (robserver.current) {
+        robserver.current.disconnect();
+        robserver.current = undefined;
+      }
+    };
+  }, [editorProps.containerEditor, entriesHandle, editorProps.editor, full, robserver]);
 
   useEffect(() => {
     if (!document) return;
@@ -57,8 +69,13 @@ const Fullscreen: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & T
     }
   }, [full, editorProps]);
 
+  const click = () => {
+    fullRef.current = !full;
+    setFull(!full);
+  };
+
   return (
-    <button onClick={() => setFull(!full)} type="button" className={full ? 'active' : ''}>
+    <button onClick={click} type="button" className={full ? 'active' : ''}>
       {props.command.icon}
     </button>
   );

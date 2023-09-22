@@ -185,6 +185,7 @@ function MarkdownEditorInternal(
           <CodeMirror
             theme={defaultTheme}
             {...codemirrorProps}
+            className={`${prefixCls}-inner`}
             extensions={extensionsData}
             height={height}
             ref={codeMirror}

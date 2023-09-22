@@ -167,6 +167,20 @@ const Dome = () => (
 export default Dome;
 ```
 
+```jsx mdx:preview
+import React from "react";
+import MarkdownEditor from '@uiw/react-markdown-editor';
+
+const Dome = () => (
+  <MarkdownEditor
+    value="Hello Markdown!"
+    height="200px"
+    enablePreview={false}
+  />
+);
+
+export default Dome;
+```
 ## Support Nextjs
 
 Use examples in [nextjs](https://nextjs.org/). 

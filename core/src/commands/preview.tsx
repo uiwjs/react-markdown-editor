@@ -4,7 +4,7 @@ import { IMarkdownEditor, ToolBarProps } from '..';
 
 const Preview: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & ToolBarProps }> = (props) => {
   const { editorProps } = props;
-  const { containerEditor, preview, previewWidth = '50%' } = editorProps;
+  const { containerEditor, preview, previewWidth = '50%', enablePreview } = editorProps;
   const [visible, setVisible] = useState(props.editorProps.visible);
   useEffect(() => setVisible(props.editorProps.visible), [props.editorProps.visible]);
   useEffect(() => {
@@ -34,6 +34,8 @@ const Preview: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & Tool
       }
     }
   }, [visible, containerEditor, preview, previewWidth]);
+
+  if (!enablePreview) return;
 
   return (
     <button onClick={() => setVisible(!visible)} type="button" className={visible ? 'active' : ''}>

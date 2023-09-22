@@ -33,6 +33,8 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   renderPreview?: (props: MarkdownPreviewProps, initVisible: boolean) => React.ReactNode;
   /** Preview expanded width @default `50%` */
   previewWidth?: string;
+  /** Whether to enable preview function @default `true` */
+  enablePreview?: boolean;
   /** Whether to enable scrolling */
   enableScroll?: boolean;
   /** Tool display settings. */
@@ -93,6 +95,7 @@ function MarkdownEditorInternal(
     hideToolbar = true,
     toolbarBottom = false,
     enableScroll = true,
+    enablePreview = true,
     previewProps = {},
     extensions = [],
     previewWidth = '50%',
@@ -189,13 +192,15 @@ function MarkdownEditorInternal(
           />
         )}
       </div>
-      <div className={clsPreview} ref={preview}>
-        {renderPreview ? (
-          renderPreview(previewProps, !!visible)
-        ) : (
-          <MarkdownPreview {...previewProps} data-visible={!!visible} />
-        )}
-      </div>
+      {enablePreview && (
+        <div className={clsPreview} ref={preview}>
+          {renderPreview ? (
+            renderPreview(previewProps, !!visible)
+          ) : (
+            <MarkdownPreview {...previewProps} data-visible={!!visible} />
+          )}
+        </div>
+      )}
     </div>
   );
 

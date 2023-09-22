@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
@@ -69,11 +69,6 @@ jobs:
 
             ${{ steps.changelog.outputs.changelog }}
 
-      # - name: 📦 @uiw/react-markdown-editor 📦
-      #   uses: JS-DevTools/npm-publish@v1
-      #   with:
-      #     token: ${{ secrets.NPM_TOKEN }}
-      #     package: ./package.json
       - name: Modify package.json
         uses: jaywcjlove/github-action-package@main
         with:
@@ -81,7 +76,7 @@ jobs:
           unset: scripts,eslintConfig,devDependencies,browserslist
 
       - name: 📦 @uiw/react-markdown-editor 📦
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: core
         env:
@@ -111,10 +106,10 @@ jobs:
   #         path: ./package.json
   #         rename: '@uiwjs/react-markdown-editor'
 
-  #     - run: npm publish
+  #     - run: npm publish --access public --provenance
   #       continue-on-error: true
   #       env:
   #         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #     # - run: npm publish
+  #     # - run: npm publish --access public --provenance
   #     #   env:
   #     #     NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

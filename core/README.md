@@ -169,6 +169,8 @@ export default Dome;
 
 Disable preview feature
 
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/react-markdown-editor-https-github-com-uiwjs-react-markdown-editor-issues-205-c3kqhd?fontsize=14&hidenavigation=1&theme=dark)
+
 ```jsx mdx:preview
 import React from "react";
 import MarkdownEditor from '@uiw/react-markdown-editor';

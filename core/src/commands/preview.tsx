@@ -34,10 +34,14 @@ const Preview: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & Tool
       }
     }
   }, [visible, containerEditor, preview, previewWidth]);
-  if (!enablePreview) return;
 
+  if (!enablePreview) return;
+  const handle = () => {
+    editorProps.onPreviewMode && editorProps.onPreviewMode(!visible);
+    setVisible(!visible);
+  };
   return (
-    <button onClick={() => setVisible(!visible)} type="button" className={visible ? 'active' : ''}>
+    <button onClick={handle} type="button" className={visible ? 'active' : ''}>
       {props.command.icon}
     </button>
   );

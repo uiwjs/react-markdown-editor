@@ -51,6 +51,8 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   previewProps?: MarkdownPreviewProps;
   /** replace the default `extensions` */
   reExtensions?: ReactCodeMirrorProps['extensions'];
+  /** Edit mode and preview mode switching event */
+  onPreviewMode?: (isHide: boolean) => void;
 }
 
 export interface ToolBarProps {
@@ -100,6 +102,7 @@ function MarkdownEditorInternal(
     extensions = [],
     previewWidth = '50%',
     reExtensions,
+    onPreviewMode,
     ...codemirrorProps
   } = props;
   const [value, setValue] = useState(props.value || '');

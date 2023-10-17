@@ -259,6 +259,7 @@ const Demo = () => {
 - `toolbarsMode?: ICommand[] | string[]` - Tool display settings.
 - `onChange?:function(editor: IInstance, data: CodeMirror.EditorChange, value: string)` - called when a change is made
 - `onBlur?: function(editor: IInstance, event: Event)` - event occurs when an object loses focus
+- `onPreviewMode?: (isHide: boolean) => void` - Edit mode and preview mode switching event
 - `previewProps` - [react-markdown options](https://github.com/uiwjs/react-markdown-preview/tree/v2.1.0#options-props)
 
 ```ts
@@ -293,6 +294,8 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   previewProps?: MarkdownPreviewProps;
   /** replace the default `extensions` */
   reExtensions?: ReactCodeMirrorProps['extensions'];
+  /** Edit mode and preview mode switching event */
+  onPreviewMode?: (isHide: boolean) => void;
 }
 ```
 

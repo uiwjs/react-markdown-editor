@@ -130,6 +130,9 @@ function MarkdownEditorInternal(
   };
   const height = typeof codemirrorProps.height === 'number' ? `${codemirrorProps.height}px` : codemirrorProps.height;
 
+  const preValue = props.value;
+  useEffect(() => setValue(preValue ?? ''), [preValue]);
+
   const previewScrollHandle = useCallback(
     (event: Event) => {
       if (!enableScroll) return;

@@ -50,7 +50,7 @@
     "@uiw/codemirror-extensions-events": "^4.12.3",
     "@uiw/codemirror-themes": "^4.12.3",
     "@uiw/react-codemirror": "^4.12.3",
-    "@uiw/react-markdown-preview": "^4.0.20"
+    "@uiw/react-markdown-preview": "^5.0.0"
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",

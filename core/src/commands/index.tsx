@@ -53,3 +53,23 @@ export const getCommands: () => ICommand[] = () =>
     .map((key) => defaultCommands[key as keyof typeof defaultCommands]);
 
 export const getModeCommands: () => ICommand[] = () => [preview, fullscreen];
+
+export {
+  bold,
+  code,
+  codeBlock,
+  italic,
+  header,
+  strike,
+  underline,
+  olist,
+  ulist,
+  quote,
+  link,
+  todo,
+  image,
+  redo,
+  undo,
+  fullscreen,
+  preview,
+};

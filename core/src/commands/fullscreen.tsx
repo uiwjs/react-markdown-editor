@@ -52,6 +52,9 @@ const Fullscreen: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & T
     if (editorProps && editorProps.container && editorProps.container.current && editorProps.editor) {
       const container = editorProps.container.current;
       document.body.style.overflow = full ? 'hidden' : 'initial';
+      full
+        ? document.body.classList.add(`${editorProps.prefixCls}-fullscreen`)
+        : document.body.classList.remove(`${editorProps.prefixCls}-fullscreen`);
       if (container && full) {
         container.style.zIndex = '999';
         container.style.position = 'fixed';

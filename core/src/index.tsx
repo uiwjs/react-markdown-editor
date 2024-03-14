@@ -56,6 +56,7 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
 }
 
 export interface ToolBarProps {
+  prefixCls?: string;
   editor: React.RefObject<ReactCodeMirrorRef>;
   preview: React.RefObject<HTMLDivElement>;
   container: React.RefObject<HTMLDivElement>;
@@ -122,6 +123,7 @@ function MarkdownEditorInternal(
   );
 
   const toolBarProps: ToolBarProps = {
+    prefixCls,
     preview: preview,
     editor: codeMirror,
     container: container,

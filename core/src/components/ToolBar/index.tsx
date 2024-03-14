@@ -34,6 +34,7 @@ export default function ToolBar(props: IToolBarProps) {
       execute(editor.current!);
     }
   }
+  editorProps.prefixCls = prefixCls;
   return (
     <div
       className={`${prefixCls}-toolbar ${className || ''} ${mode ? `${prefixCls}-toolbar-mode` : ''}`}

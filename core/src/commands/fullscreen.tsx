@@ -2,8 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ICommand } from '.';
 import { IMarkdownEditor, ToolBarProps } from '..';
 
-const Fullscreen: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & ToolBarProps }> = (props) => {
-  const { editorProps } = props;
+interface FullscreenButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
+  command: ICommand;
+  editorProps: IMarkdownEditor & ToolBarProps;
+  onClick?: (evn: React.MouseEvent<HTMLButtonElement, MouseEvent>, isFull: boolean) => void;
+}
+
+export const FullscreenButton: React.FC<FullscreenButtonProps> = (props) => {
+  const { editorProps, command, onClick, ...reset } = props;
   const $height = useRef<number>(0);
   const [full, setFull] = useState(false);
   const fullRef = useRef(full);
@@ -72,14 +78,16 @@ const Fullscreen: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & T
     }
   }, [full, editorProps]);
 
-  const click = () => {
-    fullRef.current = !full;
-    setFull(!full);
+  const click = (evn: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    let isFull = !full;
+    fullRef.current = isFull;
+    setFull(isFull);
+    onClick?.(evn, isFull);
   };
 
   return (
-    <button onClick={click} type="button" className={full ? 'active' : ''}>
-      {props.command.icon}
+    <button {...reset} onClick={click} type="button" className={full ? 'active' : ''}>
+      {command.icon}
     </button>
   );
 };
@@ -87,7 +95,7 @@ const Fullscreen: React.FC<{ command: ICommand; editorProps: IMarkdownEditor & T
 export const fullscreen: ICommand = {
   name: 'fullscreen',
   keyCommand: 'fullscreen',
-  button: (command, props, opts) => <Fullscreen command={command} editorProps={{ ...props, ...opts }} />,
+  button: (command, props, opts) => <FullscreenButton command={command} editorProps={{ ...props, ...opts }} />,
   icon: (
     <svg fill="currentColor" viewBox="0 0 448 512" height="15" width="15">
       <path d="M128 32H32C14.31 32 0 46.31 0 64v96c0 17.69 14.31 32 32 32s32-14.31 32-32V96h64c17.69 0 32-14.31 32-32s-14.3-32-32-32zm288 0h-96c-17.69 0-32 14.31-32 32s14.31 32 32 32h64v64c0 17.69 14.31 32 32 32s32-14.31 32-32V64c0-17.69-14.3-32-32-32zM128 416H64v-64c0-17.69-14.31-32-32-32S0 334.31 0 352v96c0 17.69 14.31 32 32 32h96c17.69 0 32-14.31 32-32s-14.3-32-32-32zm288-96c-17.69 0-32 14.31-32 32v64h-64c-17.69 0-32 14.31-32 32s14.31 32 32 32h96c17.69 0 32-14.31 32-32v-96c0-17.7-14.3-32-32-32z" />

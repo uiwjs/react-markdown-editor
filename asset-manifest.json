@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.7d88c8da.css",
-    "main.js": "/static/js/main.a8a6113e.js",
+    "main.css": "/static/css/main.a271ff20.css",
+    "main.js": "/static/js/main.771090dc.js",
     "static/js/1031.7e8a4454.chunk.js": "/static/js/1031.7e8a4454.chunk.js",
     "static/js/1693.d5597a78.chunk.js": "/static/js/1693.d5597a78.chunk.js",
     "static/js/746.c9953aa0.chunk.js": "/static/js/746.c9953aa0.chunk.js",
@@ -113,13 +113,13 @@
     "static/js/3787.ab36423b.chunk.js": "/static/js/3787.ab36423b.chunk.js",
     "static/js/7953.f99ff585.chunk.js": "/static/js/7953.f99ff585.chunk.js",
     "refractor-vendor.js": "/static/js/refractor-vendor.00a217af.js",
-    "uiw-vendor.js": "/static/js/uiw-vendor.2af67290.js",
+    "uiw-vendor.js": "/static/js/uiw-vendor.8edea0df.js",
     "parse5-vendor.js": "/static/js/parse5-vendor.d187489d.js",
     "react-vendor.js": "/static/js/react-vendor.b4b40446.js",
     "static/media/logo.svg": "/static/media/logo.048b72013099e01523fe4b76855a23dd.svg",
     "index.html": "/index.html",
-    "main.7d88c8da.css.map": "/static/css/main.7d88c8da.css.map",
-    "main.a8a6113e.js.map": "/static/js/main.a8a6113e.js.map",
+    "main.a271ff20.css.map": "/static/css/main.a271ff20.css.map",
+    "main.771090dc.js.map": "/static/js/main.771090dc.js.map",
     "1031.7e8a4454.chunk.js.map": "/static/js/1031.7e8a4454.chunk.js.map",
     "1693.d5597a78.chunk.js.map": "/static/js/1693.d5597a78.chunk.js.map",
     "746.c9953aa0.chunk.js.map": "/static/js/746.c9953aa0.chunk.js.map",
@@ -231,16 +231,16 @@
     "3787.ab36423b.chunk.js.map": "/static/js/3787.ab36423b.chunk.js.map",
     "7953.f99ff585.chunk.js.map": "/static/js/7953.f99ff585.chunk.js.map",
     "refractor-vendor.00a217af.js.map": "/static/js/refractor-vendor.00a217af.js.map",
-    "uiw-vendor.2af67290.js.map": "/static/js/uiw-vendor.2af67290.js.map",
+    "uiw-vendor.8edea0df.js.map": "/static/js/uiw-vendor.8edea0df.js.map",
     "parse5-vendor.d187489d.js.map": "/static/js/parse5-vendor.d187489d.js.map",
     "react-vendor.b4b40446.js.map": "/static/js/react-vendor.b4b40446.js.map"
   },
   "entrypoints": [
     "static/js/refractor-vendor.00a217af.js",
-    "static/js/uiw-vendor.2af67290.js",
+    "static/js/uiw-vendor.8edea0df.js",
     "static/js/parse5-vendor.d187489d.js",
     "static/js/react-vendor.b4b40446.js",
-    "static/css/main.7d88c8da.css",
-    "static/js/main.a8a6113e.js"
+    "static/css/main.a271ff20.css",
+    "static/js/main.771090dc.js"
   ]
 }

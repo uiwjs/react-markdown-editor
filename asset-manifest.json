@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f55fb237.css",
-    "main.js": "/static/js/main.c26b20c8.js",
+    "main.js": "/static/js/main.dcf9f61f.js",
     "static/js/1031.a3fcfe1e.chunk.js": "/static/js/1031.a3fcfe1e.chunk.js",
     "static/js/1693.d5597a78.chunk.js": "/static/js/1693.d5597a78.chunk.js",
     "static/js/6006.399273ba.chunk.js": "/static/js/6006.399273ba.chunk.js",
@@ -120,7 +120,7 @@
     "static/media/logo.svg": "/static/media/logo.048b72013099e01523fe4b76855a23dd.svg",
     "index.html": "/index.html",
     "main.f55fb237.css.map": "/static/css/main.f55fb237.css.map",
-    "main.c26b20c8.js.map": "/static/js/main.c26b20c8.js.map",
+    "main.dcf9f61f.js.map": "/static/js/main.dcf9f61f.js.map",
     "1031.a3fcfe1e.chunk.js.map": "/static/js/1031.a3fcfe1e.chunk.js.map",
     "1693.d5597a78.chunk.js.map": "/static/js/1693.d5597a78.chunk.js.map",
     "6006.399273ba.chunk.js.map": "/static/js/6006.399273ba.chunk.js.map",
@@ -243,6 +243,6 @@
     "static/js/parse5-vendor.d187489d.js",
     "static/js/react-vendor.b4b40446.js",
     "static/css/main.f55fb237.css",
-    "static/js/main.c26b20c8.js"
+    "static/js/main.dcf9f61f.js"
   ]
 }

@@ -23,7 +23,7 @@ export function ExampleDemo() {
         height="500px"
         value={mdstr}
         enableScroll={enableScroll}
-        hideToolbar={hideToolbar}
+        showToolbar={hideToolbar}
         toolbarBottom={toolbarBottom}
       />
       <div style={{ marginTop: 10, display: 'flex', gap: '10px' }}>
@@ -37,7 +37,7 @@ export function ExampleDemo() {
         </button>
         <label>
           <input type="checkbox" checked={hideToolbar} onChange={(evn) => setHideToolbar(evn.target.checked)} />
-          hideToolbar
+          showToolbar
         </label>
         <label>
           <input type="checkbox" checked={enableScroll} onChange={(evn) => setEnableScroll(evn.target.checked)} />

@@ -45,8 +45,10 @@ export interface IMarkdownEditor extends ReactCodeMirrorProps {
   toolbarsFilter?: (tool: Commands, idx: number) => boolean;
   /** Toolbar on bottom */
   toolbarBottom?: boolean;
-  /** Option to hide the tool bar. */
+  /** Option to hide the tool bar. @deprecated The next major version will be deprecated. Please use `showToolbar`. */
   hideToolbar?: boolean;
+  /** Option to hide the tool bar. */
+  showToolbar?: boolean;
   /** [@uiw/react-markdown-preview](https://github.com/uiwjs/react-markdown-preview#options-props) options */
   previewProps?: MarkdownPreviewProps;
   /** replace the default `extensions` */
@@ -95,7 +97,8 @@ function MarkdownEditorInternal(
     visible = true,
     renderPreview,
     visibleEditor = true,
-    hideToolbar = true,
+    hideToolbar,
+    showToolbar = true,
     toolbarBottom = false,
     enableScroll = true,
     enablePreview = true,
@@ -222,7 +225,8 @@ function MarkdownEditorInternal(
 
   const tools = toolbarsFilter ? toolbars.filter(toolbarsFilter) : toolbars;
   const toolsMode = toolbarsFilter ? toolbarsMode.filter(toolbarsFilter) : toolbarsMode;
-  const toolbarView = hideToolbar && (
+  const isShowToolbar = hideToolbar ?? showToolbar;
+  const toolbarView = isShowToolbar && (
     <div className={clsToolbar}>
       <ToolBar {...toolBarProps} toolbars={tools} />
       <ToolBar {...toolBarProps} toolbars={toolsMode} mode />

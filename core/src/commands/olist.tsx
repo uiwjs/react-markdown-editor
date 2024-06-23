@@ -16,7 +16,7 @@ export const olist: ICommand = {
     if (!state || !view) return;
     const lineInfo = view.state.doc.lineAt(view.state.selection.main.from);
     let mark = '1. ';
-    const matchMark = lineInfo.text.match(/^\1\./);
+    const matchMark = lineInfo.text.match(/^1\./);
     if (matchMark && matchMark[0]) {
       mark = '';
     }

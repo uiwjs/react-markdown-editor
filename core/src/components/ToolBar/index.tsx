@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ICommand, defaultCommands } from '../../commands';
 import { IMarkdownEditor, ToolBarProps } from '../..';
 import './index.less';
@@ -54,16 +54,14 @@ export default function ToolBar(props: IToolBarProps) {
             buttonProps[key] = btn[key];
           });
         } else if (typeof obj.button === 'function') {
-          return React.cloneElement(
-            obj.button(obj, editorProps, {
-              preview,
-              container,
-              containerEditor,
-              editor,
-              editorProps,
-            }),
-            { key },
-          );
+          const CustomButton = obj.button(obj, editorProps, {
+            preview,
+            container,
+            containerEditor,
+            editor,
+            editorProps,
+          });
+          return <Fragment key={key}>{CustomButton}</Fragment>;
         }
         return <button {...buttonProps} key={key} />;
       })}

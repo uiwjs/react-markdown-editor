@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ICommand, defaultCommands } from '../../commands';
+import { type ICommand, defaultCommands } from '../../commands';
 import { IMarkdownEditor, ToolBarProps } from '../..';
 import './index.less';
 

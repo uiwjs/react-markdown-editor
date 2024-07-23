@@ -1,11 +1,11 @@
 import React, { useState, useRef, useImperativeHandle, Fragment, useEffect, useCallback } from 'react';
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 import { languages } from '@codemirror/language-data';
-import { EditorView, ViewUpdate } from '@codemirror/view';
+import { EditorView, type ViewUpdate } from '@codemirror/view';
 import * as events from '@uiw/codemirror-extensions-events';
-import CodeMirror, { ReactCodeMirrorProps, ReactCodeMirrorRef } from '@uiw/react-codemirror';
+import CodeMirror, { type ReactCodeMirrorProps, type ReactCodeMirrorRef } from '@uiw/react-codemirror';
 import MarkdownPreview, { MarkdownPreviewProps } from '@uiw/react-markdown-preview';
-import ToolBar, { Commands } from './components/ToolBar';
+import ToolBar, { type Commands } from './components/ToolBar';
 import { getCommands, getModeCommands } from './commands';
 import { defaultTheme } from './theme';
 import './index.less';

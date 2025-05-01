@@ -5,13 +5,13 @@ import { EditorView, type ViewUpdate } from '@codemirror/view';
 import * as events from '@uiw/codemirror-extensions-events';
 import CodeMirror, { type ReactCodeMirrorProps, type ReactCodeMirrorRef } from '@uiw/react-codemirror';
 import MarkdownPreview, { MarkdownPreviewProps } from '@uiw/react-markdown-preview';
-import ToolBar, { type Commands } from './components/ToolBar';
-import { getCommands, getModeCommands } from './commands';
+import ToolBar, { type Commands } from './components/ToolBar/index';
+import { getCommands, getModeCommands } from './commands/index';
 import { defaultTheme } from './theme';
 import './index.less';
 
 export * from './theme';
-export * from './commands';
+export * from './commands/index';
 export * from '@uiw/react-markdown-preview';
 
 export const scrollerStyle = EditorView.theme({
